@@ -1,0 +1,2007 @@
+{
+	"info": {
+		"_postman_id": "e028c73e-f91c-4609-9d93-401dce4d8a89",
+		"name": "FinMobileAPI Updated",
+		"description": "Fin Mobile App - Updated Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "137325"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Intro",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var uuid = require('uuid');",
+									"postman.setEnvironmentVariable('guid', uuid.v4());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}"
+							},
+							{
+								"key": "channel",
+								"value": "Eximbills"
+							},
+							{
+								"key": "timeStamp",
+								"value": "12"
+							},
+							{
+								"key": "entity",
+								"value": "12"
+							},
+							{
+								"key": "SecertKey",
+								"value": "FinMobileCS"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/Intro",
+							"protocol": "http",
+							"host": [
+								"213",
+								"42",
+								"43",
+								"227"
+							],
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"Intro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var uuid = require('uuid');",
+									"postman.setEnvironmentVariable('guid', uuid.v4());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Parse the response",
+									"var res = pm.response.json();",
+									"",
+									"// Store token in global variables",
+									"if (res.Token) {",
+									"    pm.globals.set('authToken', res.Token);",
+									"    console.log('Token stored globally: ' + res.Token);",
+									"} else {",
+									"    console.log('No token found in response');",
+									"}",
+									"",
+									"// Also set in environment for backward compatibility",
+									"pm.environment.set('Token', res.Token);",
+									"",
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"pm.test(\"Verify the response schema for required fields\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.Token).to.exist;",
+									"    pm.expect(responseData.MessageId).to.exist;",
+									"    pm.expect(responseData.RequestId).to.exist;",
+									"    pm.expect(responseData.StatusCode).to.exist;",
+									"    pm.expect(responseData.StatusDescription).to.exist;",
+									"    pm.expect(responseData.Timestamp).to.exist;",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}"
+							},
+							{
+								"key": "channel",
+								"value": "Eximbills"
+							},
+							{
+								"key": "timeStamp",
+								"value": "12"
+							},
+							{
+								"key": "entity",
+								"value": "12"
+							},
+							{
+								"key": "SecertKey",
+								"value": "FinMobileCS"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"CorporateId\": \"0001517524\",\n  \"Password\": \"12121212\",\n  \"UserId\": \"1517524adm3\"\n}"
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/login",
+							"protocol": "http",
+							"host": [
+								"213",
+								"42",
+								"43",
+								"227"
+							],
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Password",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var uuid = require('uuid');",
+									"postman.setEnvironmentVariable('guid', uuid.v4());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "channel",
+								"value": "Eximbills",
+								"type": "text"
+							},
+							{
+								"key": "timeStamp",
+								"value": "12",
+								"type": "text"
+							},
+							{
+								"key": "entity",
+								"value": "12",
+								"type": "text"
+							},
+							{
+								"key": "SecertKey",
+								"value": "FinMobileCS",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"CorporateId\": \"0001517524\",\n  \"UserId\": \"1517524adm3\",\n  \"Email\": \"user@example.com\",\n  \"MobileNo\": \"966568247054\"\n}"
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/forgotpassword",
+							"protocol": "http",
+							"host": [
+								"213",
+								"42",
+								"43",
+								"227"
+							],
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"forgotpassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Credential",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var uuid = require('uuid');",
+									"postman.setEnvironmentVariable('guid', uuid.v4());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "channel",
+								"value": "Eximbills",
+								"type": "text"
+							},
+							{
+								"key": "timeStamp",
+								"value": "12",
+								"type": "text"
+							},
+							{
+								"key": "entity",
+								"value": "12",
+								"type": "text"
+							},
+							{
+								"key": "SecertKey",
+								"value": "FinMobileCS",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Email\": \"ilyas@chinasystems-me.com\",\n    \"MobileNo\": \"971527704662\"\n}"
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/forgotcredential",
+							"protocol": "http",
+							"host": [
+								"213",
+								"42",
+								"43",
+								"227"
+							],
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"forgotcredential"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var uuid = require('uuid');",
+									"postman.setEnvironmentVariable('guid', uuid.v4());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "channel",
+								"value": "Eximbills",
+								"type": "text"
+							},
+							{
+								"key": "timeStamp",
+								"value": "12",
+								"type": "text"
+							},
+							{
+								"key": "entity",
+								"value": "12",
+								"type": "text"
+							},
+							{
+								"key": "SecertKey",
+								"value": "FinMobileCS",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"CorporateId\": \"0001517524\",\n    \"password\": \"11111111\",\n    \"UserId\": \"1517524adm3\",\n    \"Email\": \"user@example.com\",\n    \"MobileNo\": \"966568247054\",\n    \"OTP\": \"965943\"\n}"
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/resetpassword",
+							"protocol": "http",
+							"host": [
+								"213",
+								"42",
+								"43",
+								"227"
+							],
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"resetpassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Credential",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var uuid = require('uuid');",
+									"postman.setEnvironmentVariable('guid', uuid.v4());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "channel",
+								"value": "Eximbills",
+								"type": "text"
+							},
+							{
+								"key": "timeStamp",
+								"value": "12",
+								"type": "text"
+							},
+							{
+								"key": "entity",
+								"value": "12",
+								"type": "text"
+							},
+							{
+								"key": "SecertKey",
+								"value": "FinMobileCS",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"CorporateId\": \"0001517524\",\n    \"password\": \"11111111\",\n    \"UserId\": \"1517524adm3\",\n    \"Email\": \"user@example.com\",\n    \"MobileNo\": \"966568247054\",\n    \"OTP\": \"965943\"\n}"
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/resetcredential",
+							"protocol": "http",
+							"host": [
+								"213",
+								"42",
+								"43",
+								"227"
+							],
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"resetcredential"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logoff",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var uuid = require('uuid');",
+									"postman.setEnvironmentVariable('guid', uuid.v4());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "channel",
+								"value": "Eximbills",
+								"type": "text"
+							},
+							{
+								"key": "timeStamp",
+								"value": "12",
+								"type": "text"
+							},
+							{
+								"key": "entity",
+								"value": "12",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"CorporateId\": \"0001517524\",\n  \"UserId\": \"1517524adm3\"\n}"
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/Logoff",
+							"protocol": "http",
+							"host": [
+								"213",
+								"42",
+								"43",
+								"227"
+							],
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"Logoff"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Management",
+			"item": [
+				{
+					"name": "Profile",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var uuid = require('uuid');",
+									"postman.setEnvironmentVariable('guid', uuid.v4());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}"
+							},
+							{
+								"key": "channel",
+								"value": "Eximbills"
+							},
+							{
+								"key": "timeStamp",
+								"value": "12"
+							},
+							{
+								"key": "entity",
+								"value": "12"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"CorporateId\": \"0001517524\",\n  \"UserId\": \"1517524adm3\"\n}"
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/Profile",
+							"protocol": "http",
+							"host": [
+								"213",
+								"42",
+								"43",
+								"227"
+							],
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"Profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Preference (POST)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var uuid = require('uuid');",
+									"postman.setEnvironmentVariable('guid', uuid.v4());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "channel",
+								"value": "Eximbills",
+								"type": "text"
+							},
+							{
+								"key": "timeStamp",
+								"value": "12",
+								"type": "text"
+							},
+							{
+								"key": "entity",
+								"value": "12",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"CorporateId\": \"0001517524\",\n    \"UserId\": \"1517524adm3\",\n    \"SavePreferenceRespInfo\": [\n        {\n            \"PreferenceListInfo\": {\n                \"MODULE\": \"IMLC;OWGT\",\n                \"LANG\": \"EN\"\n            }\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/Preference",
+							"protocol": "http",
+							"host": [
+								"213",
+								"42",
+								"43",
+								"227"
+							],
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"Preference"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Preference (GET)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var uuid = require('uuid');",
+									"postman.setEnvironmentVariable('guid', uuid.v4());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}"
+							},
+							{
+								"key": "channel",
+								"value": "Eximbills"
+							},
+							{
+								"key": "timeStamp",
+								"value": "12"
+							},
+							{
+								"key": "entity",
+								"value": "12"
+							}
+						],
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/Preference/0001517524&1517524adm3",
+							"protocol": "http",
+							"host": [
+								"213",
+								"42",
+								"43",
+								"227"
+							],
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"Preference",
+								"0001517524&1517524adm3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SaveFBToken",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var uuid = require('uuid');",
+									"postman.setEnvironmentVariable('guid', uuid.v4());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "channel",
+								"value": "Eximbills",
+								"type": "text"
+							},
+							{
+								"key": "timeStamp",
+								"value": "12",
+								"type": "text"
+							},
+							{
+								"key": "entity",
+								"value": "12",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"CorporateId\": \"0001517524\",\n    \"UserId\": \"1517524adm3\",\n    \"SaveFBTokenInfo\": [\n        {\n            \"TokenListInfo\": {\n                \"FBToken\": \"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx\"\n            }\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/SaveFBToken",
+							"protocol": "http",
+							"host": [
+								"213",
+								"42",
+								"43",
+								"227"
+							],
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"SaveFBToken"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaction Operations",
+			"item": [
+				{
+					"name": "InquireList",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var uuid = require('uuid');",
+									"postman.setEnvironmentVariable('guid', uuid.v4());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}"
+							},
+							{
+								"key": "channel",
+								"value": "Eximbills"
+							},
+							{
+								"key": "timeStamp",
+								"value": "12"
+							},
+							{
+								"key": "entity",
+								"value": "12"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"CorporateId\": \"0001517524\",\n    \"Module\": \"EXLC\",\n    \"UserId\": \"1517524adm3\",\n    \"filterby\": [\n        // {\n        //     \"Currency\" : \"JPY\"\n        // }\n    ],\n    \"page\": 1,\n    \"per_page\": 10,\n    \"Type\": \"INQ\"\n}"
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/InquireList",
+							"protocol": "http",
+							"host": [
+								"213",
+								"42",
+								"43",
+								"227"
+							],
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"InquireList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GlobalSearch",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var uuid = require('uuid');",
+									"postman.setEnvironmentVariable('guid', uuid.v4());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "channel",
+								"value": "Eximbills",
+								"type": "text"
+							},
+							{
+								"key": "timeStamp",
+								"value": "12",
+								"type": "text"
+							},
+							{
+								"key": "entity",
+								"value": "12",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"CorporateId\": \"0001517524\",\n    \"Module\": \"IMLC\",\n    \"UserId\": \"1517524adm3\",\n    \"page\": 1,\n    \"per_page\": 10,\n    \"Type\": \"AUTH\",\n    \"search\" : \"10\"\n}"
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/globalsearch",
+							"protocol": "http",
+							"host": [
+								"213",
+								"42",
+								"43",
+								"227"
+							],
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"globalsearch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "InquireTransaction",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var uuid = require('uuid');",
+									"postman.setEnvironmentVariable('guid', uuid.v4());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "channel",
+								"value": "Eximbills",
+								"type": "text"
+							},
+							{
+								"key": "timeStamp",
+								"value": "12",
+								"type": "text"
+							},
+							{
+								"key": "entity",
+								"value": "12",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"CorporateId\": \"0001517524\",\n  \"EventTimes\": \"1\",\n  \"MainRef\": \"488000004922011\",\n  \"Module\": \"OWGT\",\n  \"UserId\": \"1517524adm3\",\n  \"functionId\": \"F05030700826\"\n}"
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/InquireTransaction",
+							"protocol": "http",
+							"host": [
+								"213",
+								"42",
+								"43",
+								"227"
+							],
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"InquireTransaction"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "InquireAuthUserList",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var uuid = require('uuid');",
+									"postman.setEnvironmentVariable('guid', uuid.v4());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "channel",
+								"value": "Eximbills",
+								"type": "text"
+							},
+							{
+								"key": "timeStamp",
+								"value": "12",
+								"type": "text"
+							},
+							{
+								"key": "entity",
+								"value": "12",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"CorporateId\": \"0001517524\",\n  \"EventTimes\": \"1\",\n  \"MainRef\": \"488OWG0001132012\",\n  \"Module\": \"OWGT\",\n  \"UserId\": \"1517524adm3\",\n  \"functionId\": \"F05030700826\"\n}"
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/InquireAuthUserList",
+							"protocol": "http",
+							"host": [
+								"213",
+								"42",
+								"43",
+								"227"
+							],
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"InquireAuthUserList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "InquireAttachment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var uuid = require('uuid');",
+									"postman.setEnvironmentVariable('guid', uuid.v4());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "channel",
+								"value": "Eximbills",
+								"type": "text"
+							},
+							{
+								"key": "timeStamp",
+								"value": "12",
+								"type": "text"
+							},
+							{
+								"key": "entity",
+								"value": "12",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"AttachmentRef\": \"20230928134918526977203369140625\",\n  \"MainRef\": \"488000004922011\"\n}"
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/InquireAttachment",
+							"protocol": "http",
+							"host": [
+								"213",
+								"42",
+								"43",
+								"227"
+							],
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"InquireAttachment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BankLimitInquire",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var uuid = require('uuid');",
+									"postman.setEnvironmentVariable('guid', uuid.v4());"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.get(\"Token\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "channel",
+								"value": "Eximbills",
+								"type": "text"
+							},
+							{
+								"key": "timeStamp",
+								"value": "12",
+								"type": "text"
+							},
+							{
+								"key": "entity",
+								"value": "12",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"CorporateId\": \"0001517524\",\n    \"UserId\": \"1517524adm3\"\n}"
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/BankLimitInquire",
+							"protocol": "http",
+							"host": [
+								"213",
+								"42",
+								"43",
+								"227"
+							],
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"BankLimitInquire"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authorize",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var uuid = require('uuid');",
+									"postman.setEnvironmentVariable('guid', uuid.v4());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "channel",
+								"value": "Eximbills",
+								"type": "text"
+							},
+							{
+								"key": "timeStamp",
+								"value": "12",
+								"type": "text"
+							},
+							{
+								"key": "entity",
+								"value": "12",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"Action\": \"Accepted\",\n  \"AuthorizerBy\": \"1517524adm3\",\n  \"AuthorizerDate\": \"2024-01-07\",\n  \"AuthorizerTime\": \"9:36\",\n  \"CorporateId\": \"0001517524\",\n  \"MainRef\": \"488OGT000007AA\",\n  \"UserId\": \"1517524adm3\"\n}"
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/Authorize",
+							"protocol": "http",
+							"host": [
+								"213",
+								"42",
+								"43",
+								"227"
+							],
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"Authorize"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "InquireEvent",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var uuid = require('uuid');",
+									"postman.setEnvironmentVariable('guid', uuid.v4());"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "channel",
+								"value": "Eximbills",
+								"type": "text"
+							},
+							{
+								"key": "timeStamp",
+								"value": "12",
+								"type": "text"
+							},
+							{
+								"key": "entity",
+								"value": "12",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"CorporateId\": \"0001517524\",\n    \"MainRef\": \"488OG0004132011\",\n    \"Module\": \"OWGT\",\n    \"UserId\": \"1517524adm3\",\n    \"page\": 1,\n    \"per_page\": 10\n}"
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/InquireEvent",
+							"protocol": "http",
+							"host": [
+								"213",
+								"42",
+								"43",
+								"227"
+							],
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"InquireEvent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RequestLG",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var uuid = require('uuid');",
+									"postman.setEnvironmentVariable('guid', uuid.v4());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "channel",
+								"value": "Eximbills",
+								"type": "text"
+							},
+							{
+								"key": "timeStamp",
+								"value": "12",
+								"type": "text"
+							},
+							{
+								"key": "entity",
+								"value": "12",
+								"type": "text"
+							},
+							{
+								"key": "CIC",
+								"value": "0001517524",
+								"type": "text"
+							},
+							{
+								"key": "UserId",
+								"value": "OWGT_Checker",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Date\": \"2025-02-10\",\n    \"Branch\": \"488\",\n    \"BranchDetails\": {\n        \"City\": \"riyadh\",\n        \"BranchName\": \"riyadhARR\",\n        \"ContactPerson\": \"digital\",\n        \"BranchAddress\": \"NRR\",\n        \"BranchLocationLink\": \"NRR\"\n    },\n    \"ApplicationDetails\": {\n        \"TextGuaranteeIssued\": {\n            \"option\": \"UndersignedOption\"\n        },\n        \"OutwardGuarantee\": \"Local\",\n        \"LocalDetails\": {\n            \"BeneficiaryName\": \"Aliha\",\n            \"Address\": \"Alexandria\",\n            \"ZipCode\": \"293\",\n            \"POBox\": \"0025\",\n            \"City\": \"Alexandria\",\n            \"MobileNumber\": \"567627363\"\n        }\n    },\n    \"GuaranteeDetails\": {\n        \"Typeofguarantee\": \"Bid Bond\",\n        \"PurposeofGuarantee\": \"Testing team\",\n        \"CashMargin\": \"FullCover\",\n        \"Amount\": \"1000\",\n        \"Currency\": \"SAR\",\n        \"AmountInWords\": \"الف ريال\",\n        \"ContractValue\": \"1\",\n        \"ExpiryDate\": \"2025-05-08\",\n        \"GuaranateeWording\": \"ilyas hussain \"\n    },\n    \"CustomerDetails\": {\n        \"CustomerName\": \"haj umrah\",\n        \"AccountNumber\": \"000608874589117212321\",\n        \"ContactName\": \"haj umrah\",\n        \"ContactNumber\": \"0507797728\"\n    }\n}"
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/RequestLG?Module=OWGT",
+							"protocol": "http",
+							"host": [
+								"213",
+								"42",
+								"43",
+								"227"
+							],
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"RequestLG"
+							],
+							"query": [
+								{
+									"key": "Module",
+									"value": "OWGT"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notifications",
+			"item": [
+				{
+					"name": "Notification",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var uuid = require('uuid');",
+									"postman.setEnvironmentVariable('guid', uuid.v4());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.get(\"Token\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "channel",
+								"value": "Eximbills",
+								"type": "text"
+							},
+							{
+								"key": "timeStamp",
+								"value": "12",
+								"type": "text"
+							},
+							{
+								"key": "entity",
+								"value": "12",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"CorporateId\": \"0001517524\",    \n    \"UserId\": \"1517524adm3\"\n}"
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/Notification",
+							"protocol": "http",
+							"host": [
+								"213",
+								"42",
+								"43",
+								"227"
+							],
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"Notification"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NotificationJob",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var uuid = require('uuid');",
+									"postman.setEnvironmentVariable('guid', uuid.v4());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.get(\"Token\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "channel",
+								"value": "Eximbills",
+								"type": "text"
+							},
+							{
+								"key": "timeStamp",
+								"value": "12",
+								"type": "text"
+							},
+							{
+								"key": "entity",
+								"value": "12",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cronExpression\": \"0 */20 * * * *\"\n}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/updateBatchJobTiming",
+							"protocol": "http",
+							"host": [
+								"213",
+								"42",
+								"43",
+								"227"
+							],
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"updateBatchJobTiming"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Analytics",
+			"item": [
+				{
+					"name": "DashboardAnalytics",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var uuid = require('uuid');",
+									"postman.setEnvironmentVariable('guid', uuid.v4());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "channel",
+								"value": "FinMobileBankingApp",
+								"type": "text"
+							},
+							{
+								"key": "timeStamp",
+								"value": "{{$timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "version",
+								"value": "1.0.0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"CorporateId\": \"0001517524\",\n    \"UserId\": \"1517524adm3\",\n    \"Period\": \"30d\",\n    \"Module\": \"IWGT;OWGT;IMLC\"\n}"
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/dashboardAnalytics",
+							"protocol": "http",
+							"host": [
+								"213",
+								"42",
+								"43",
+								"227"
+							],
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"dashboardAnalytics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ModuleAnalytics",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var uuid = require('uuid');",
+									"postman.setEnvironmentVariable('guid', uuid.v4());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "channel",
+								"value": "FinMobileBankingApp",
+								"type": "text"
+							},
+							{
+								"key": "timeStamp",
+								"value": "{{$timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "version",
+								"value": "1.0.0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"CorporateId\": \"0001517524\",\n    \"UserId\": \"1517524adm3\",\n    \"Module\": \"OWGT\",\n    \"AnalyticsPeriod\": \"-6\"\n}"
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/moduleAnalytics",
+							"protocol": "http",
+							"host": [
+								"213",
+								"42",
+								"43",
+								"227"
+							],
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"moduleAnalytics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PortfolioValue",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var uuid = require('uuid');",
+									"postman.setEnvironmentVariable('guid', uuid.v4());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "channel",
+								"value": "FinMobileBankingApp",
+								"type": "text"
+							},
+							{
+								"key": "timeStamp",
+								"value": "{{$timestamp}}",
+								"type": "text"
+							},
+							{
+								"key": "version",
+								"value": "1.0.0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"CorporateId\": \"0001517524\",\n    \"UserId\": \"1517524adm3\"\n}"
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/PortfolioValue",
+							"protocol": "http",
+							"host": [
+								"213",
+								"42",
+								"43",
+								"227"
+							],
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"portfolioValue"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{authToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Check if global auth token exists",
+					"var authToken = pm.globals.get('authToken');",
+					"if (!authToken) {",
+					"    console.log('No auth token found. Please run the Login request first.');",
+					"} else {",
+					"    console.log('Using auth token: ' + authToken.substring(0, 20) + '...');",
+					"}"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Token",
+			"value": "Token"
+		},
+		{
+			"key": "NewToken",
+			"value": "NewToken"
+		}
+	]
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<message GAPI_NAME="OPENBANKING_REQUEST">
+	<msg-selector/>
+	<send-item/>
+	<msg/>
+	<msg-state>
+		<send-state>ok</send-state>
+		<recv-state/>
+		<recv-err-info/>
+	</msg-state>
+	<header/>
+	<msg-header>
+		<msg-id>33758</msg-id>
+	</msg-header>
+	<out-msg-content>
+		<MSG_TYPE order="24">IMLC.00001.Mobileauth</MSG_TYPE>
+	</out-msg-content>
+	<in-msg-content/>
+</message>

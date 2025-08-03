@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<security-config>
+    <allowed-endpoints>
+        <endpoint>/cs-ce-sec-api-0.0.1/login</endpoint>
+        <endpoint>/cs-ce-sec-api-0.0.1/Intro</endpoint>
+        <endpoint>/cs-ce-sec-api-0.0.1/forgotpassword</endpoint>
+        <endpoint>/cs-ce-sec-api-0.0.1/resetpassword</endpoint>
+        <endpoint>/cs-ce-sec-api-0.0.1/resetcredential</endpoint>
+        <endpoint>/cs-ce-sec-api-0.0.1/forgotcredential</endpoint>
+        <endpoint>/Intro</endpoint>
+        <endpoint>/login</endpoint>
+        <endpoint>/forgotpassword</endpoint>
+        <endpoint>/resetpassword</endpoint>
+        <endpoint>/resetcredential</endpoint>
+        <endpoint>/forgotcredential</endpoint>
+		<endpoint>Intro</endpoint>
+		<endpoint>login</endpoint> 
+		<endpoint>forgotpassword</endpoint> 
+		<endpoint>resetpassword</endpoint> 
+		<endpoint>resetcredential</endpoint> 
+		<endpoint>forgotcredential</endpoint> 
+		<endpoint>/cs-ce-sec-api-0.0.1/swagger-ui.html</endpoint>
+        <endpoint>/swagger-ui.html</endpoint>
+		<endpoint>swagger-ui.html</endpoint>
+    </allowed-endpoints>
+</security-config>

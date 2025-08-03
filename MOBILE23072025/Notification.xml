@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<SqlQuery>
+		<![CDATA[ SELECT * FROM CETRX.TRX_NOTIFICATION_MOBILE WHERE ( 1=1 ) AND C_READ_STATUS IS NULL AND C_UNIT_CODE = '${unitcode}' AND C_USER_ID = '${userid}' ]]>
+	</SqlQuery>
+</root>

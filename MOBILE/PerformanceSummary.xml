@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <query id="getProcessingMetrics">
+        <![CDATA[
+        SELECT 
+            AVG(PROCESS_TIME) AS AVG_PROCESSING_TIME,
+            MEDIAN(PROCESS_TIME) AS MEDIAN_PROCESSING_TIME,
+            MIN(PROCESS_TIME) AS MIN_PROCESSING_TIME,
+            MAX(PROCESS_TIME) AS MAX_PROCESSING_TIME
+        FROM (
+            SELECT 
+                C_TRX_NO,
+                (MAX(CASE WHEN C_ACTION = 'APPROVE' THEN ACTION_DT END) - MIN(ACTION_DT)) * 24 AS PROCESS_TIME
+            FROM CETRX.TRX_AUDIT_TRAIL
+            WHERE C_UNIT_CODE = '${unitcode}'
+                AND ACTION_DT >= ADD_MONTHS(SYSDATE, -${months})
+                ${moduleFilter}
+            GROUP BY C_TRX_NO
+            HAVING MAX(CASE WHEN C_ACTION = 'APPROVE' THEN ACTION_DT END) IS NOT NULL
+        )
+        ]]>
+    </query>
+    
+    <query id="getEfficiencyMetrics">
+        <![CDATA[
+        SELECT 
+            COUNT(*) AS TOTAL_TRANSACTIONS,
+            SUM(CASE WHEN C_TRX_STATUS IN ('A', 'C') THEN 1 ELSE 0 END) AS APPROVED_COUNT,
+            SUM(CASE WHEN C_TRX_STATUS = 'R' THEN 1 ELSE 0 END) AS REJECTED_COUNT,
+            SUM(CASE WHEN C_AUTO_PROCESS = 'Y' THEN 1 ELSE 0 END) AS STP_COUNT,
+            SUM(CASE WHEN C_RETURN_FLAG = 'Y' THEN 1 ELSE 0 END) AS RETURN_COUNT
+        FROM CETRX.TRX_INBOX 
+        WHERE C_UNIT_CODE = '${unitcode}'
+            AND TRX_DT >= ADD_MONTHS(SYSDATE, -${months})
+            ${moduleFilter}
+        ]]>
+    </query>
+    
+    <query id="getQualityMetrics">
+        <![CDATA[
+        SELECT 
+            COUNT(DISTINCT T.C_TRX_NO) AS TOTAL_TRANSACTIONS,
+            COUNT(DISTINCT CASE WHEN A.C_ACTION = 'AMEND' THEN T.C_TRX_NO END) AS AMENDED_COUNT,
+            COUNT(DISTINCT CASE WHEN A.C_ACTION = 'RETURN' THEN T.C_TRX_NO END) AS RETURNED_COUNT,
+            COUNT(DISTINCT CASE WHEN T.C_ERROR_FLAG = 'Y' THEN T.C_TRX_NO END) AS ERROR_COUNT
+        FROM CETRX.TRX_INBOX T
+        LEFT JOIN CETRX.TRX_AUDIT_TRAIL A ON T.C_TRX_NO = A.C_TRX_NO AND T.C_UNIT_CODE = A.C_UNIT_CODE
+        WHERE T.C_UNIT_CODE = '${unitcode}'
+            AND T.TRX_DT >= ADD_MONTHS(SYSDATE, -${months})
+            ${moduleFilter}
+        ]]>
+    </query>
+    
+    <query id="getComparisonData">
+        <![CDATA[
+        SELECT 
+            'CURRENT' AS PERIOD,
+            COUNT(*) AS TRANSACTION_COUNT,
+            SUM(CASE WHEN C_TRX_STATUS IN ('A', 'C') THEN 1 ELSE 0 END) AS APPROVED_COUNT,
+            AVG(CASE WHEN C_TRX_STATUS IN ('A', 'C') THEN 1 ELSE 0 END) * 100 AS APPROVAL_RATE
+        FROM CETRX.TRX_INBOX 
+        WHERE C_UNIT_CODE = '${unitcode}'
+            AND TRX_DT >= ADD_MONTHS(SYSDATE, -${months})
+            ${moduleFilter}
+        UNION ALL
+        SELECT 
+            'PREVIOUS' AS PERIOD,
+            COUNT(*) AS TRANSACTION_COUNT,
+            SUM(CASE WHEN C_TRX_STATUS IN ('A', 'C') THEN 1 ELSE 0 END) AS APPROVED_COUNT,
+            AVG(CASE WHEN C_TRX_STATUS IN ('A', 'C') THEN 1 ELSE 0 END) * 100 AS APPROVAL_RATE
+        FROM CETRX.TRX_INBOX 
+        WHERE C_UNIT_CODE = '${unitcode}'
+            AND TRX_DT >= ADD_MONTHS(SYSDATE, -${months} * 2)
+            AND TRX_DT < ADD_MONTHS(SYSDATE, -${months})
+            ${moduleFilter}
+        ]]>
+    </query>
+</root>

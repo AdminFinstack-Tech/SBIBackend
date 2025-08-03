@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<ConsentID>CONSENT_ID</ConsentID>
+	<AuthorizerID>C_MAIN_REF</AuthorizerID>
+	<AuthorizationDate>C_PRODUCT_ID</AuthorizationDate>
+	<AuthorizationStatus>C_PRODUCT_ID</AuthorizationStatus>
+	<NextAuthorizerID>C_PRODUCT_ID</NextAuthorizerID>
+	<SupplementaryData>C_PRODUCT_ID</SupplementaryData>
+</root>

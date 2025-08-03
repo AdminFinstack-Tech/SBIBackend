@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<DynamicInquiry>
+		<LC_AMT value="EXLC_AMT" labelName="Amount"
+			style="fontfamily:inter;fontstyle:normal;fontweight:w600;color:#1B7A00;fontsize:14;"
+			orderby="2"></LC_AMT>
+		<LC_CCY value="EXLC_CCY" labelName="Currency"
+			style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#131313;fontsize:14;"
+			orderby="2"></LC_CCY>
+		<BENE_NM value="BENE_NM" labelName="Beneficiary Name"
+			style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#131313;fontsize:14;"
+			orderby="3"></BENE_NM>
+		<EXPIRY_DT value="EXPIRY_DT" labelName="Expiry Date"
+			style="fontfamily:inter;fontstyle:normal;fontsize:14;fontweight:w500;color:#131313"
+			orderby="4"></EXPIRY_DT>
+	</DynamicInquiry>
+</root>

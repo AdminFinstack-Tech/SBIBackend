@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<SqlQuery>
+		<![CDATA[ SELECT * FROM CEUSER.PROFILE_INFO WHERE ( 1=1 ) AND C_UNIT_CODE = '${unitcode}' AND C_USER_ID = '${userid}' ]]>
+	</SqlQuery>	
+	<DefaultQuery>
+		<![CDATA[ SELECT * FROM CEUSER.PROFILE_INFO WHERE ( 1=1 ) AND C_UNIT_CODE = 'DEFAULT' AND C_USER_ID = 'DEFAULT' ]]>
+	</DefaultQuery>
+</root>

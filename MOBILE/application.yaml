@@ -1,0 +1,17 @@
+jwt:
+  secret: FinMobileCS
+  expiration: 120000000  # 20 minutes in milliseconds
+  refreshExpiration: 120000000 # 20 minutes in milliseconds
+path:
+  INT: \\DEV-ARB\profiles2\CE\installedApps\DEV-ARBNode02Cell\CE.ear\cs-ce-sec-api-0.0.1.war\WEB-INF\classes\
+custom:
+  security:
+    enabled: true  
+security:
+  basic:
+    enable: false
+  ignored: /**
+spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+  

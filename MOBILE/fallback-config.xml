@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+    <entry key="CONSTANT_PATH">C:/Program Files/IBM/WebSphere/AppServer_1/profiles/CE/MOBILE/</entry>
+    <entry key="INT_PATH">C:/Program Files/IBM/WebSphere/AppServer_1/profiles/CE/MOBILE/</entry>
+    <entry key="INBOX_PROP">C:/Program Files/IBM/WebSphere/AppServer_1/profiles/CE/MOBILE/constants.properties</entry>
+    <entry key="CUSTOM_CONFIG">custom-config.xml</entry>
+    <entry key="CONSTANTS_PROP">constants.properties</entry>
+</properties>

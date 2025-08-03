@@ -1,0 +1,56 @@
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <entry key="securityRequired">no</entry>
+    <entry key="DEFAULT_C_BK_GROUP_ID">CSBANK</entry>
+    <entry key="DEFAULT_CRTN_BU">CSOFFICE</entry>
+    <entry key="DEFAULT_CNTY_CODE">SA</entry>
+    <entry key="REST_OPERATOR">restuser</entry>
+    <entry key="DEFAULT_LANG_ENG">ENGLISH</entry>
+    <entry key="DEFAULT_TRUE">T</entry>
+    <entry key="DEFAULT_F">F</entry>
+    <entry key="DATE_FORMAT">yyyy-mm-dd</entry>
+    <entry key="SUCCESS">SUCCESS</entry>
+    <entry key="DEFAULT_C_CNTY_CODE">SA</entry>
+    <entry key="PRODUCT_MATA_DATA">SHGT,MESG,STAN,EXLC,DASH,AJEL,OWGT,REPT,IMCO,FADA,IMLC,IWGT,LIMI,EXCO,FAEF</entry>
+    <entry key="SEC_DS">CES</entry>
+    <entry key="SEC_DB_TYPE">CES</entry>
+    <entry key="COUNTRY">SA</entry>
+    <entry key="BANK_GROUP">CSBANK</entry>
+    <entry key="TRX_DS">CET</entry>
+    <entry key="TRX_DB_TYPE">CET</entry>
+    <entry key="OWGTEventTimes">I_EVENT_TIMES</entry>
+    <entry key="OWGTFunctionName">C_FUNC_SHORT_NAME</entry>
+    <entry key="OWGTmainRef">C_MAIN_REF</entry>
+    <entry key="OWGTcorporateId">C_UNIT_CODE</entry>
+    <entry key="OWGTfunctionName">C_FUNC_SHORT_NAME</entry>
+    <entry key="OWGTfunctionId">C_FUNC_ID</entry>
+    <entry key="OWGTsystemStatus">C_TRX_STATUS</entry>
+    <entry key="OWGTcurrentStatus">CURRNT_STATUS</entry>
+    <entry key="OWGTeventTimes">I_EVENT_TIMES</entry>
+    <entry key="OWGTCustomerReference">C_MAIN_REF</entry>
+    <entry key="OWGTguaranteeNumber">GTEE_NO</entry>
+    <entry key="OWGTapplicantName">APPL_NM</entry>
+    <entry key="OWGTbeneficiaryName">BENE_NM</entry>
+    <entry key="OWGTcurrency">GTEE_CCY</entry>
+    <entry key="OWGTamount">GTEE_AMT</entry>
+    <entry key="OWGTbalance">GTEE_AMT</entry>
+    <entry key="OWGTexpiryDate">EXPIRY_DT</entry>
+    <entry key="IMLCEventTimes">I_EVENT_TIMES</entry>
+    <entry key="IMLCFunctionName">C_FUNC_SHORT_NAME</entry>
+    <entry key="IMLCmainRef">C_MAIN_REF</entry>
+    <entry key="IMLCcorporateId">C_UNIT_CODE</entry>
+    <entry key="IMLCfunctionName">C_FUNC_SHORT_NAME</entry>
+    <entry key="IMLCfunctionId">C_FUNC_ID</entry>
+    <entry key="IMLCsystemStatus">C_TRX_STATUS</entry>
+    <entry key="IMLCcurrentStatus">CURRNT_STATUS</entry>
+    <entry key="IMLCeventTimes">I_EVENT_TIMES</entry>
+    <entry key="IMLCCustomerReference">C_MAIN_REF</entry>
+    <entry key="IMLCguaranteeNumber">LC_NO</entry>
+    <entry key="IMLCapplicantName">APPL_NM</entry>
+    <entry key="IMLCbeneficiaryName">BENE_NM</entry>
+    <entry key="IMLCcurrency">LC_CCY</entry>
+    <entry key="IMLCamount">LC_AMT</entry>
+    <entry key="IMLCbalance">LC_AMT</entry>
+    <entry key="IMLCexpiryDate">EXPIRY_DT</entry>
+</properties>
+

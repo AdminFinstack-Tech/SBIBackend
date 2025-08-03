@@ -1,0 +1,9 @@
+<configuration>
+    <maskingPatterns>
+        <!-- Mask C_UNIT_CODE with asterisks -->
+        <pattern key="C_UNIT_CODE">*********</pattern>
+
+        <!-- Add more patterns as needed -->
+        <!-- <pattern key="ANOTHER_SENSITIVE_FIELD">*********</pattern> -->
+    </maskingPatterns>
+</configuration>

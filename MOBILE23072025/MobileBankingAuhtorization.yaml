@@ -1,0 +1,990 @@
+openapi: 3.0.1
+info:
+  version: 1.0.1
+  title: Mobile Banking Authorization
+  description: This documentation for Mobile Banking Authorization API
+  contact:
+    email: ilyas@chinasystems-me.com
+  license:
+    name: MobileAppCS
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+
+paths:           
+  /getPendingETradeTrx:
+    get:
+      summary: getTradeTransaction
+      operationId: getTradeTransaction
+      tags:
+        - GetTradeTransaction API
+      parameters:
+        - in: header
+          name: requestId
+          description: Request Id
+          schema:
+            type: string
+            format: uuid
+            pattern: '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'
+          required: true
+        
+        - in: header
+          name: authToken
+          description: Autorization Token
+          schema:
+            type: string
+          required: false
+        
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: Mobile Banking
+        
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+            
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+        
+        - name: CIC
+          in: query
+          description: Company Id
+          required: true
+          schema:
+            type: string
+            
+        - name: UserId
+          in: query
+          description: User Id
+          required: true
+          schema:
+            type: string    
+
+        - name: Module
+          in: query
+          description: Module Code
+          required: true
+          schema:
+            enum: [IMLC, IMCO, OWGT]
+            type: string
+        
+        - name: FuncType
+          in: query
+          description: FuncType
+          required: false
+          schema:
+            type: string    
+        
+        - name: page
+          in: query
+          schema:
+              type: integer
+              minimum: 1
+              default: 1
+          required: true
+          
+
+        - name: per_page
+          in: query
+          schema:
+              type: integer
+              minimum: 1
+              maximum: 10
+              default: 5
+          required: true    
+          
+      responses:
+        '200':
+          description: OK
+          content:
+             application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/BCPendingResp'
+                  - $ref: '#/components/schemas/LGPendingResp'
+                  - $ref: '#/components/schemas/LCPendingResp'
+                 
+                  
+  /TrxAuthorization:
+    post:
+      summary: TrxAuthorization.
+      operationId: TrxAuthorization
+      tags:
+        - TrxAuthorization API
+      parameters:
+        - in: header
+          name: requestId
+          description: Request Id
+          schema:
+            type: string
+            format: uuid
+            pattern: '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'
+          required: true
+        
+        - in: header
+          name: authToken
+          description: Autorization Token
+          schema:
+            type: string
+          required: false
+        
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: Mobile Banking
+        
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+            
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+            
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TrxAuthorizationRequest'
+    
+      responses:
+        '200':
+          description: OK
+          content:
+             application/json:
+              schema:
+                $ref: '#/components/schemas/TrxAuthorizationResponse'
+                  
+components:
+  schemas:
+    LCPendingResp:      
+      required: 
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+        - Info
+      properties:
+        MessageId:
+          type: string
+          description: Status Code
+        StatusCode:
+          type: string
+          description: Status Code
+        StatusDescription:
+          type: string
+          description: Status Description
+        Timestamp:
+          type: string
+          description: Timestamp
+        total:
+          type: integer
+          format: int64
+        page:
+          type: integer
+          format: int64 
+        per_page:
+          type: integer
+          format: int64
+        has_next:
+          type: integer
+          format: int64
+        has_prev:
+          type: integer
+          format: int64  
+        Info:
+          type: array
+          items:
+            $ref: '#/components/schemas/InfoListObj'
+            
+    InfoListObj:
+      type: object
+      properties:
+        IssueInfoList:
+          type: array
+          items:
+            $ref: '#/components/schemas/IssueInfoListObj'
+        AmendInfoList:
+          type: array
+          items:
+            $ref: '#/components/schemas/AmendInfoListObj'
+      
+        DiscrepancyInfoList:
+          type: array
+          items:
+            $ref: '#/components/schemas/DiscrepancyInfoListObj'    
+        
+        SettlementinfoList:
+          type: array
+          items:
+            $ref: '#/components/schemas/SettlementInfoListObj'    
+    
+    LGPendingResp:      
+      required: 
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+        - Info
+      properties:
+        MessageId:
+          type: string
+          description: Status Code
+        StatusCode:
+          type: string
+          description: Status Code
+        StatusDescription:
+          type: string
+          description: Status Description
+        Timestamp:
+          type: string
+          description: Timestamp
+        total:
+          type: integer
+          format: int64
+        page:
+          type: integer
+          format: int64 
+        per_page:
+          type: integer
+          format: int64
+        has_next:
+          type: integer
+          format: int64
+        has_prev:
+          type: integer
+          format: int64  
+        Info:
+          type: array
+          items:
+            $ref: '#/components/schemas/LGInfoList'
+            
+    LGInfoList:
+      properties:
+        IssueLGInfoList:
+          type: array
+          items:
+            $ref: '#/components/schemas/IssueLGInfoListObj'
+        
+        AmendLGInfoList:
+          type: array
+          items:
+            $ref: '#/components/schemas/AmendLGInfoListObj'
+            
+    BCPendingResp:      
+      required: 
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+        - Info
+        
+      properties:
+        MessageId:
+          type: string
+          description: Status Code
+        StatusCode:
+          type: string
+          description: Status Code
+        StatusDescription:
+          type: string
+          description: Status Description
+        Timestamp:
+          type: string
+          description: Timestamp
+        total:
+          type: integer
+          format: int64
+        page:
+          type: integer
+          format: int64 
+        per_page:
+          type: integer
+          format: int64
+        has_next:
+          type: integer
+          format: int64
+        has_prev:
+          type: integer
+          format: int64  
+        Info:
+          type: array
+          items:
+            $ref: '#/components/schemas/BCInfoList'
+    
+    
+    BCInfoList:
+      properties:
+        SettlementBCInfoList:
+          type: array
+          items:
+            $ref: '#/components/schemas/SettlementBCInfoListObj'
+            
+        
+    IssueInfoListObj:
+      required:
+      - EtradeReferenceNumber
+      - LCCurrency
+      - LCAmount
+      - LCType
+      - BeneName
+      - ExpiryDate
+      - DescGoods
+      - IncoTerms
+      - ChargesCurrency
+      - ChargesAccount
+      - PrincipleCurrency
+      - PrincipleAccount
+      - ChargesDesc
+      - TransactionStatus
+      - NextStatus
+      
+      
+      properties:
+        EtradeReferenceNumber:
+          type: string
+          description: Etrade Reference Number
+          
+        Currency:
+          description: >-
+            Currency.
+          type: object
+          properties:
+            Currency:
+              $ref: '#/components/schemas/XCurrency'
+        LCAmount:
+          description: >-
+            Amount.
+          type: object
+          properties:
+            Currency:
+              $ref: '#/components/schemas/XAmount'
+        LCType:
+          description: >-
+            Type of LC.
+          type: string
+        BeneName:
+          description: >-
+            Beneficiary Name.
+          type: string
+        ExpiryDate:
+          description: Expiry Date
+          type: string
+          format: date
+        DescGoods:
+          description: >-
+            Description of Goods.
+          type: string  
+        IncoTerms:
+          description: >-
+            Inco Terms .
+          type: string
+        ChargesCurrency:
+          description: >-
+            Currency.
+          type: object
+          properties:
+            Currency:
+              $ref: '#/components/schemas/XCurrency'
+        ChargesAccount:
+          description: >-
+            Charges Account Number.
+          type: string
+        PrincipleCurrency:
+          description: >-
+            Principle Currency.
+          type: object
+          properties:
+            Currency:
+              $ref: '#/components/schemas/XCurrency'
+        PrincipleAccount:
+          description: >-
+            Charges Account Number.
+          type: string      
+        ChargesDesc:
+          description: >-
+            Charges Account Number.
+          type: string
+        TransactionStatus:
+          description: >-
+            TransactionStatus.
+          type: string  
+        NextStatus:
+          description: >-
+            NextStatus.
+          type: string 
+    AmendInfoListObj:
+      required:
+      - EtradeReferenceNumber
+      - LCNumber
+      - LCCurrency
+      - ExpiryDate
+      - AmendInfo
+      - TransactionStatus
+      - NextStatus
+      
+      properties:
+        EtradeReferenceNumber:
+          type: string
+          description: Etrade Reference Number
+        
+        LCNumber:
+          description: >-
+            LCNumber.
+          type: string  
+          
+        LCCurrency:
+          description: >-
+            LCCurrency.
+          type: object
+          properties:
+            Currency:
+              $ref: '#/components/schemas/XCurrency'
+        LCAmount:
+          description: >-
+            LCAmount.
+          type: object
+          properties:
+            Amount:
+              $ref: '#/components/schemas/XAmount'
+        ExpiryDate:
+          description: Expiry Date
+          type: string
+          format: date
+        TransactionStatus:
+          description: >-
+            TransactionStatus.
+          type: string  
+        NextStatus:
+          description: >-
+            NextStatus.
+          type: string 
+          
+        AmendInfo:
+          description: >-
+            AmendInfo.
+          properties:
+            Currency:
+              $ref: '#/components/schemas/AmendInfoObj'
+    
+    AmendInfoObj:
+        properties:
+          NewExpiryDate:
+            type: string
+            format: date
+            description: New Expiry Date
+          IncreaseAmount:
+            type: object
+            properties:
+              Amount:
+                $ref: '#/components/schemas/XAmount'
+          DecreaseAmount:
+            type: object
+            properties:
+              Amount:
+                $ref: '#/components/schemas/XAmount'
+          NewLCAmount:
+            type: object
+            properties:
+              Amount:
+                $ref: '#/components/schemas/XAmount'
+          OtherAmendment:
+            type: string
+            description: OtherAmendment
+          CustomerInstr:
+            type: string
+            description: Customer instruction
+         
+    DiscrepancyInfoListObj:
+      required:
+      - EtradeReferenceNumber
+      - LCNumber
+      - PresentationAmount
+      - PresentationDate
+      - Discrepancies 
+      - TransactionStatus
+      - NextStatus
+      
+      properties:
+        EtradeReferenceNumber:
+          type: string
+          description: Etrade Reference Number
+        
+        LCNumber:
+          description: >-
+            LCNumber Number.
+          type: string  
+
+        PresentationAmount:
+          description: >-
+            PresentationAmount.
+          type: object
+          properties:
+            Amount:
+              $ref: '#/components/schemas/XAmount'
+              
+        PresentationDate:
+          description: Expiry Date
+          type: string
+          format: date
+          
+        Discrepancies:
+          description: >-
+            Discrepancies.
+          type: string 
+          
+        TransactionStatus:
+          description: >-
+            TransactionStatus.
+          type: string  
+        NextStatus:
+          description: >-
+            NextStatus.
+          type: string 
+    
+    SettlementInfoListObj:
+      required:
+      - EtradeReferenceNumber
+      - LCNumber
+      - DrawingNumber
+      - PresentationCurrency
+      - PresentationAmount
+      - PresentationDate
+      - AvalibleBy
+      - SpecialInstr 
+      - ApplicantName 
+      - AccountCurrency
+      - AccountNumber
+      - TransactionStatus
+      - NextStatus
+      
+      properties:
+        EtradeReferenceNumber:
+          type: string
+          description: Etrade Reference Number
+        
+        LCNumber:
+          description: >-
+            LCNumber Number.
+          type: string  
+        
+        DrawingNumber:
+          description: >-
+            Drawing Number.
+          type: string    
+
+        PresentationCurrency:
+          description: >-
+            LCCurrency.
+          type: object
+          properties:
+            Currency:
+              $ref: '#/components/schemas/XCurrency'    
+
+        PresentationAmount:
+          description: >-
+            Presentation Amount.
+          type: object
+          properties:
+            Amount:
+              $ref: '#/components/schemas/XAmount'
+              
+        PresentationDate:
+          description: Presentation Date
+          type: string
+          format: date
+          
+        AvalibleBy:
+          description: >-
+            Avalible By.
+          type: string      
+        
+        SpecialInstr:
+          description: >-
+            Special Instruction.
+          type: string   
+          
+        ApplicantName:
+          description: >-
+            Special Instruction.
+          type: string
+
+        AccountCurrency:
+          description: >-
+            Account Currency.
+          type: object
+          properties:
+            Currency:
+              $ref: '#/components/schemas/XCurrency'  
+
+        AccountNumber:
+          description: >-
+            Account Number.
+          type: string
+          
+        TransactionStatus:
+          description: >-
+            TransactionStatus.
+          type: string  
+        NextStatus:
+          description: >-
+            NextStatus.
+          type: string 
+    
+    IssueLGInfoListObj:
+      required:
+      - EtradeReferenceNumber
+      - LGReferenceNumber
+      - GuaranteeType
+      - GuaranteeFormat
+      - BeneName
+      - CommitmentDetails
+      - BankInstruction
+      - Wordings
+      - TransactionStatus
+      - NextStatus
+      
+      properties:
+        EtradeReferenceNumber:
+          type: string
+          description: Etrade Reference Number
+        
+        LGReferenceNumber:
+          type: string
+          description: LG Reference Number
+        
+        GuaranteeType:
+          type: string
+          description: Guarantee Type
+        
+        GuaranteeFormat:
+          type: string
+          description: Guarantee Format  
+        
+        BeneName:
+          type: string
+          description: Beneficiary Name   
+        TransactionStatus:
+          description: >-
+            TransactionStatus.
+          type: string  
+        NextStatus:
+          description: >-
+            NextStatus.
+          type: string 
+          
+        CommitmentDetails:
+          description: >-
+            Commitment Details.
+          properties:
+            Currency:
+              $ref: '#/components/schemas/CommitmentDetails' 
+        
+        BankInstruction:
+          description: >-
+            Bank Instruction.
+          properties:
+            Currency:
+              $ref: '#/components/schemas/BankInstructionObj'       
+        
+        Wordings:
+          type: string
+          description: Wordings         
+              
+    CommitmentDetails:
+      properties:
+        GuaranteeCurrency:
+          description: >-
+            Guarantee Currency.
+          type: object
+          properties:
+            Currency:
+              $ref: '#/components/schemas/XCurrency'    
+
+        GuaranteeAmount:
+          description: >-
+            Guarantee Amount.
+          type: object
+          properties:
+            Amount:
+              $ref: '#/components/schemas/XAmount'
+        
+        ExpiryDate:
+          description: ExpiryDate
+          type: string
+          format: date
+        
+        ExpiryHijriDate:
+          description: Expiry Hijri Date
+          type: string
+          
+        ContractDetails:
+          description: Contract Details
+          type: string  
+        
+        ContractNumber:
+          description: Contract Number
+          type: string    
+    
+          
+    BankInstructionObj:
+      properties:
+        ChargesCurrency:
+          description: >-
+            Charges Currency.
+          type: object
+          properties:
+            Currency:
+              $ref: '#/components/schemas/XCurrency'  
+              
+        ChargesAmount:
+          description: >-
+            Charges Amount.
+          type: object
+          properties:
+            Currency:
+              $ref: '#/components/schemas/XAmount'  
+          
+        CustomerInstruction:
+          description: Contract Details
+          type: string
+    
+    AmendLGInfoListObj:
+      required:
+      - EtradeReferenceNumber
+      - LGNumber
+      - LCCurrency
+      - ExpiryDate
+      - AmendInfo
+      - TransactionStatus
+      - NextStatus
+      
+      properties:
+        EtradeReferenceNumber:
+          type: string
+          description: Etrade Reference Number
+        
+        LGNumber:
+          description: >-
+            LG Number.
+          type: string  
+          
+        LGCurrency:
+          description: >-
+            LCCurrency.
+          type: object
+          properties:
+            Currency:
+              $ref: '#/components/schemas/XCurrency'
+        LGAmount:
+          description: >-
+            LCAmount.
+          type: object
+          properties:
+            Amount:
+         
+              $ref: '#/components/schemas/XAmount'
+              
+        TransactionStatus:
+          description: >-
+            TransactionStatus.
+          type: string  
+        NextStatus:
+          description: >-
+            NextStatus.
+          type: string 
+              
+        ExpiryDate:
+          description: Expiry Date
+          type: string
+          format: date
+        
+        ConfirmBank:
+          description: Confirming Bank
+          type: string
+          
+        LGAmendInfo:
+          description: >-
+            LG Amend Info.
+          properties:
+            Currency:
+              $ref: '#/components/schemas/AmendLGInfoObj'
+    
+    AmendLGInfoObj:
+        properties:
+          NewExpiryDate:
+            type: string
+            format: date
+            description: New Expiry Date
+          IncreaseAmount:
+            type: object
+            properties:
+              Amount:
+                $ref: '#/components/schemas/XAmount'
+          DecreaseAmount:
+            type: object
+            properties:
+              Amount:
+                $ref: '#/components/schemas/XAmount'
+          NewLGAmount:
+            type: object
+            properties:
+              Amount:
+                $ref: '#/components/schemas/XAmount'
+          OtherAmendment:
+            type: string
+            description: OtherAmendment
+          CustomerInstr:
+            type: string
+            description: Customer instruction
+  
+    SettlementBCInfoListObj:
+      required:
+      - EtradeReferenceNumber
+      - CollectionNumber
+      - CollectionCurrency
+      - CollectionAmount
+      - SpecialInstr 
+      - DraweeName 
+      - PayCurrency
+      - PayAccountNumber
+      - TransactionStatus
+      - NextStatus
+      
+      properties:
+        EtradeReferenceNumber:
+          type: string
+          description: Etrade Reference Number
+        
+        CollectionNumber:
+          description: >-
+            Collection Number.
+          type: string  
+
+        CollectionCurrency:
+          description: >-
+            Collection Currency.
+          type: object
+          properties:
+            Currency:
+              $ref: '#/components/schemas/XCurrency'    
+
+        CollectionAmount:
+          description: >-
+            Collection Amount.
+          type: object
+          properties:
+            Amount:
+              $ref: '#/components/schemas/XAmount'
+              
+        SpecialInstr:
+          description: >-
+            Special Instruction.
+          type: string   
+          
+        DraweeName:
+          description: >-
+            Drawee Name.
+          type: string
+
+        PayCurrency:
+          description: >-
+            Pay Currency.
+          type: object
+          properties:
+            Currency:
+              $ref: '#/components/schemas/XCurrency'  
+
+        PayAccountNumber:
+          description: >-
+            Pay Account Number.
+          type: string
+          
+        TransactionStatus:
+          description: >-
+            TransactionStatus.
+          type: string  
+        NextStatus:
+          description: >-
+            NextStatus.
+          type: string 
+    
+    TrxAuthorizationRequest:
+       required: 
+        - CIC
+        - UserId
+        - EtradeReferenceNumber
+        - Action
+        - ModuleName
+        
+       properties:
+        CIC:
+          type: string
+          description: Customer Id
+        UserId:
+          type: string
+          description: User Id
+        EtradeReferenceNumber:
+          type: string
+          description: Etrade Reference Number
+        Action:
+          type: string
+          enum: [Accepted, Rejected]
+          description: Action  
+        RejectReason:
+          type: string
+          description: Rejection Reason 
+        ModuleName:
+          type: string
+          description: Module Name
+    
+    TrxAuthorizationResponse:
+      properties:
+        EtradeReferenceNumber:
+          type: string
+          description: E-Trade Reference Number
+          example: 48800OGTE88132
+        MessageId:
+          type: string
+        StatusCode:
+          type: string
+          example: success or failure
+        Status:
+          type: string
+          enum: [Success, Failure]
+        StatusDescription:
+          type: string
+        Timestamp:
+          type: string
+        TransactionStatus:
+          description: >-
+            TransactionStatus.
+          type: string  
+        NextStatus:
+          description: >-
+            NextStatus.
+          type: string    
+
+    XCurrency:
+        type: string
+        pattern: '^[A-Z]{3,3}$'
+    XAmount:
+        type: string

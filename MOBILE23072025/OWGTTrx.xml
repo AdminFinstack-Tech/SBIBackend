@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<F05030700826>
+		<Query>
+		<![CDATA[SELECT * FROM CETRX.OWGT_EM_GTEEDTLS WHERE C_MAIN_REF = '${mainref}' AND C_UNIT_CODE = '${unitcode}' AND I_EVENT_TIMES = ${eventtimes} ]]></Query>
+		<info>
+			<MainInfo label="Main Info">
+				<TRX_DT value="TRX_DT" label="Date of Application" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<TRX_DT_HIJRI value="TRX_DT_HIJRI" label="Date of Application (Hijri)" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="2"/>
+				<CUST_NO value="CUST_NO" label="Our Reference Number" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="3"/>
+				<FL_FLAG value="FL_FLAG" label="Foreign/Local Flag *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="4"/>
+				<GTEE_FRMT value="GTEE_FRMT" label="Guarantee Format *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="5"/>
+				<GTEE_TYPE value="GTEE_TYPE" label="Type of Guarantee " style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="6"/>
+				<REASON_FOR_REJ value="REASON_FOR_REJ" label="Reason for Rejection" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="7"/>
+				<PURP_OF_MESS value="PURP_OF_MESS" label="Purpose of Message[22A] *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="8"/>
+				<FORM_OF_UNDERTAKING value="FORM_OF_UNDERTAKING" label="Form of Undertaking [22D] *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="9"/>
+				<APPLICABLE_RULES value="APPLICABLE_RULES" label="Applicable Rules [40C] *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="10"/>
+				<EXPIRY_TYPE value="EXPIRY_TYPE" label="Expiry Type [23B] *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="11"/>
+				<EXPIRY_COND value="EXPIRY_COND" label="Expiry Condition/Event [35G]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="12"/>
+				<CONF_INSR value="CONF_INSR" label="Confirmation Instructions[49]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="13"/>
+			</MainInfo>
+			<PartiesInfo label="Parties Info">
+				<APPL_NM value="APPL_NM" label="Applicant Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<BENE_NM value="BENE_NM" label="Beneficiary Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="2"/>
+				<ENG_ADD value="ENG_ADD" label="Beneficiary Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="3"/>
+				<BENE_BK_SW_ADD value="BENE_BK_SW_ADD" label="Beneficiary Bank Swift" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="4"/>
+				<BENE_BK_NM value="C_MAIN_REF" label="Beneficiary Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="5"/>
+				<BENE_BK_ADD1 value="BENE_BK_NM" label="Beneficiary Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="6"/>
+				<BENE_BK_ADD2 value="BENE_BK_ADD2" label="Beneficiary Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="7"/>
+				<BENE_BK_ADD3 value="BENE_BK_ADD3" label="Beneficiary Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="8"/>
+				<CNTC_DETL value="CNTC_DETL" label="Beneficiary Contact Details" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="9"/>
+				<SEND_TO_NAME value="SEND_TO_NAME" label="Third Party Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="10"/>
+				<SEND_TO_ADD1 value="SEND_TO_ADD1" label="Third Party Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="11"/>
+				<SEND_TO_ADD2 value="SEND_TO_ADD2" label="Third Party Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="12"/>
+				<SEND_TO_ADD3 value="SEND_TO_ADD3" label="Third Party Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="13"/>
+				<OBLIGOR_INS_NAME value="OBLIGOR_INS_NAME" label="Obligor/Instructing Party Name[51] " style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="14"/>
+				<OBLIGOR_INS_ADD value="OBLIGOR_INS_ADD" label="Obligor/Instructing Party Address[51] " style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="15"/>
+				<ISSBK_ID value="ISSBK_ID" label="Issue Bank Id" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="16"/>
+				<ISSBK_NAME value="ISSBK_NAME" label="Issue Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="17"/>
+				<ISSBK_ADD value="ISSBK_ADD" label="Issue Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="18"/>
+				<ISSBK_BK_ADD2 value="ISSBK_BK_ADD2" label="Issue Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="19"/>
+				<ISSBK_BK_ADD3 value="ISSBK_BK_ADD3" label="Issue Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="20"/>
+				<ADV_ID value="ADV_ID" label="Advise Through Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="21"/>
+				<ADV_THRU_BK_NAME value="ADV_THRU_BK_NAME" label="Advise Through Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="22"/>
+				<ADV_THRU_BK_ADD value="ADV_THRU_BK_ADD" label="Advise Through Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="23"/>
+				<ADV_THRU_BK_ADD2 value="ADV_THRU_BK_ADD2" label="Advise Through Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="24"/>
+				<ADV_THRU_BK_ADD3 value="ADV_THRU_BK_ADD3" label="Advise Through Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="25"/>
+				<AVBL_ID value="AVBL_ID" label="Available with [41A]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="26"/>
+				<AVBL_BKID_NAME value="AVBL_BKID_NAME" label="Available with Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="27"/>
+				<AVBL_BKID_ADD value="ADV_THRU_BK_ADD" label="Available with Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="28"/>
+				<AVBL_BKID_ADD2 value="AVBL_BKID_ADD2" label="Available with Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="29"/>
+				<AVBL_BKID_ADD2 value="AVBL_BKID_ADD2" label="Available with Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="30"/>
+				<CONF_BKID_ID value="CONF_BKID_ID" label="Confirming Bank [58A]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="31"/>
+				<CONF_BKID_NAME value="CONF_BKID_NAME" label="Confirming Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="32"/>
+				<CONF_BKID_ADD value="CONF_BKID_ADD" label="Confirming Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="33"/>
+				<CONF_BKID_ADD2 value="CONF_BKID_ADD2" label="Confirming Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="34"/>
+				<CONF_BKID_ADD3 value="CONF_BKID_ADD3" label="Confirming Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="35"/>
+			</PartiesInfo>
+			<CommitmentDetailsInfo label="Commitment Details Info">
+				<CONTCT_NO value="CONTCT_NO" label="Contract Number" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<GTEE_CCY value="GTEE_CCY" label="Guarantee Currency *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="2"/>
+				<GTEE_AMT value="GTEE_AMT" label="Guarantee Amount *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="3"/>
+				<CONTCT_DETL value="CONTCT_DETL" label="Details of Contract *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="4"/>
+				<EXPIRY_DT value="EXPIRY_DT" label="Expiry Date *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="5"/>
+				<EXPIRY_DT_HIJRI_BT value="EXPIRY_DT_HIJRI_BT" label="Expiry Date (Hijri)" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="6"/>
+				<GTEE_CCY_B value="GTEE_CCY_B" label="Undertaking Currency[32B]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="7"/>
+				<UNDER_GTEE_AMT value="UNDER_GTEE_AMT" label="Undertaking Amount[32B]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="8"/>
+				<ADD_AMT_INFO value="ADD_AMT_INFO" label="Supplementary Information About Amount[39F]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="9"/>
+				<CHG_DESC_B value="CHG_DESC_B" label="Charges [71D]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="10"/>
+				<DOC_PRES_INSTR value="DOC_PRES_INSTR" label="Document and Presentation Instructions[45C]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="11"/>
+				<GOVERN_LAW_CNTY_CODE value="GOVERN_LAW_CNTY_CODE" label="Governing Law/Jurisdiction[44J]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="12"/>
+				<GOVERN_LAW value="GOVERN_LAW" label="Automatic Extension Period[23F]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="13"/>
+				<AUTO_EXTEN_PERIOD value="AUTO_EXTEN_PERIOD" label="Automatic Extension Period Narrative [23F]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="14"/>
+				<AUTO_EXTEN_PERIOD_DAYS value="AUTO_EXTEN_PERIOD_DAYS" label="Automatic Extension Non-Extension Notification[78]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="15"/>
+				<AUTO_EXTEN_NOTIF value="AUTO_EXTEN_NOTIF" label="Automatic Extension Notification Period [26E]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="16"/>
+				<AUTO_EXTEND_NOTIF_PERIOD_LOC value="AUTO_EXTEND_NOTIF_PERIOD_LOC" label="Governing Law/Jurisdiction[44J]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="17"/>
+				<AUTO_EXTEN_EXPIRY_DT value="AUTO_EXTEN_EXPIRY_DT" label="Automatic Extension Final Expiry Date [31S]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="18"/>
+				<DEMAND_INDICATOR value="DEMAND_INDICATOR" label="Demand Indicator [48B]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="19"/>
+				<TRANS_INDICATOR value="TRANS_INDICATOR" label="Transfer Indicator [48D]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="20"/>
+				<TRANS_CONDITION value="TRANS_CONDITION" label="Transfer Conditions [39E]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="21"/>
+				<UNDEL_TRANS_DET value="UNDEL_TRANS_DET" label="Underlying Transaction Details[45L]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="22"/>
+				<DELIV_OF_ORIG_CODE value="DELIV_OF_ORIG_CODE" label="Delivery of Original Undertaking[24E]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="23"/>
+				<DELIV_OF_ORIG_UNDER value="DELIV_OF_ORIG_UNDER" label="Delivery of Original Undertaking Narrative [24E]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="24"/>
+				<DELIVERY_TO value="DELIVERY_TO" label="Delivery To/Collection By [24G]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="25"/>
+			</CommitmentDetailsInfo>
+			<BankInstructionsInfo label="Bank Instructions Info">
+				<CHG_AC_CCY value="CHG_AC_CCY" label="Charges Currency " style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<CHG_AC value="CHG_AC" label="Charge Account *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="2"/>
+				<CUST_INSTR value="CUST_INSTR" label="Customer Instructions" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="3"/>
+			</BankInstructionsInfo>
+			<WordingInfo label="Wording Info">
+				<GTEE_WORD value="GTEE_WORD" label="Guarantee Wording" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<TRANS_COMM value="TRANS_COMM" label="Notes" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="2"/>
+				<COMM_BANK value="COMM_BANK" label="Comments to Bank" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="3"/>
+			</WordingInfo>
+			<LimitInfo label="Limit Info">
+				<INT_LMTDET value="INT_LMTDET" label="Available Limits" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<INT_LMTREF value="INT_LMTREF" label="Limit Reference" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="2"/>
+				<INT_LMTEXPIRY value="INT_LMTEXPIRY" label="Limit Expiry" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="3"/>
+				<INT_LMTCCY value="INT_LMTCCY" label="Currency" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="4"/>
+				<INT_LMTAVAILAMT value="INT_LMTAVAILAMT" label="Availabe Limit Amount" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="5"/>
+				<INT_LMTCASHMRGN value="INT_LMTCASHMRGN" label="Cash Margin" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="6"/>
+			</LimitInfo>
+		</info>
+	</F05030700826>
+	<F05030701007>
+		<Query>
+<![CDATA[SELECT * FROM CETRX.OWGT_EM_GTEEDTLS WHERE C_MAIN_REF = '${mainref}' AND C_UNIT_CODE = '${unitcode}' AND I_EVENT_TIMES = ${eventtimes} ]]></Query>
+		<info>
+			<MainInfo label="Main Info">
+				<TRX_DT value="TRX_DT" label="Date of Application" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<TRX_DT_HIJRI value="TRX_DT_HIJRI" label="Date of Application (Hijri)" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="2"/>
+				<CUST_NO value="CUST_NO" label="Our Reference Number" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="3"/>
+				<FL_FLAG value="FL_FLAG" label="Foreign/Local Flag *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="4"/>
+				<GTEE_FRMT value="GTEE_FRMT" label="Guarantee Format *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="5"/>
+				<GTEE_TYPE value="GTEE_TYPE" label="Type of Guarantee " style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="6"/>
+				<REASON_FOR_REJ value="REASON_FOR_REJ" label="Reason for Rejection" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="7"/>
+				<PURP_OF_MESS value="PURP_OF_MESS" label="Purpose of Message[22A] *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="8"/>
+				<FORM_OF_UNDERTAKING value="FORM_OF_UNDERTAKING" label="Form of Undertaking [22D] *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="9"/>
+				<APPLICABLE_RULES value="APPLICABLE_RULES" label="Applicable Rules [40C] *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="10"/>
+				<EXPIRY_TYPE value="EXPIRY_TYPE" label="Expiry Type [23B] *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="11"/>
+				<EXPIRY_COND value="EXPIRY_COND" label="Expiry Condition/Event [35G]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="12"/>
+				<CONF_INSR value="CONF_INSR" label="Confirmation Instructions[49]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="13"/>
+			</MainInfo>
+			<PartiesInfo label="Parties Info">
+				<APPL_NM value="APPL_NM" label="Applicant Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<BENE_NM value="BENE_NM" label="Beneficiary Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="2"/>
+				<ENG_ADD value="ENG_ADD" label="Beneficiary Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="3"/>
+				<BENE_BK_SW_ADD value="BENE_BK_SW_ADD" label="Beneficiary Bank Swift" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="4"/>
+				<BENE_BK_NM value="BENE_BK_NM" label="Beneficiary Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="5"/>
+				<BENE_BK_ADD1 value="BENE_BK_NM" label="Beneficiary Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="6"/>
+				<BENE_BK_ADD2 value="BENE_BK_ADD2" label="Beneficiary Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="7"/>
+				<BENE_BK_ADD3 value="BENE_BK_ADD3" label="Beneficiary Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="8"/>
+				<CNTC_DETL value="CNTC_DETL" label="Beneficiary Contact Details" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="9"/>
+				<SEND_TO_NAME value="SEND_TO_NAME" label="Third Party Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="10"/>
+				<SEND_TO_ADD1 value="SEND_TO_ADD1" label="Third Party Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="11"/>
+				<SEND_TO_ADD2 value="SEND_TO_ADD2" label="Third Party Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="12"/>
+				<SEND_TO_ADD3 value="SEND_TO_ADD3" label="Third Party Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="13"/>
+				<OBLIGOR_INS_NAME value="OBLIGOR_INS_NAME" label="Obligor/Instructing Party Name[51] " style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="14"/>
+				<OBLIGOR_INS_ADD value="OBLIGOR_INS_ADD" label="Obligor/Instructing Party Address[51] " style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="15"/>
+				<ISSBK_ID value="ISSBK_ID" label="Issue Bank Id" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="16"/>
+				<ISSBK_NAME value="ISSBK_NAME" label="Issue Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="17"/>
+				<ISSBK_ADD value="ISSBK_ADD" label="Issue Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="18"/>
+				<ISSBK_BK_ADD2 value="ISSBK_BK_ADD2" label="Issue Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="19"/>
+				<ISSBK_BK_ADD3 value="ISSBK_BK_ADD3" label="Issue Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="20"/>
+				<ADV_ID value="ADV_ID" label="Advise Through Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="21"/>
+				<ADV_THRU_BK_NAME value="ADV_THRU_BK_NAME" label="Advise Through Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="22"/>
+				<ADV_THRU_BK_ADD value="ADV_THRU_BK_ADD" label="Advise Through Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="23"/>
+				<ADV_THRU_BK_ADD2 value="ADV_THRU_BK_ADD2" label="Advise Through Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="24"/>
+				<ADV_THRU_BK_ADD3 value="ADV_THRU_BK_ADD3" label="Advise Through Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="25"/>
+				<AVBL_ID value="AVBL_ID" label="Available with [41A]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="26"/>
+				<AVBL_BKID_NAME value="AVBL_BKID_NAME" label="Available with Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="27"/>
+				<AVBL_BKID_ADD value="ADV_THRU_BK_ADD" label="Available with Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="28"/>
+				<AVBL_BKID_ADD2 value="AVBL_BKID_ADD2" label="Available with Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="29"/>
+				<AVBL_BKID_ADD2 value="AVBL_BKID_ADD2" label="Available with Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="30"/>
+				<CONF_BKID_ID value="CONF_BKID_ID" label="Confirming Bank [58A]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="31"/>
+				<CONF_BKID_NAME value="CONF_BKID_NAME" label="Confirming Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="32"/>
+				<CONF_BKID_ADD value="CONF_BKID_ADD" label="Confirming Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="33"/>
+				<CONF_BKID_ADD2 value="CONF_BKID_ADD2" label="Confirming Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="34"/>
+				<CONF_BKID_ADD3 value="CONF_BKID_ADD3" label="Confirming Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="35"/>
+			</PartiesInfo>
+			<CommitmentDetailsInfo label="Commitment Details Info">
+				<CONTCT_NO value="CONTCT_NO" label="Contract Number" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<GTEE_CCY value="GTEE_CCY" label="Guarantee Currency *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="2"/>
+				<GTEE_AMT value="GTEE_AMT" label="Guarantee Amount *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="3"/>
+				<CONTCT_DETL value="CONTCT_DETL" label="Details of Contract *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="4"/>
+				<EXPIRY_DT value="EXPIRY_DT" label="Expiry Date *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="5"/>
+				<EXPIRY_DT_HIJRI_BT value="EXPIRY_DT_HIJRI_BT" label="Expiry Date (Hijri)" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="6"/>
+				<GTEE_CCY_B value="GTEE_CCY_B" label="Undertaking Currency[32B]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="7"/>
+				<UNDER_GTEE_AMT value="UNDER_GTEE_AMT" label="Undertaking Amount[32B]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="8"/>
+				<ADD_AMT_INFO value="ADD_AMT_INFO" label="Supplementary Information About Amount[39F]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="9"/>
+				<CHG_DESC_B value="CHG_DESC_B" label="Charges [71D]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="10"/>
+				<DOC_PRES_INSTR value="DOC_PRES_INSTR" label="Document and Presentation Instructions[45C]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="11"/>
+				<GOVERN_LAW_CNTY_CODE value="GOVERN_LAW_CNTY_CODE" label="Governing Law/Jurisdiction[44J]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="12"/>
+				<GOVERN_LAW value="GOVERN_LAW" label="Automatic Extension Period[23F]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="13"/>
+				<AUTO_EXTEN_PERIOD value="AUTO_EXTEN_PERIOD" label="Automatic Extension Period Narrative [23F]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="14"/>
+				<AUTO_EXTEN_PERIOD_DAYS value="AUTO_EXTEN_PERIOD_DAYS" label="Automatic Extension Non-Extension Notification[78]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="15"/>
+				<AUTO_EXTEN_NOTIF value="AUTO_EXTEN_NOTIF" label="Automatic Extension Notification Period [26E]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="16"/>
+				<AUTO_EXTEND_NOTIF_PERIOD_LOC value="AUTO_EXTEND_NOTIF_PERIOD_LOC" label="Governing Law/Jurisdiction[44J]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="17"/>
+				<AUTO_EXTEN_EXPIRY_DT value="AUTO_EXTEN_EXPIRY_DT" label="Automatic Extension Final Expiry Date [31S]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="18"/>
+				<DEMAND_INDICATOR value="DEMAND_INDICATOR" label="Demand Indicator [48B]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="19"/>
+				<TRANS_INDICATOR value="TRANS_INDICATOR" label="Transfer Indicator [48D]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="20"/>
+				<TRANS_CONDITION value="TRANS_CONDITION" label="Transfer Conditions [39E]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="21"/>
+				<UNDEL_TRANS_DET value="UNDEL_TRANS_DET" label="Underlying Transaction Details[45L]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="22"/>
+				<DELIV_OF_ORIG_CODE value="DELIV_OF_ORIG_CODE" label="Delivery of Original Undertaking[24E]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="23"/>
+				<DELIV_OF_ORIG_UNDER value="DELIV_OF_ORIG_UNDER" label="Delivery of Original Undertaking Narrative [24E]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="24"/>
+				<DELIVERY_TO value="DELIVERY_TO" label="Delivery To/Collection By [24G]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="25"/>
+			</CommitmentDetailsInfo>
+			<BankInstructionsInfo label="Bank Instructions Info">
+				<CHG_AC_CCY value="CHG_AC_CCY" label="Charges Currency " style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<CHG_AC value="CHG_AC" label="Charge Account *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="2"/>
+				<CUST_INSTR value="CUST_INSTR" label="Customer Instructions" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="3"/>
+			</BankInstructionsInfo>
+			<WordingInfo label="Wording Info">
+				<GTEE_WORD value="GTEE_WORD" label="Guarantee Wording" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<TRANS_COMM value="TRANS_COMM" label="Notes" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="2"/>
+				<COMM_BANK value="COMM_BANK" label="Comments to Bank" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="3"/>
+			</WordingInfo>
+			<LimitInfo label="Limit Info">
+				<INT_LMTDET value="INT_LMTDET" label="Available Limits" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<INT_LMTREF value="INT_LMTREF" label="Limit Reference" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="2"/>
+				<INT_LMTEXPIRY value="INT_LMTEXPIRY" label="Limit Expiry" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="3"/>
+				<INT_LMTCCY value="INT_LMTCCY" label="Currency" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="4"/>
+				<INT_LMTAVAILAMT value="INT_LMTAVAILAMT" label="Availabe Limit Amount" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="5"/>
+				<INT_LMTCASHMRGN value="INT_LMTCASHMRGN" label="Cash Margin" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="6"/>
+			</LimitInfo>
+		</info>
+	</F05030701007>
+	<F05030700944>
+		<Query>
+		<![CDATA[SELECT * FROM CETRX.OWGT_EM_GTEEDTLS WHERE C_MAIN_REF = '${mainref}' AND C_UNIT_CODE = '${unitcode}' AND I_EVENT_TIMES = ${eventtimes} ]]></Query>
+		<info>
+			<MainInfo label="Main Info">
+				<TRX_DT value="TRX_DT" label="Date of Application" style="fontfamily:inter;fontstyle:italic;fontsize:5;fontweight:w700;color:#ca6c2e" orderby="1"/>
+				<TRX_DT_HIJRI value="TRX_DT_HIJRI" label="Date of Application (Hijri)" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="2"/>
+				<CUST_NO value="CUST_NO" label="Our Reference Number" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="3"/>
+				<FL_FLAG value="FL_FLAG" label="Foreign/Local Flag *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="4"/>
+				<GTEE_FRMT value="GTEE_FRMT" label="Guarantee Format *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="5"/>
+				<GTEE_TYPE value="GTEE_TYPE" label="Type of Guarantee " style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="6"/>
+				<REASON_FOR_REJ value="REASON_FOR_REJ" label="Reason for Rejection" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="7"/>
+				<PURP_OF_MESS value="PURP_OF_MESS" label="Purpose of Message[22A] *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="8"/>
+				<FORM_OF_UNDERTAKING value="FORM_OF_UNDERTAKING" label="Form of Undertaking [22D] *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="9"/>
+				<APPLICABLE_RULES value="APPLICABLE_RULES" label="Applicable Rules [40C] *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="10"/>
+				<EXPIRY_TYPE value="EXPIRY_TYPE" label="Expiry Type [23B] *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="11"/>
+				<EXPIRY_COND value="EXPIRY_COND" label="Expiry Condition/Event [35G]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="12"/>
+				<CONF_INSR value="CONF_INSR" label="Confirmation Instructions[49]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="13"/>
+			</MainInfo>
+			<PartiesInfo label="Parties Info">
+				<APPL_NM value="APPL_NM" label="Applicant Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<BENE_NM value="BENE_NM" label="Beneficiary Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<ENG_ADD value="ENG_ADD" label="Beneficiary Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<BENE_BK_SW_ADD value="BENE_BK_SW_ADD" label="Beneficiary Bank Swift" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<BENE_BK_NM value="BENE_BK_NM" label="Beneficiary Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<BENE_BK_ADD1 value="BENE_BK_NM" label="Beneficiary Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<BENE_BK_ADD2 value="BENE_BK_ADD2" label="Beneficiary Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<BENE_BK_ADD3 value="BENE_BK_ADD3" label="Beneficiary Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<CNTC_DETL value="CNTC_DETL" label="Beneficiary Contact Details" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<SEND_TO_NAME value="SEND_TO_NAME" label="Third Party Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<SEND_TO_ADD1 value="SEND_TO_ADD1" label="Third Party Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<SEND_TO_ADD2 value="SEND_TO_ADD2" label="Third Party Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<SEND_TO_ADD3 value="SEND_TO_ADD3" label="Third Party Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<OBLIGOR_INS_NAME value="OBLIGOR_INS_NAME" label="Obligor/Instructing Party Name[51] " style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<OBLIGOR_INS_ADD value="OBLIGOR_INS_ADD" label="Obligor/Instructing Party Address[51] " style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<ISSBK_ID value="ISSBK_ID" label="Issue Bank Id" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<ISSBK_NAME value="ISSBK_NAME" label="Issue Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<ISSBK_ADD value="ISSBK_ADD" label="Issue Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<ISSBK_BK_ADD2 value="ISSBK_BK_ADD2" label="Issue Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<ISSBK_BK_ADD3 value="ISSBK_BK_ADD3" label="Issue Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<ADV_ID value="ADV_ID" label="Advise Through Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<ADV_THRU_BK_NAME value="ADV_THRU_BK_NAME" label="Advise Through Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<ADV_THRU_BK_ADD value="ADV_THRU_BK_ADD" label="Advise Through Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<ADV_THRU_BK_ADD2 value="ADV_THRU_BK_ADD2" label="Advise Through Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<ADV_THRU_BK_ADD3 value="ADV_THRU_BK_ADD3" label="Advise Through Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<AVBL_ID value="AVBL_ID" label="Available with [41A]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<AVBL_BKID_NAME value="AVBL_BKID_NAME" label="Available with Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<AVBL_BKID_ADD value="ADV_THRU_BK_ADD" label="Available with Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<AVBL_BKID_ADD2 value="AVBL_BKID_ADD2" label="Available with Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<AVBL_BKID_ADD2 value="AVBL_BKID_ADD2" label="Available with Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<CONF_BKID_ID value="CONF_BKID_ID" label="Confirming Bank [58A]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<CONF_BKID_NAME value="CONF_BKID_NAME" label="Confirming Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<CONF_BKID_ADD value="CONF_BKID_ADD" label="Confirming Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<CONF_BKID_ADD2 value="CONF_BKID_ADD2" label="Confirming Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<CONF_BKID_ADD3 value="CONF_BKID_ADD3" label="Confirming Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+			</PartiesInfo>
+			<CommitmentDetailsInfo label="Commitment Details Info">
+				<CONTCT_NO value="CONTCT_NO" label="Contract Number" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<GTEE_CCY value="GTEE_CCY" label="Guarantee Currency *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<GTEE_AMT value="GTEE_AMT" label="Guarantee Amount *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<CONTCT_DETL value="CONTCT_DETL" label="Details of Contract *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<EXPIRY_DT value="EXPIRY_DT" label="Expiry Date *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<EXPIRY_DT_HIJRI_BT value="EXPIRY_DT_HIJRI_BT" label="Expiry Date (Hijri)" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<GTEE_CCY_B value="GTEE_CCY_B" label="Undertaking Currency[32B]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<UNDER_GTEE_AMT value="UNDER_GTEE_AMT" label="Undertaking Amount[32B]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<ADD_AMT_INFO value="ADD_AMT_INFO" label="Supplementary Information About Amount[39F]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<CHG_DESC_B value="CHG_DESC_B" label="Charges [71D]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<DOC_PRES_INSTR value="DOC_PRES_INSTR" label="Document and Presentation Instructions[45C]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<GOVERN_LAW_CNTY_CODE value="GOVERN_LAW_CNTY_CODE" label="Governing Law/Jurisdiction[44J]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<GOVERN_LAW value="GOVERN_LAW" label="Automatic Extension Period[23F]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<AUTO_EXTEN_PERIOD value="AUTO_EXTEN_PERIOD" label="Automatic Extension Period Narrative [23F]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<AUTO_EXTEN_PERIOD_DAYS value="AUTO_EXTEN_PERIOD_DAYS" label="Automatic Extension Non-Extension Notification[78]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<AUTO_EXTEN_NOTIF value="AUTO_EXTEN_NOTIF" label="Automatic Extension Notification Period [26E]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<AUTO_EXTEND_NOTIF_PERIOD_LOC value="AUTO_EXTEND_NOTIF_PERIOD_LOC" label="Governing Law/Jurisdiction[44J]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<AUTO_EXTEN_EXPIRY_DT value="AUTO_EXTEN_EXPIRY_DT" label="Automatic Extension Final Expiry Date [31S]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<DEMAND_INDICATOR value="DEMAND_INDICATOR" label="Demand Indicator [48B]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<TRANS_INDICATOR value="TRANS_INDICATOR" label="Transfer Indicator [48D]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<TRANS_CONDITION value="TRANS_CONDITION" label="Transfer Conditions [39E]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<UNDEL_TRANS_DET value="UNDEL_TRANS_DET" label="Underlying Transaction Details[45L]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<DELIV_OF_ORIG_CODE value="DELIV_OF_ORIG_CODE" label="Delivery of Original Undertaking[24E]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<DELIV_OF_ORIG_UNDER value="DELIV_OF_ORIG_UNDER" label="Delivery of Original Undertaking Narrative [24E]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<DELIVERY_TO value="DELIVERY_TO" label="Delivery To/Collection By [24G]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+			</CommitmentDetailsInfo>
+			<BankInstructionsInfo label="Bank Instructions Info">
+				<CHG_AC_CCY value="CHG_AC_CCY" label="Charges Currency " style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<CHG_AC value="CHG_AC" label="Charge Account *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<CUST_INSTR value="CUST_INSTR" label="Customer Instructions" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+			</BankInstructionsInfo>
+			<WordingInfo label="Wording Info">
+				<GTEE_WORD value="GTEE_WORD" label="Guarantee Wording" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<TRANS_COMM value="TRANS_COMM" label="Notes" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<COMM_BANK value="COMM_BANK" label="Comments to Bank" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+			</WordingInfo>
+			<LimitInfo label="Limit Info">
+				<INT_LMTDET value="INT_LMTDET" label="Available Limits" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<INT_LMTREF value="INT_LMTREF" label="Limit Reference" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<INT_LMTEXPIRY value="INT_LMTEXPIRY" label="Limit Expiry" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<INT_LMTCCY value="INT_LMTCCY" label="Currency" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<INT_LMTAVAILAMT value="INT_LMTAVAILAMT" label="Availabe Limit Amount" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<INT_LMTCASHMRGN value="INT_LMTCASHMRGN" label="Cash Margin" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+			</LimitInfo>
+		</info>
+	</F05030700944>
+	<F05030700874>
+		<Query>
+<![CDATA[SELECT * FROM CETRX.IMLC_EM_NEGO WHERE C_MAIN_REF = '${mainref}' AND C_UNIT_CODE = '${unitcode}' AND I_EVENT_TIMES = ${eventtimes} ]]></Query>
+		<info>
+			<MainInfo label="MAin Info">
+				<LC_NO value="LC_NO" label="LC Number" style="fontfamily:inter;fontstyle:italic;fontsize:10;fontweight:w700;color:#ca6c2e" orderby="1"/>
+				<CUST_NO value="CUST_NO" label="Our Ref Number" style="fontfamily:inter;fontstyle:italic;fontsize:10;fontweight:w700;color:#ca6c2e" orderby="2"/>
+				<DRAW_NO value="DRAW_NO" label="Drawing Ref. No." style="fontfamily:inter;fontstyle:italic;fontsize:10;fontweight:w700;color:#ca6c2e" orderby="3"/>
+				<NO_OF_DRAW value="NO_OF_DRAW" label="No of Drawing" style="fontfamily:inter;fontstyle:italic;fontsize:10;fontweight:w700;color:#ca6c2e" orderby="4"/>
+				<PRES_AMT value="PRES_AMT" label="Presentation Amount" style="fontfamily:inter;fontstyle:italic;fontsize:10;fontweight:w700;color:#ca6c2e" orderby="5"/>
+				<RCV_DT value="RCV_DT" label="Documents Presented" style="fontfamily:inter;fontstyle:italic;fontsize:10;fontweight:w700;color:#ca6c2e" orderby="6"/>
+				<DOC_DECISION value="DOC_DECISION" label="Document Decision" style="fontfamily:inter;fontstyle:italic;fontsize:10;fontweight:w700;color:#ca6c2e" orderby="7"/>
+				<DISC_NOTES value="DISC_NOTES" label="Discrepancies Noted" style="fontfamily:inter;fontstyle:italic;fontsize:10;fontweight:w700;color:#ca6c2e" orderby="8"/>
+				<DISC_DECISION value="DISC_DECISION" label="Decision on Discrepancies" style="fontfamily:inter;fontstyle:italic;fontsize:10;fontweight:w700;color:#ca6c2e" orderby="9"/>
+				<REASON_FOR_REJ value="REASON_FOR_REJ" label="Reasons for rejection" style="fontfamily:inter;fontstyle:italic;fontsize:10;fontweight:w700;color:#ca6c2e" orderby="10"/>
+			</MainInfo>
+		</info>
+	</F05030700874>
+	<F05030700839>
+		<Query>
+<![CDATA[SELECT * FROM CETRX.TRX_INBOX WHERE C_MAIN_REF = '${mainref}' AND C_UNIT_CODE = '${unitcode}' AND I_EVENT_TIMES = ${eventtimes} ]]></Query>
+		<MainInfo label="Main Info">
+			<GTEE_NO value="GTEE_NO" label="Guarantee Number" style="fontfamily:inter;fontstyle:italic;fontsize:10;fontweight:w700;color:#ca6c2e" orderby="1"/>
+			<ACPT_REJ value="ACPT_REJ" label="Accept/Reject" style="fontfamily:inter;fontstyle:italic;fontsize:10;fontweight:w700;color:#ca6c2e" orderby="2"/>
+		</MainInfo>
+	</F05030700839>
+	<F05030700827>
+		<Query>
+			<![CDATA[SELECT * FROM CETRX.OWGT_EM_AMD WHERE C_MAIN_REF = '${mainref}' AND C_UNIT_CODE = '${unitcode}' AND I_EVENT_TIMES = ${eventtimes} ]]></Query>
+		<info>
+			<MainInfo label="Main Info">
+				<TRX_DT value="TRX_DT" label="Date of Application" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<TRX_DT_HIJRI value="TRX_DT_HIJRI" label="Date of Application (Hijri)" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="2"/>
+				<CUST_NO value="CUST_NO" label="Our Reference Number" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="3"/>
+				<FL_FLAG value="FL_FLAG" label="Foreign/Local Flag *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="4"/>
+				<GTEE_FRMT value="GTEE_FRMT" label="Guarantee Format *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="5"/>
+				<GTEE_TYPE value="GTEE_TYPE" label="Type of Guarantee " style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="6"/>
+				<REASON_FOR_REJ value="REASON_FOR_REJ" label="Reason for Rejection" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="7"/>
+				<PURP_OF_MESS value="PURP_OF_MESS" label="Purpose of Message[22A] *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="8"/>
+				<FORM_OF_UNDERTAKING value="FORM_OF_UNDERTAKING" label="Form of Undertaking [22D] *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="9"/>
+				<APPLICABLE_RULES value="APPLICABLE_RULES" label="Applicable Rules [40C] *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="10"/>
+				<EXPIRY_TYPE value="EXPIRY_TYPE" label="Expiry Type [23B] *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="11"/>
+				<EXPIRY_COND value="EXPIRY_COND" label="Expiry Condition/Event [35G]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="12"/>
+				<CONF_INSR value="CONF_INSR" label="Confirmation Instructions[49]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="13"/>
+			</MainInfo>
+			<PartiesInfo label="Parties Info">
+				<APPL_NM value="APPL_NM" label="Applicant Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<BENE_NM value="BENE_NM" label="Beneficiary Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="2"/>
+				<ENG_ADD value="ENG_ADD" label="Beneficiary Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="3"/>
+				<BENE_BK_SW_ADD value="BENE_BK_SW_ADD" label="Beneficiary Bank Swift" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="4"/>
+				<BENE_BK_NM value="BENE_BK_NM" label="Beneficiary Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="5"/>
+				<BENE_BK_ADD1 value="BENE_BK_NM" label="Beneficiary Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="6"/>
+				<BENE_BK_ADD2 value="BENE_BK_ADD2" label="Beneficiary Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="7"/>
+				<BENE_BK_ADD3 value="BENE_BK_ADD3" label="Beneficiary Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="8"/>
+				<CNTC_DETL value="CNTC_DETL" label="Beneficiary Contact Details" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="9"/>
+				<SEND_TO_NAME value="SEND_TO_NAME" label="Third Party Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="10"/>
+				<SEND_TO_ADD1 value="SEND_TO_ADD1" label="Third Party Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="11"/>
+				<SEND_TO_ADD2 value="SEND_TO_ADD2" label="Third Party Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="12"/>
+				<SEND_TO_ADD3 value="SEND_TO_ADD3" label="Third Party Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="13"/>
+				<OBLIGOR_INS_NAME value="OBLIGOR_INS_NAME" label="Obligor/Instructing Party Name[51] " style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="14"/>
+				<OBLIGOR_INS_ADD value="OBLIGOR_INS_ADD" label="Obligor/Instructing Party Address[51] " style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="15"/>
+				<ISSBK_ID value="ISSBK_ID" label="Issue Bank Id" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="16"/>
+				<ISSBK_NAME value="ISSBK_NAME" label="Issue Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="17"/>
+				<ISSBK_ADD value="ISSBK_ADD" label="Issue Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="18"/>
+				<ISSBK_BK_ADD2 value="ISSBK_BK_ADD2" label="Issue Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="19"/>
+				<ISSBK_BK_ADD3 value="ISSBK_BK_ADD3" label="Issue Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="20"/>
+				<ADV_ID value="ADV_ID" label="Advise Through Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="21"/>
+				<ADV_THRU_BK_NAME value="ADV_THRU_BK_NAME" label="Advise Through Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="22"/>
+				<ADV_THRU_BK_ADD value="ADV_THRU_BK_ADD" label="Advise Through Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="23"/>
+				<ADV_THRU_BK_ADD2 value="ADV_THRU_BK_ADD2" label="Advise Through Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="24"/>
+				<ADV_THRU_BK_ADD3 value="ADV_THRU_BK_ADD3" label="Advise Through Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="25"/>
+				<AVBL_ID value="AVBL_ID" label="Available with [41A]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="26"/>
+				<AVBL_BKID_NAME value="AVBL_BKID_NAME" label="Available with Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="27"/>
+				<AVBL_BKID_ADD value="ADV_THRU_BK_ADD" label="Available with Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="28"/>
+				<AVBL_BKID_ADD2 value="AVBL_BKID_ADD2" label="Available with Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="29"/>
+				<AVBL_BKID_ADD2 value="AVBL_BKID_ADD2" label="Available with Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="30"/>
+				<CONF_BKID_ID value="CONF_BKID_ID" label="Confirming Bank [58A]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="31"/>
+				<CONF_BKID_NAME value="CONF_BKID_NAME" label="Confirming Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="32"/>
+				<CONF_BKID_ADD value="CONF_BKID_ADD" label="Confirming Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="33"/>
+				<CONF_BKID_ADD2 value="CONF_BKID_ADD2" label="Confirming Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="34"/>
+				<CONF_BKID_ADD3 value="CONF_BKID_ADD3" label="Confirming Bank Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="35"/>
+			</PartiesInfo>
+			<CommitmentDetailsInfo label="Commitment Details Info">
+				<CONTCT_NO value="CONTCT_NO" label="Contract Number" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<GTEE_CCY value="GTEE_CCY" label="Guarantee Currency *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="2"/>
+				<GTEE_AMT value="GTEE_AMT" label="Guarantee Amount *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="3"/>
+				<CONTCT_DETL value="CONTCT_DETL" label="Details of Contract *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="4"/>
+				<EXPIRY_DT value="EXPIRY_DT" label="Expiry Date *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="5"/>
+				<EXPIRY_DT_HIJRI_BT value="EXPIRY_DT_HIJRI_BT" label="Expiry Date (Hijri)" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="6"/>
+				<GTEE_CCY_B value="GTEE_CCY_B" label="Undertaking Currency[32B]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="7"/>
+				<UNDER_GTEE_AMT value="UNDER_GTEE_AMT" label="Undertaking Amount[32B]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="8"/>
+				<ADD_AMT_INFO value="ADD_AMT_INFO" label="Supplementary Information About Amount[39F]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="9"/>
+				<CHG_DESC_B value="CHG_DESC_B" label="Charges [71D]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="10"/>
+				<DOC_PRES_INSTR value="DOC_PRES_INSTR" label="Document and Presentation Instructions[45C]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="11"/>
+				<GOVERN_LAW_CNTY_CODE value="GOVERN_LAW_CNTY_CODE" label="Governing Law/Jurisdiction[44J]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="12"/>
+				<GOVERN_LAW value="GOVERN_LAW" label="Automatic Extension Period[23F]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="13"/>
+				<AUTO_EXTEN_PERIOD value="AUTO_EXTEN_PERIOD" label="Automatic Extension Period Narrative [23F]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="14"/>
+				<AUTO_EXTEN_PERIOD_DAYS value="AUTO_EXTEN_PERIOD_DAYS" label="Automatic Extension Non-Extension Notification[78]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="15"/>
+				<AUTO_EXTEN_NOTIF value="AUTO_EXTEN_NOTIF" label="Automatic Extension Notification Period [26E]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="16"/>
+				<AUTO_EXTEND_NOTIF_PERIOD_LOC value="AUTO_EXTEND_NOTIF_PERIOD_LOC" label="Governing Law/Jurisdiction[44J]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="17"/>
+				<AUTO_EXTEN_EXPIRY_DT value="AUTO_EXTEN_EXPIRY_DT" label="Automatic Extension Final Expiry Date [31S]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="18"/>
+				<DEMAND_INDICATOR value="DEMAND_INDICATOR" label="Demand Indicator [48B]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="19"/>
+				<TRANS_INDICATOR value="TRANS_INDICATOR" label="Transfer Indicator [48D]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="20"/>
+				<TRANS_CONDITION value="TRANS_CONDITION" label="Transfer Conditions [39E]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="21"/>
+				<UNDEL_TRANS_DET value="UNDEL_TRANS_DET" label="Underlying Transaction Details[45L]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="22"/>
+				<DELIV_OF_ORIG_CODE value="DELIV_OF_ORIG_CODE" label="Delivery of Original Undertaking[24E]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="23"/>
+				<DELIV_OF_ORIG_UNDER value="DELIV_OF_ORIG_UNDER" label="Delivery of Original Undertaking Narrative [24E]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="24"/>
+				<DELIVERY_TO value="DELIVERY_TO" label="Delivery To/Collection By [24G]" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="25"/>
+			</CommitmentDetailsInfo>
+			<BankInstructionsInfo label="Bank Instructions Info">
+				<CHG_AC_CCY value="CHG_AC_CCY" label="Charges Currency " style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<CHG_AC value="CHG_AC" label="Charge Account *" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="2"/>
+				<CUST_INSTR value="CUST_INSTR" label="Customer Instructions" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="3"/>
+			</BankInstructionsInfo>
+			<WordingInfo label="Wording Info">
+				<GTEE_WORD value="GTEE_WORD" label="Guarantee Wording" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<TRANS_COMM value="TRANS_COMM" label="Notes" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="2"/>
+				<COMM_BANK value="COMM_BANK" label="Comments to Bank" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="3"/>
+			</WordingInfo>
+			<LimitInfo label="Limit Info">
+				<INT_LMTDET value="INT_LMTDET" label="Available Limits" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<INT_LMTREF value="INT_LMTREF" label="Limit Reference" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="2"/>
+				<INT_LMTEXPIRY value="INT_LMTEXPIRY" label="Limit Expiry" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="3"/>
+				<INT_LMTCCY value="INT_LMTCCY" label="Currency" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="4"/>
+				<INT_LMTAVAILAMT value="INT_LMTAVAILAMT" label="Availabe Limit Amount" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="5"/>
+				<INT_LMTCASHMRGN value="INT_LMTCASHMRGN" label="Cash Margin" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="6"/>
+			</LimitInfo>
+		</info>
+	</F05030700827>
+</root>

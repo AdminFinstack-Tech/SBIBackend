@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <query id="getAccountBalances">
+        <![CDATA[
+        SELECT 
+            C_ACCT_NO AS ACCOUNT_NUMBER,
+            C_ACCT_TYPE AS ACCOUNT_TYPE,
+            C_ACCT_DESC AS ACCOUNT_NAME,
+            C_CCY AS CURRENCY,
+            N_BAL AS BALANCE,
+            C_STATUS AS STATUS
+        FROM CEACC.ACC_MASTER
+        WHERE C_UNIT_CODE = '${unitcode}'
+            AND C_STATUS = 'A'
+            AND C_ACCT_TYPE IN ('CA', 'SA', 'TD', 'FD', 'INV')
+        ORDER BY C_ACCT_TYPE, C_ACCT_NO
+        ]]>
+    </query>
+    
+    <query id="getTotalPortfolioValue">
+        <![CDATA[
+        SELECT 
+            SUM(N_BAL * NVL(EX_RATE, 1)) AS TOTAL_VALUE,
+            '${baseCurrency}' AS CURRENCY
+        FROM CEACC.ACC_MASTER A
+        LEFT JOIN (
+            SELECT C_CCY_FROM, C_CCY_TO, N_RATE AS EX_RATE
+            FROM CETRX.EXCHANGE_RATES
+            WHERE C_CCY_TO = '${baseCurrency}'
+                AND D_RATE_DATE = (SELECT MAX(D_RATE_DATE) FROM CETRX.EXCHANGE_RATES)
+        ) E ON A.C_CCY = E.C_CCY_FROM
+        WHERE A.C_UNIT_CODE = '${unitcode}'
+            AND A.C_STATUS = 'A'
+            AND A.C_ACCT_TYPE IN ('CA', 'SA', 'TD', 'FD', 'INV')
+        ]]>
+    </query>
+    
+    <query id="getAccountTypeDistribution">
+        <![CDATA[
+        SELECT 
+            CASE C_ACCT_TYPE
+                WHEN 'CA' THEN 'Current Account'
+                WHEN 'SA' THEN 'Savings Account'
+                WHEN 'TD' THEN 'Term Deposit'
+                WHEN 'FD' THEN 'Fixed Deposit'
+                WHEN 'INV' THEN 'Investment Account'
+                ELSE C_ACCT_TYPE
+            END AS ACCOUNT_TYPE,
+            COUNT(*) AS ACCOUNT_COUNT,
+            SUM(N_BAL * NVL(EX_RATE, 1)) AS TOTAL_BALANCE
+        FROM CEACC.ACC_MASTER A
+        LEFT JOIN (
+            SELECT C_CCY_FROM, C_CCY_TO, N_RATE AS EX_RATE
+            FROM CETRX.EXCHANGE_RATES
+            WHERE C_CCY_TO = '${baseCurrency}'
+                AND D_RATE_DATE = (SELECT MAX(D_RATE_DATE) FROM CETRX.EXCHANGE_RATES)
+        ) E ON A.C_CCY = E.C_CCY_FROM
+        WHERE A.C_UNIT_CODE = '${unitcode}'
+            AND A.C_STATUS = 'A'
+            AND A.C_ACCT_TYPE IN ('CA', 'SA', 'TD', 'FD', 'INV')
+        GROUP BY C_ACCT_TYPE
+        ORDER BY TOTAL_BALANCE DESC
+        ]]>
+    </query>
+</root>

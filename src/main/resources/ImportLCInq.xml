@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<InquirySqlQuery>
+		<![CDATA[SELECT * FROM ( SELECT A.*, rownum r FROM ( SELECT * FROM CETRX.TRX_INBOX WHERE ( 1=1 ) AND C_BK_GROUP_ID = '${bankGroup}' AND C_PRODUCT_ID = 'P08071500002'   AND  C_UNIT_CODE = '${companyId}' ]]>
+	</InquirySqlQuery>
+	<CommonInquiry>
+		<C_TRX_STATUS value="C_TRX_STATUS" labelname="Transaction Status"
+			style="fontfamily:inter;fontstyle:italic;fontsize:10;fontweight:w700;color:red"
+			orderby="1"></C_TRX_STATUS>
+		<C_CREA_BY value="C_CREA_BY" labelname="Created By"
+			style="fontfamily:inter;fontstyle:italic;fontsize:10;fontweight:w700;color:red"
+			orderby="2"></C_CREA_BY>
+		<C_MAIN_REF value="C_MAIN_REF" labelname="Main Reference Number"
+			style="fontfamily:inter;fontstyle:italic;fontsize:10;fontweight:w700;color:red"
+			orderby="3"></C_MAIN_REF>
+	</CommonInquiry>
+	<DynamicInquiry>
+		<GTEE_AMT value="GTEE_AMT" labelName="Amount"
+			style="fontfamily:inter;fontstyle:italic;fontsize:10;fontweight:w700;color:red"
+			orderby="2"></GTEE_AMT>
+		<GTEE_CCY value="GTEE_CCY" labelName="Currency"
+			style="fontfamily:inter;fontstyle:italic;fontsize:10;fontweight:w700;color:red"
+			orderby="2"></GTEE_CCY>
+	</DynamicInquiry>
+</root>

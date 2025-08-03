@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns3:PushLGConsentAuthResultRq
+	xmlns:ns3="http://www.alrajhiwebservices.com/AlRajhiOBLetterOfGuarantee"
+	xmlns:ns2="http://www.alrajhiwebservices.com/AlRajhiOBLetterOfGuarantee">	<Hdr>
+		<ns2:Msg>
+			<ns2:RqID>?</ns2:RqID>
+			<ns2:SvcID>0057</ns2:SvcID>
+			<ns2:SubSvcID>0113</ns2:SubSvcID>
+			<ns2:FuncID>0001</ns2:FuncID>
+			<ns2:MsgTimestamp>?</ns2:MsgTimestamp>
+			<ns2:MsgVer>001</ns2:MsgVer>
+		</ns2:Msg>
+		<ns2:Agt>
+			<ns2:BranchID>20400</ns2:BranchID>
+			<ns2:CICNum>0000000003047850</ns2:CICNum>
+			<ns2:UserLang>EN</ns2:UserLang>
+		</ns2:Agt>
+		<ns2:Sys>
+			<ns2:ChID>KIOSK</ns2:ChID>
+			<ns2:SubChID>TahweelKIOSK</ns2:SubChID>
+			<ns2:SessionID>96b12ac9-a0d7-4f66-8768-527c4c5651cd</ns2:SessionID>
+			<ns2:LoginInfo>
+				<ns2:TerminalID>018009A7</ns2:TerminalID>
+				<ns2:IPAddr>10.11.203.20</ns2:IPAddr>
+				<ns2:UserID>KIOSK</ns2:UserID>
+			</ns2:LoginInfo>
+			<ns2:OSID>99</ns2:OSID>
+			<ns2:AppTyp>151</ns2:AppTyp>
+		</ns2:Sys>
+	</Hdr>
+	<Body>
+		<ConsentID>?</ConsentID>
+		<Authorizer>
+			<AuthorizerID>?</AuthorizerID>
+			<AuthorizationDate>?</AuthorizationDate>
+			<AuthorizationStatus>?</AuthorizationStatus>
+			<NextAuthorizerID>?</NextAuthorizerID>
+		</Authorizer>
+		<SupplementaryData>?</SupplementaryData>
+	</Body>
+</ns3:PushLGConsentAuthResultRq>

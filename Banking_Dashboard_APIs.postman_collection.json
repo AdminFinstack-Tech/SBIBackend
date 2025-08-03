@@ -1,0 +1,293 @@
+{
+  "info": {
+    "_postman_id": "dashboard-analytics-collection",
+    "name": "Banking Dashboard APIs",
+    "description": "Collection for testing Banking App Dashboard and Analytics APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Dashboard Analytics",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "requestId",
+            "value": "{{$guid}}",
+            "description": "Unique request ID (UUID format)"
+          },
+          {
+            "key": "SecertKey",
+            "value": "FinMobileCS",
+            "description": "Secret key for authentication"
+          },
+          {
+            "key": "channel",
+            "value": "FinMobileBankingApp",
+            "description": "Channel identifier"
+          },
+          {
+            "key": "timeStamp",
+            "value": "{{$timestamp}}",
+            "description": "Unix timestamp"
+          },
+          {
+            "key": "version",
+            "value": "1.0.0",
+            "description": "API version"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"CorporateId\": \"0001517524\",\n    \"UserId\": \"1517524adm3\",\n    \"Period\": \"current\"\n}"
+        },
+        "url": {
+          "raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/dashboardAnalytics",
+          "protocol": "http",
+          "host": [
+            "213",
+            "42",
+            "43",
+            "227"
+          ],
+          "path": [
+            "cs-ce-sec-api-0.0.1",
+            "dashboardAnalytics"
+          ]
+        },
+        "description": "Get overall dashboard analytics with module statistics, performance metrics, and summary data"
+      }
+    },
+    {
+      "name": "Module Analytics",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "requestId",
+            "value": "{{$guid}}"
+          },
+          {
+            "key": "SecertKey",
+            "value": "FinMobileCS"
+          },
+          {
+            "key": "channel",
+            "value": "FinMobileBankingApp"
+          },
+          {
+            "key": "timeStamp",
+            "value": "{{$timestamp}}"
+          },
+          {
+            "key": "version",
+            "value": "1.0.0"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"CorporateId\": \"0001517524\",\n    \"UserId\": \"1517524adm3\",\n    \"Module\": \"LC\",\n    \"Period\": \"12m\"\n}"
+        },
+        "url": {
+          "raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/moduleAnalytics",
+          "protocol": "http",
+          "host": [
+            "213",
+            "42",
+            "43",
+            "227"
+          ],
+          "path": [
+            "cs-ce-sec-api-0.0.1",
+            "moduleAnalytics"
+          ]
+        },
+        "description": "Get analytics for specific module (LC, BG, DC, TL)"
+      }
+    },
+    {
+      "name": "Portfolio Value",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "requestId",
+            "value": "{{$guid}}"
+          },
+          {
+            "key": "channel",
+            "value": "FinMobileBankingApp"
+          },
+          {
+            "key": "timeStamp",
+            "value": "{{$timestamp}}"
+          },
+          {
+            "key": "version",
+            "value": "1.0.0"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"CorporateId\": \"0001517524\",\n    \"UserId\": \"1517524adm3\"\n}"
+        },
+        "url": {
+          "raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/portfolioValue",
+          "protocol": "http",
+          "host": [
+            "213",
+            "42",
+            "43",
+            "227"
+          ],
+          "path": [
+            "cs-ce-sec-api-0.0.1",
+            "portfolioValue"
+          ]
+        },
+        "description": "Get total portfolio value with account balances and distribution"
+      }
+    },
+    {
+      "name": "Beneficiary Analytics",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "requestId",
+            "value": "{{$guid}}"
+          },
+          {
+            "key": "SecertKey",
+            "value": "FinMobileCS"
+          },
+          {
+            "key": "channel",
+            "value": "FinMobileBankingApp"
+          },
+          {
+            "key": "timeStamp",
+            "value": "{{$timestamp}}"
+          },
+          {
+            "key": "version",
+            "value": "1.0.0"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"CorporateId\": \"0001517524\",\n    \"UserId\": \"1517524adm3\",\n    \"Months\": 6\n}"
+        },
+        "url": {
+          "raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/beneficiaryAnalytics",
+          "protocol": "http",
+          "host": [
+            "213",
+            "42",
+            "43",
+            "227"
+          ],
+          "path": [
+            "cs-ce-sec-api-0.0.1",
+            "beneficiaryAnalytics"
+          ]
+        },
+        "description": "Get top beneficiaries by transaction count and amount"
+      }
+    },
+    {
+      "name": "Performance Summary",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "requestId",
+            "value": "{{$guid}}"
+          },
+          {
+            "key": "SecertKey",
+            "value": "FinMobileCS"
+          },
+          {
+            "key": "channel",
+            "value": "FinMobileBankingApp"
+          },
+          {
+            "key": "timeStamp",
+            "value": "{{$timestamp}}"
+          },
+          {
+            "key": "version",
+            "value": "1.0.0"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"CorporateId\": \"0001517524\",\n    \"UserId\": \"1517524adm3\",\n    \"Period\": \"current\"\n}"
+        },
+        "url": {
+          "raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/performanceSummary",
+          "protocol": "http",
+          "host": [
+            "213",
+            "42",
+            "43",
+            "227"
+          ],
+          "path": [
+            "cs-ce-sec-api-0.0.1",
+            "performanceSummary"
+          ]
+        },
+        "description": "Get performance summary with key metrics and trends"
+      }
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://213.42.43.227/cs-ce-sec-api-0.0.1",
+      "type": "string"
+    }
+  ]
+}

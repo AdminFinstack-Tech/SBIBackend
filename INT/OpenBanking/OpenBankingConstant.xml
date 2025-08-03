@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<openbanking>
+		<fetchRecordLGAutomation>SELECT * FROM CETRX.OWGT_EM_GTEEDTLS WHERE C_MAIN_REF = '${customerRefNumber}' </fetchRecordLGAutomation>
+		<fetchRecordAlreadyAuth>SELECT * FROM CETRX.OWGT_AUTH WHERE C_MAIN_REF = '${customerRefNumber}' AND C_UNIT_CODE = '${C_UNIT_CODE}' AND I_EVENT_TIMES = '${I_EVENT_TIMES}'</fetchRecordAlreadyAuth>
+		<fetchMainRefLGRel>SELECT C_MAIN_REF,C_UNIT_CODE,I_EVENT_TIMES,C_TRX_STATUS FROM CETRX.OWGT_EM_GTEEDTLS WHERE CONSENT_ID = '${consentId}'</fetchMainRefLGRel>
+		<updatetrxgapisys>UPDATE CETRX.TRX_GAPI_ASYNC SET C_GAPI_SEND_STATUS = 'R' WHERE C_MAIN_REF = '${customerRefNumber}' AND C_UNIT_CODE = '${C_UNIT_CODE}' AND I_EVENT_TIMES = '${I_EVENT_TIMES}'</updatetrxgapisys>
+		<getNextAuthorizeList>SELECT DISTINCT B.C_USER_ID,B.I_AUTH_LEVEL,A.C_TRX_STATUS,A.C_TRX_ID,B.C_UNIT_CODE FROM CETRX.TRX_AUTH_LIST A,CEUSER.SEC_USER_INFO B WHERE A.C_UNIT_CODE = B.C_UNIT_CODE AND A.C_UNIT_CODE = '${C_UNIT_CODE}' AND B.I_AUTH_LEVEL IS NOT NULL AND A.C_USER_ID IN ('1','0') and A.C_TRX_STATUS = 'T' and A.I_AUTH_LEVEL=B.I_AUTH_LEVEL and A.C_TRX_ID = (SELECT C_TRX_ID FROM CETRX.TRX_INBOX WHERE C_MAIN_REF = '${customerRefNumber}' AND C_UNIT_CODE = '${C_UNIT_CODE}' AND I_EVENT_TIMES = '${I_EVENT_TIMES}' AND C_BK_GROUP_ID = '${C_BK_GROUP_ID}') GROUP BY B.C_USER_ID,B.I_AUTH_LEVEL,A.C_TRX_STATUS,A.C_TRX_ID,B.C_UNIT_CODE</getNextAuthorizeList>
+		<pushAuthListURL>http://localhost:9081/</pushAuthListURL>
+		<getLastStatusOBRecord>SELECT * FROM CETRX.TRX_OB_STP WHERE C_MAIN_REF = '${customerRefNumber}' </getLastStatusOBRecord>
+		<getUnSendOBRecord>SELECT * FROM CETRX.TRX_OB_STP WHERE SEND_FLAG IS NULL  </getUnSendOBRecord>
+		<getOBPDFGenPath>/usr/IBM</getOBPDFGenPath>
+		<queues>
+			<in-queue-config-filename>mq_ce2ee.xml</in-queue-config-filename>
+			<out-queue-config-filename>mq_ce2ee.xml</out-queue-config-filename>
+			<wait-queue-config-filename>mq_ce2ee.xml</wait-queue-config-filename>
+		</queues>
+	</openbanking>
+</root>

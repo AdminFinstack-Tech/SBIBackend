@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<F05030700829>
+		<Query>
+			<![CDATA[SELECT * FROM CETRX.IMLC_EM_ISSUE WHERE C_MAIN_REF = '${mainref}' AND C_UNIT_CODE = '${unitcode}' ]]></Query>
+		<info>
+			<MainInfo label="Main Info">
+				<!--LC_NO value="LC_NO" label="LC Number [20]" style="fontfamily:inter;fontstyle:italic;fontsize:20;fontweight:w700;color:#ca6c2e" orderby="1"/-->
+				<LC_NO value="LC_NO" label="LC No "  orderby="1"/>
+				<DRAW_NO value="DRAW_NO" label="Drawing Ref. No."  orderby="2"/>
+				<NO_OF_DRAW value="NO_OF_DRAW" label="Drawing No."  orderby="3"/>
+				<NO_OF_AMD value="NO_OF_AMD" label="Amendment No."  orderby="4"/>
+				<TRX_DT value="TRX_DT" label="Date of Application [31C]"  orderby="5"/>
+				<CUST_NO value="CUST_NO" label="Our Ref Number"  orderby="6"/>
+				<FORM_OF_LC value="FORM_OF_LC" label="Type of LC [40A]"  orderby="7"/>
+				<LC_CCY value="LC_CCY" label="LC Currency [32B]"  orderby="8"/>
+				<LC_AMT value="LC_AMT" label="LC Amount [32B]"  orderby="9"/>
+				<TOL_SPEC value="TOL_SPEC" label="Tolerance - Specification % + / - [39A]"  orderby="14"/>
+				<POS_TOL value="POS_TOL" label="Positive tolerance [39A]"  orderby="11"/>
+				<NEG_TOL value="NEG_TOL" label="Negative tolerance [39A]"  orderby="12"/>
+				<AVAL_BY value="AVAL_BY" label="Available By"  orderby="13"/>
+				<PRODUCT_TYPE value="PRODUCT_TYPE" label="Product Type"  orderby="14"/>
+				<TERMS_OF_LC value="TERMS_OF_LC" label="Terms of LC"  orderby="15"/>
+				<TENOR_DAYS value="TENOR_DAYS" label="Terms of LC"  orderby="16"/>
+				<TENOR_TYPE value="TENOR_TYPE" label="Tenor Type" url="true"  orderby="17"/>
+				<DRAFTS_AT value="DRAFTS_AT" label="Drafts At [42C]"  orderby="18"/>
+				<MIX_PAY_DETAIL value="MIX_PAY_DETAIL" label="Mixed Payment Details [42M]"  orderby="19"/>
+				<DEF_PMT_TERM value="DEF_PMT_TERM" label="Payment Terms12312312 [42P]"  orderby="14"/>
+			</MainInfo>
+			<PartiesInfo label="Parties Info">
+				<BENE_NM value="BENE_NM" label="Beneficiary Name"  orderby="1"/>
+				<BENE_ADD1 value="BENE_ADD1" label="Location"  orderby="2"/>
+				<BENE_ADD2 value="BENE_ADD3" label="City"  orderby="3"/>
+				<BENE_ADD3 value="BENE_ADD3" label="Country"  orderby="4"/>
+				<APPL_NM value="APPL_NM" label="Applicant Name"  orderby="1"/>
+				<BENE_BK_NM value="BENE_BK_NM" label="Advising Bank [57A]"  orderby="1"/>
+				<BENE_BK_SW_ADD value="BENE_BK_SW_ADD" label="Swift Address"  orderby="1"/>
+				<BENE_BK_ADD1 value="BENE_BK_ADD1" label="Location"  orderby="1"/>
+				<BENE_BK_ADD2 value="BENE_BK_ADD2" label="City"  orderby="1"/>
+				<BENE_BK_ADD3 value="BENE_BK_ADD3" label="Country"  orderby="1"/>
+				
+			</PartiesInfo>
+			<ShipmentExpiryInfo label="Shipment / Expiry">
+				<EXPIRY_DT value="EXPIRY_DT" label="Expiry Date"  orderby="1"/>
+				<EXPIRY_PLC value="EXPIRY_PLC" label="Expiry Place"  orderby="1"/>
+				<LTST_SHIP_DT value="LTST_SHIP_DT" label="Latest Shipment Date [44C]"  orderby="1"/>
+				<SHIP_PRD value="SHIP_PRD" label="Shipment Period [44D]"  orderby="1"/>
+				<PARTIAL_SHIP value="PARTIAL_SHIP" label="Partial Shipment [43P]"  orderby="1"/>
+				<TNSHIP value="TNSHIP" label="Transhipment [43T]"  orderby="1"/>
+				<LOAD_PORT value="LOAD_PORT" label="Port of Loading [44E]"  orderby="1"/>
+				<DEST_PORT value="DEST_PORT" label="Port of Discharge [44F]"  orderby="1"/>
+				<DEST_PLACE value="DEST_PLACE" label="Ship To [44B]"  orderby="1"/>
+				<GOODS_DESC value="GOODS_DESC" label="Description of Goods [45A]"  orderby="1"/>
+			</ShipmentExpiryInfo>
+			<DocumentsInfo label="Documents">
+				<INCOTERMS value="INCOTERMS" label="Incoterms"  orderby="1"/>
+				<INCOTERMS_INSTR value="INCOTERMS_INSTR" label="Incoterms Instructions"  orderby="1"/>
+				<DOC_PRES value="DOC_PRES" label="Documents to be Presented [46A]"  orderby="1"/>
+				<SPL_PAY_CONDI_FOR_BENE value="SPL_PAY_CONDI_FOR_BENE" label="Special Payment Conditions for Beneficiary[49G]"  orderby="1"/>
+				<SPL_PAY_CONDI_FOR_RECV_BANK value="SPL_PAY_CONDI_FOR_RECV_BANK" label="Special Payment Conditions for Receiving Bank[49H]"  orderby="1"/>
+				<PRES_PRD_EVENT value="PRES_PRD_EVENT" label="Presentation Period Event [48]"  orderby="1"/>
+				<PRES_PRD_TXT value="PRES_PRD_TXT" label="Presentation Period [48]"  orderby="1"/>
+				<INSURANCE_TYPE value="INSURANCE_TYPE" label="Insurance Type"  orderby="1"/>
+				<MODE_TRANS value="MODE_TRANS" label="Mode of Transport"  orderby="1"/>
+				<COMMODITY_CODE value="COMMODITY_CODE" label="Commodity Code"  orderby="1"/>
+				<COMMODITY_GROUP value="COMMODITY_GROUP" label="Commodity Group"  orderby="1"/>
+				<INS_POLICY_NUM value="INS_POLICY_NUM" label="Insurance Policy No"  orderby="1"/>
+				<INS_COMP_NAME value="INS_COMP_NAME" label="Insurance Company Name"  orderby="1"/>
+				<INSU_EXPER_DATE value="INSU_EXPER_DATE" label="Insurance Expire Date"  orderby="1"/>
+			</DocumentsInfo>
+		</info>
+	</F05030700829>
+	<F05030700857>
+		<Query>
+			<![CDATA[SELECT * FROM CETRX.IMLC_EM_ISSUE WHERE C_MAIN_REF = '${mainref}' AND C_UNIT_CODE = '${unitcode}' ]]></Query>
+		<info>
+			<MainInfo label="Main Info">
+				<!--LC_NO value="LC_NO" label="LC Number [20]" style="fontfamily:inter;fontstyle:italic;fontsize:20;fontweight:w700;color:#ca6c2e" orderby="1"/-->
+				<LC_NO value="LC_NO" label="LC No "  orderby="1"/>
+				<DRAW_NO value="DRAW_NO" label="Drawing Ref. No."  orderby="2"/>
+				<NO_OF_DRAW value="NO_OF_DRAW" label="Drawing No."  orderby="3"/>
+				<NO_OF_AMD value="NO_OF_AMD" label="Amendment No."  orderby="4"/>
+				<TRX_DT value="TRX_DT" label="Date of Application [31C]"  orderby="5"/>
+				<CUST_NO value="CUST_NO" label="Our Ref Number"  orderby="6"/>
+				<FORM_OF_LC value="FORM_OF_LC" label="Type of LC [40A]"  orderby="7"/>
+				<LC_CCY value="LC_CCY" label="LC Currency [32B]"  orderby="8"/>
+				<LC_AMT value="LC_AMT" label="LC Amount [32B]"  orderby="9"/>
+				<TOL_SPEC value="TOL_SPEC" label="Tolerance - Specification % + / - [39A]"  orderby="14"/>
+				<POS_TOL value="POS_TOL" label="Positive tolerance [39A]"  orderby="11"/>
+				<NEG_TOL value="NEG_TOL" label="Negative tolerance [39A]"  orderby="12"/>
+				<AVAL_BY value="AVAL_BY" label="Available By"  orderby="13"/>
+				<PRODUCT_TYPE value="PRODUCT_TYPE" label="Product Type"  orderby="14"/>
+				<TERMS_OF_LC value="TERMS_OF_LC" label="Terms of LC"  orderby="15"/>
+				<TENOR_DAYS value="TENOR_DAYS" label="Terms of LC"  orderby="16"/>
+				<TENOR_TYPE value="TENOR_TYPE" label="Tenor Type" url="true"  orderby="17"/>
+				<DRAFTS_AT value="DRAFTS_AT" label="Drafts At [42C]"  orderby="18"/>
+				<MIX_PAY_DETAIL value="MIX_PAY_DETAIL" label="Mixed Payment Details [42M]"  orderby="19"/>
+				<DEF_PMT_TERM value="DEF_PMT_TERM" label="Payment Terms [42P]"  orderby="14"/>
+			</MainInfo>
+			<PartiesInfo label="Parties Info">
+				<BENE_NM value="BENE_NM" label="Beneficiary Name"  orderby="1"/>
+				<BENE_ADD1 value="BENE_ADD1" label="Location"  orderby="2"/>
+				<BENE_ADD2 value="BENE_ADD3" label="City"  orderby="3"/>
+				<BENE_ADD3 value="BENE_ADD3" label="Country"  orderby="4"/>
+				<APPL_NM value="APPL_NM" label="Applicant Name"  orderby="1"/>
+				<BENE_BK_NM value="BENE_BK_NM" label="Advising Bank [57A]"  orderby="1"/>
+				<BENE_BK_SW_ADD value="BENE_BK_SW_ADD" label="Swift Address"  orderby="1"/>
+				<BENE_BK_ADD1 value="BENE_BK_ADD1" label="Location"  orderby="1"/>
+				<BENE_BK_ADD2 value="BENE_BK_ADD2" label="City"  orderby="1"/>
+				<BENE_BK_ADD3 value="BENE_BK_ADD3" label="Country"  orderby="1"/>
+				
+			</PartiesInfo>
+			<ShipmentExpiryInfo label="Shipment / Expiry">
+				<EXPIRY_DT value="EXPIRY_DT" label="Expiry Date"  orderby="1"/>
+				<EXPIRY_PLC value="EXPIRY_PLC" label="Expiry Place"  orderby="1"/>
+				<LTST_SHIP_DT value="LTST_SHIP_DT" label="Latest Shipment Date [44C]"  orderby="1"/>
+				<SHIP_PRD value="SHIP_PRD" label="Shipment Period [44D]"  orderby="1"/>
+				<PARTIAL_SHIP value="PARTIAL_SHIP" label="Partial Shipment [43P]"  orderby="1"/>
+				<TNSHIP value="TNSHIP" label="Transhipment [43T]"  orderby="1"/>
+				<LOAD_PORT value="LOAD_PORT" label="Port of Loading [44E]"  orderby="1"/>
+				<DEST_PORT value="DEST_PORT" label="Port of Discharge [44F]"  orderby="1"/>
+				<DEST_PLACE value="DEST_PLACE" label="Ship To [44B]"  orderby="1"/>
+				<GOODS_DESC value="GOODS_DESC" label="Description of Goods [45A]"  orderby="1"/>
+			</ShipmentExpiryInfo>
+			<DocumentsInfo label="Documents">
+				<INCOTERMS value="INCOTERMS" label="Incoterms"  orderby="1"/>
+				<INCOTERMS_INSTR value="INCOTERMS_INSTR" label="Incoterms Instructions"  orderby="1"/>
+				<DOC_PRES value="DOC_PRES" label="Documents to be Presented [46A]"  orderby="1"/>
+				<SPL_PAY_CONDI_FOR_BENE value="SPL_PAY_CONDI_FOR_BENE" label="Special Payment Conditions for Beneficiary[49G]"  orderby="1"/>
+				<SPL_PAY_CONDI_FOR_RECV_BANK value="SPL_PAY_CONDI_FOR_RECV_BANK" label="Special Payment Conditions for Receiving Bank[49H]"  orderby="1"/>
+				<PRES_PRD_EVENT value="PRES_PRD_EVENT" label="Presentation Period Event [48]"  orderby="1"/>
+				<PRES_PRD_TXT value="PRES_PRD_TXT" label="Presentation Period [48]"  orderby="1"/>
+				<INSURANCE_TYPE value="INSURANCE_TYPE" label="Insurance Type"  orderby="1"/>
+				<MODE_TRANS value="MODE_TRANS" label="Mode of Transport"  orderby="1"/>
+				<COMMODITY_CODE value="COMMODITY_CODE" label="Commodity Code"  orderby="1"/>
+				<COMMODITY_GROUP value="COMMODITY_GROUP" label="Commodity Group"  orderby="1"/>
+				<INS_POLICY_NUM value="INS_POLICY_NUM" label="Insurance Policy No"  orderby="1"/>
+				<INS_COMP_NAME value="INS_COMP_NAME" label="Insurance Company Name"  orderby="1"/>
+				<INSU_EXPER_DATE value="INSU_EXPER_DATE" label="Insurance Expire Date"  orderby="1"/>
+			</DocumentsInfo>
+		</info>
+	</F05030700857>
+	<F05030700874>
+		<Query>
+			<![CDATA[SELECT * FROM CETRX.IMLC_EM_NEGO WHERE C_Main_REF = '${mainref}' AND C_UNIT_CODE = '${unitcode}' AND I_EVENT_TIMES = ${eventtimes} ]]></Query>
+		<info>
+			<MainInfo label="Main Info">
+				<LC_NO value="LC_NO" label="LC Number"  orderby="1"/>
+				<CUST_NO value="CUST_NO" label="Our Ref Number"  orderby="2"/>
+				<DRAW_NO value="DRAW_NO" label="Drawing Ref. No."  orderby="3"/>
+				<NO_OF_DRAW value="NO_OF_DRAW" label="No of Drawing"  orderby="4"/>
+				<PRES_AMT value="PRES_AMT" label="Presentation Amount"  orderby="5"/>
+				<RCV_DT value="RCV_DT" label="Documents Presented"  orderby="6"/>
+				<DOC_DECISION value="DOC_DECISION" label="Document Decision"  orderby="7"/>
+				<DISC_NOTES value="DISC_NOTES" label="Discrepancies Noted"  orderby="8"/>
+				<DISC_DECISION value="DISC_DECISION" label="Decision on Discrepancies"  orderby="9"/>
+				<REASON_FOR_REJ value="REASON_FOR_REJ" label="Reasons for rejection"  orderby="14"/>
+			</MainInfo>
+		</info>
+	</F05030700874>
+	<F05030700856>
+		<Query>
+			<![CDATA[SELECT * FROM CETRX.IMLC_EM_PMT WHERE C_Main_REF = '${mainref}' AND C_UNIT_CODE = '${unitcode}' AND I_EVENT_TIMES = ${eventtimes} ]]></Query>
+		<info>
+			<MainInfo label="Main Info">
+				<LC_NO value="LC_NO" label="LC Number"  orderby="1"/>
+				<CUST_NO value="CUST_NO" label="Our Ref Number"  orderby="2"/>
+				<DRAW_NO value="DRAW_NO" label="Drawing Ref. No."  orderby="3"/>
+				<NO_OF_DRAW value="NO_OF_DRAW" label="No of Drawing"  orderby="4"/>
+				<PRES_AMT value="PRES_AMT" label="Presentation Amount"  orderby="5"/>
+				<RCV_DT value="RCV_DT" label="Documents Presented"  orderby="6"/>
+				<DOC_DECISION value="DOC_DECISION" label="Document Decision"  orderby="7"/>
+				<DISC_NOTES value="DISC_NOTES" label="Discrepancies Noted"  orderby="8"/>
+				<DISC_DECISION value="DISC_DECISION" label="Decision on Discrepancies"  orderby="9"/>
+				<REASON_FOR_REJ value="REASON_FOR_REJ" label="Reasons for rejection"  orderby="10"/>
+			</MainInfo>
+		</info>
+	</F05030700856>
+	<F05030700866>
+		<Query>
+			<![CDATA[SELECT * FROM CETRX.IMLC_EM_NEGO WHERE C_Main_REF = '${mainref}' AND C_UNIT_CODE = '${unitcode}' AND I_EVENT_TIMES = ${eventtimes} ]]></Query>
+		<info>
+			<MainInfo label="Main Info">
+				<LC_NO value="LC_NO" label="LC Number"  orderby="1"/>
+				<CUST_NO value="CUST_NO" label="Our Ref Number"  orderby="2"/>
+				<DRAW_NO value="DRAW_NO" label="Drawing Ref. No."  orderby="3"/>
+				<NO_OF_DRAW value="NO_OF_DRAW" label="No of Drawing"  orderby="4"/>
+				<PRES_AMT value="PRES_AMT" label="Presentation Amount"  orderby="5"/>
+				<RCV_DT value="RCV_DT" label="Documents Presented"  orderby="6"/>
+				<DOC_DECISION value="DOC_DECISION" label="Document Decision"  orderby="7"/>
+				<DISC_NOTES value="DISC_NOTES" label="Discrepancies Noted"  orderby="8"/>
+				<DISC_DECISION value="DISC_DECISION" label="Decision on Discrepancies"  orderby="9"/>
+				<REASON_FOR_REJ value="REASON_FOR_REJ" label="Reasons for rejection"  orderby="14"/>
+			</MainInfo>
+		</info>
+	</F05030700866>
+	<F05030700867>
+		<Query>
+			<![CDATA[SELECT * FROM CETRX.IMLC_EM_NEGO WHERE C_Main_REF = '${mainref}' AND C_UNIT_CODE = '${unitcode}' AND I_EVENT_TIMES = ${eventtimes} ]]></Query>
+		<info>
+			<MainInfo label="Main Info">
+				<LC_NO value="LC_NO" label="LC Number"  orderby="1"/>
+				<CUST_NO value="CUST_NO" label="Our Ref Number"  orderby="2"/>
+				<DRAW_NO value="DRAW_NO" label="Drawing Ref. No."  orderby="3"/>
+				<NO_OF_DRAW value="NO_OF_DRAW" label="No of Drawing"  orderby="4"/>
+				<PRES_AMT value="PRES_AMT" label="Presentation Amount"  orderby="5"/>
+				<RCV_DT value="RCV_DT" label="Documents Presented"  orderby="6"/>
+				<DOC_DECISION value="DOC_DECISION" label="Document Decision"  orderby="7"/>
+				<DISC_NOTES value="DISC_NOTES" label="Discrepancies Noted"  orderby="8"/>
+				<DISC_DECISION value="DISC_DECISION" label="Decision on Discrepancies"  orderby="9"/>
+				<REASON_FOR_REJ value="REASON_FOR_REJ" label="Reasons for rejection"  orderby="14"/>
+			</MainInfo>
+		</info>
+	</F05030700867>
+	<F05030701060>
+		<Query>
+			<![CDATA[SELECT * FROM CETRX.IMLC_EM_NEGO WHERE C_Main_REF = '${mainref}' AND C_UNIT_CODE = '${unitcode}' AND I_EVENT_TIMES = ${eventtimes} ]]></Query>
+		<info>
+			<MainInfo label="Main Info">
+				<CUST_NO value="CUST_NO" label="Our Ref Number"  orderby="1"/>
+				<LC_NO value="LC_NO" label="LC Number [20]"  orderby="2"/>
+				<DRAW_NO value="DRAW_NO" label="Drawing Ref. No."  orderby="3"/>
+				<NO_OF_DRAW value="NO_OF_DRAW" label="No of Drawing"  orderby="4"/>
+				<PRES_AMT value="PRES_AMT" label="Presentation Amount"  orderby="5"/>
+				<RCV_DT value="RCV_DT" label="Documents Presented"  orderby="6"/>
+				<DOC_DECISION value="DOC_DECISION" label="Document Decision"  orderby="7"/>
+				<DISC_NOTES value="DISC_NOTES" label="Discrepancies Noted"  orderby="8"/>
+				<DISC_DECISION value="DISC_DECISION" label="Decision on Discrepancies"  orderby="9"/>
+				<REASON_FOR_REJ value="REASON_FOR_REJ" label="Reasons for rejection"  orderby="14"/>
+			</MainInfo>
+		</info>
+	</F05030701060>
+	<F05030700869>
+		<Query>
+			<![CDATA[SELECT * FROM CETRX.IMLC_EM_ISSUE WHERE C_MAIN_REF = '${mainref}' AND C_UNIT_CODE = '${unitcode}' ]]></Query>
+		<info>
+			<MainInfo label="Main Info">
+				<!--LC_NO value="LC_NO" label="LC Number [20]" style="fontfamily:inter;fontstyle:italic;fontsize:20;fontweight:w700;color:#ca6c2e" orderby="1"/-->
+				<LC_NO value="LC_NO" label="LC No "  orderby="1"/>
+				<DRAW_NO value="DRAW_NO" label="Drawing Ref. No."  orderby="2"/>
+				<NO_OF_DRAW value="NO_OF_DRAW" label="Drawing No."  orderby="3"/>
+				<NO_OF_AMD value="NO_OF_AMD" label="Amendment No."  orderby="4"/>
+				<TRX_DT value="TRX_DT" label="Date of Application [31C]"  orderby="5"/>
+				<CUST_NO value="CUST_NO" label="Our Ref Number"  orderby="6"/>
+				<FORM_OF_LC value="FORM_OF_LC" label="Type of LC [40A]"  orderby="7"/>
+				<LC_CCY value="LC_CCY" label="LC Currency [32B]"  orderby="8"/>
+				<LC_AMT value="LC_AMT" label="LC Amount [32B]"  orderby="9"/>
+				<TOL_SPEC value="TOL_SPEC" label="Tolerance - Specification % + / - [39A]"  orderby="14"/>
+				<POS_TOL value="POS_TOL" label="Positive tolerance [39A]"  orderby="11"/>
+				<NEG_TOL value="NEG_TOL" label="Negative tolerance [39A]"  orderby="12"/>
+				<AVAL_BY value="AVAL_BY" label="Available By"  orderby="13"/>
+				<PRODUCT_TYPE value="PRODUCT_TYPE" label="Product Type"  orderby="14"/>
+				<TERMS_OF_LC value="TERMS_OF_LC" label="Terms of LC"  orderby="15"/>
+				<TENOR_DAYS value="TENOR_DAYS" label="Terms of LC"  orderby="16"/>
+				<TENOR_TYPE value="TENOR_TYPE" label="Tenor Type" url="true"  orderby="17"/>
+				<DRAFTS_AT value="DRAFTS_AT" label="Drafts At [42C]"  orderby="18"/>
+				<MIX_PAY_DETAIL value="MIX_PAY_DETAIL" label="Mixed Payment Details [42M]"  orderby="19"/>
+				<DEF_PMT_TERM value="DEF_PMT_TERM" label="Payment Terms [42P]"  orderby="14"/>
+			</MainInfo>
+			<PartiesInfo label="Parties Info">
+				<BENE_NM value="BENE_NM" label="Beneficiary Name"  orderby="1"/>
+				<BENE_ADD1 value="BENE_ADD1" label="Location"  orderby="2"/>
+				<BENE_ADD2 value="BENE_ADD3" label="City"  orderby="3"/>
+				<BENE_ADD3 value="BENE_ADD3" label="Country"  orderby="4"/>
+				<APPL_NM value="APPL_NM" label="Applicant Name"  orderby="1"/>
+				<BENE_BK_NM value="BENE_BK_NM" label="Advising Bank [57A]"  orderby="1"/>
+				<BENE_BK_SW_ADD value="BENE_BK_SW_ADD" label="Swift Address"  orderby="1"/>
+				<BENE_BK_ADD1 value="BENE_BK_ADD1" label="Location"  orderby="1"/>
+				<BENE_BK_ADD2 value="BENE_BK_ADD2" label="City"  orderby="1"/>
+				<BENE_BK_ADD3 value="BENE_BK_ADD3" label="Country"  orderby="1"/>
+				
+			</PartiesInfo>
+			<ShipmentExpiryInfo label="Shipment / Expiry">
+				<EXPIRY_DT value="EXPIRY_DT" label="Expiry Date"  orderby="1"/>
+				<EXPIRY_PLC value="EXPIRY_PLC" label="Expiry Place"  orderby="1"/>
+				<LTST_SHIP_DT value="LTST_SHIP_DT" label="Latest Shipment Date [44C]"  orderby="1"/>
+				<SHIP_PRD value="SHIP_PRD" label="Shipment Period [44D]"  orderby="1"/>
+				<PARTIAL_SHIP value="PARTIAL_SHIP" label="Partial Shipment [43P]"  orderby="1"/>
+				<TNSHIP value="TNSHIP" label="Transhipment [43T]"  orderby="1"/>
+				<LOAD_PORT value="LOAD_PORT" label="Port of Loading [44E]"  orderby="1"/>
+				<DEST_PORT value="DEST_PORT" label="Port of Discharge [44F]"  orderby="1"/>
+				<DEST_PLACE value="DEST_PLACE" label="Ship To [44B]"  orderby="1"/>
+				<GOODS_DESC value="GOODS_DESC" label="Description of Goods [45A]"  orderby="1"/>
+			</ShipmentExpiryInfo>
+			<DocumentsInfo label="Documents">
+				<INCOTERMS value="INCOTERMS" label="Incoterms"  orderby="1"/>
+				<INCOTERMS_INSTR value="INCOTERMS_INSTR" label="Incoterms Instructions"  orderby="1"/>
+				<DOC_PRES value="DOC_PRES" label="Documents to be Presented [46A]"  orderby="1"/>
+				<SPL_PAY_CONDI_FOR_BENE value="SPL_PAY_CONDI_FOR_BENE" label="Special Payment Conditions for Beneficiary[49G]"  orderby="1"/>
+				<SPL_PAY_CONDI_FOR_RECV_BANK value="SPL_PAY_CONDI_FOR_RECV_BANK" label="Special Payment Conditions for Receiving Bank[49H]"  orderby="1"/>
+				<PRES_PRD_EVENT value="PRES_PRD_EVENT" label="Presentation Period Event [48]"  orderby="1"/>
+				<PRES_PRD_TXT value="PRES_PRD_TXT" label="Presentation Period [48]"  orderby="1"/>
+				<INSURANCE_TYPE value="INSURANCE_TYPE" label="Insurance Type"  orderby="1"/>
+				<MODE_TRANS value="MODE_TRANS" label="Mode of Transport"  orderby="1"/>
+				<COMMODITY_CODE value="COMMODITY_CODE" label="Commodity Code"  orderby="1"/>
+				<COMMODITY_GROUP value="COMMODITY_GROUP" label="Commodity Group"  orderby="1"/>
+				<INS_POLICY_NUM value="INS_POLICY_NUM" label="Insurance Policy No"  orderby="1"/>
+				<INS_COMP_NAME value="INS_COMP_NAME" label="Insurance Company Name"  orderby="1"/>
+				<INSU_EXPER_DATE value="INSU_EXPER_DATE" label="Insurance Expire Date"  orderby="1"/>
+			</DocumentsInfo>
+		</info>
+	</F05030700869>
+</root>

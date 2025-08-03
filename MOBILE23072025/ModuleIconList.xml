@@ -1,0 +1,34 @@
+<root>
+<Module>
+  <IMLC>
+	<icon>https://cdn-icons-png.flaticon.com/256/4258/4258187.png</icon>
+	<desc>Import Letters of Credit</desc>
+	<style>fontfamily:inter;fontstyle:italic;fontsize:15;fontweight:w700;color:#ca6c2e</style>
+  </IMLC>
+  <OWGT>
+	<icon>https://cdn-icons-png.flaticon.com/256/4258/4258424.png</icon>
+	<desc>Outward Guarantees</desc>
+	<style>fontfamily:inter;fontstyle:italic;fontsize:15;fontweight:w700;color:#ca6c2e</style>
+  </OWGT>
+  <EXLC>
+	<icon>https://cdn-icons-png.flaticon.com/256/4148/4148650.png</icon>
+	<desc>Export Letter of Credit</desc>
+	<style>fontfamily:inter;fontstyle:italic;fontsize:15;fontweight:w700;color:#ca6c2e</style>
+  </EXLC>  
+  <EXCO>
+	<icon>https://cdn-icons-png.flaticon.com/256/13559/13559563.png</icon>
+	<desc>Export Collection</desc>
+	<style>fontfamily:inter;fontstyle:italic;fontsize:15;fontweight:w700;color:#ca6c2e</style>
+  </EXCO>
+  <FAP>
+	<icon>https://cdn-icons-png.flaticon.com/256/4148/4148650.png</icon>
+	<desc>Financial Analytics Portal</desc>
+	<style>fontfamily:inter;fontstyle:italic;fontsize:15;fontweight:w700;color:#2e5ca6</style>
+  </FAP>
+  <DAP>
+	<icon>https://cdn-icons-png.flaticon.com/256/4258/4258187.png</icon>
+	<desc>Dashboard Analytics Portal</desc>
+	<style>fontfamily:inter;fontstyle:italic;fontsize:15;fontweight:w700;color:#2e5ca6</style>
+  </DAP>
+</Module>
+</root>

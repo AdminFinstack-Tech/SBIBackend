@@ -1,0 +1,2417 @@
+{
+	"info": {
+		"_postman_id": "1cf482b2-1985-43cd-9743-3e96183c3e02",
+		"name": "FinMobileAPI",
+		"description": "Fin Mobile App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "137325"
+	},
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{authToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Set global base URL if not already set",
+					"if (!pm.globals.get('baseUrl')) {",
+					"    pm.globals.set('baseUrl', 'http://213.42.43.227');",
+					"}",
+					"",
+					"// Check if global auth token exists",
+					"var authToken = pm.globals.get('authToken');",
+					"if (!authToken) {",
+					"    console.log('No auth token found. Please run the Login request first.');",
+					"} else {",
+					"    console.log('Using auth token: ' + authToken.substring(0, 20) + '...');",
+					"}"
+				]
+			}
+		}
+	],
+	"item": [
+		{
+			"name": "Intro",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');\r",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}"
+					},
+					{
+						"key": "channel",
+						"value": "Eximbills"
+					},
+					{
+						"key": "timeStamp",
+						"value": "12"
+					},
+					{
+						"key": "entity",
+						"value": "12"
+					},
+					{
+						"key": "SecertKey",
+						"value": "FinMobileCS"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseUrl}}/mobileapi-0.0.1/Intro",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"mobileapi-0.0.1",
+						"Intro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');\r",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Parse the response\r",
+							"var res = pm.response.json();\r",
+							"\r",
+							"// Store token in global variables\r",
+							"if (res.Token) {\r",
+							"    pm.globals.set('authToken', res.Token);\r",
+							"    console.log('Token stored globally: ' + res.Token);\r",
+							"} else {\r",
+							"    console.log('No token found in response');\r",
+							"}\r",
+							"\r",
+							"// Also set in environment for backward compatibility\r",
+							"pm.environment.set('Token', res.Token);\r",
+							"\r",
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"  pm.expect(pm.response.code).to.equal(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Verify the response schema for required fields\", function () {\r",
+							"    const responseData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(responseData).to.be.an('object');\r",
+							"    pm.expect(responseData.Token).to.exist;\r",
+							"    pm.expect(responseData.MessageId).to.exist;\r",
+							"    pm.expect(responseData.RequestId).to.exist;\r",
+							"    pm.expect(responseData.StatusCode).to.exist;\r",
+							"    pm.expect(responseData.StatusDescription).to.exist;\r",
+							"    pm.expect(responseData.Timestamp).to.exist;\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}"
+					},
+					{
+						"key": "channel",
+						"value": "Eximbills"
+					},
+					{
+						"key": "timeStamp",
+						"value": "12"
+					},
+					{
+						"key": "entity",
+						"value": "12"
+					},
+					{
+						"key": "SecertKey",
+						"value": "FinMobileCS"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"CorporateId\": \"8678985\",\r\n  \"Password\": \"12121212\",\r\n  \"UserId\": \"OP01\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cs-ce-sec-api-0.0.1/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cs-ce-sec-api-0.0.1",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}"
+							},
+							{
+								"key": "channel",
+								"value": "Eximbills"
+							},
+							{
+								"key": "timeStamp",
+								"value": "12"
+							},
+							{
+								"key": "entity",
+								"value": "12"
+							},
+							{
+								"key": "SecertKey",
+								"value": "FinMobileCS"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"CorporateId\": \"8678985\",\r\n  \"Password\": \"12121212\",\r\n  \"UserId\": \"OP01\"\r\n}"
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/login",
+							"protocol": "http",
+							"host": [
+								"dev-arb"
+							],
+							"port": "9081",
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Servlet/3.1"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-FRAME-OPTIONS",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Language",
+							"value": "en-GB"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 17 Nov 2024 13:58:26 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"Token\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJPUDAxIiwiU2VjcmV0S2V5IjoiRmluTW9iaWxlQ1MiLCJVc2VySWQiOiJPUDAxIiwiQ29ycG9yYXRlSWQiOiI4Njc4OTg1IiwiZXhwIjoxNzMxODUzMTA3LCJpYXQiOjE3MzE4NTE5MDd9.5KGlyll1Q1wqfDH12REB3Z1k9jIprE6FYAFZJqpYkEZVOHli6uop1Scdiz4Tiwnu0qHYThX9Rw8FUBLCBPBUug\",\n    \"MessageId\": \"54653\",\n    \"RequestId\": \"8cc71c9b-2b9b-47d8-b058-e05c51139a0d\",\n    \"StatusCode\": \"00\",\n    \"StatusDescription\": \"Login Successfully\",\n    \"Timestamp\": \"2024-11-17T17:58:26Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Forgot password",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');\r",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}",
+						"type": "text"
+					},
+					{
+						"key": "channel",
+						"value": "Eximbills",
+						"type": "text"
+					},
+					{
+						"key": "timeStamp",
+						"value": "12",
+						"type": "text"
+					},
+					{
+						"key": "entity",
+						"value": "12",
+						"type": "text"
+					},
+					{
+						"key": "SecertKey",
+						"value": "FinMobileCS",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"CorporateId\": \"1517524\",\r\n  \"UserId\": \"testcompany\",\r\n  \"Email\": \"user@example.com\",\r\n  \"MobileNo\": \"966568247054\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cs-ce-sec-api-0.0.1/forgotpassword",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cs-ce-sec-api-0.0.1",
+						"forgotpassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Forgot Credential",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');\r",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}",
+						"type": "text"
+					},
+					{
+						"key": "channel",
+						"value": "Eximbills",
+						"type": "text"
+					},
+					{
+						"key": "timeStamp",
+						"value": "12",
+						"type": "text"
+					},
+					{
+						"key": "entity",
+						"value": "12",
+						"type": "text"
+					},
+					{
+						"key": "SecertKey",
+						"value": "FinMobileCS",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Email\": \"ilyas@chinasystems-me.com\",\r\n    \"MobileNo\": \"971527704662\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cs-ce-sec-api-0.0.1/forgotcredential",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cs-ce-sec-api-0.0.1",
+						"forgotcredential"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset password",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');\r",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}",
+						"type": "text"
+					},
+					{
+						"key": "channel",
+						"value": "Eximbills",
+						"type": "text"
+					},
+					{
+						"key": "timeStamp",
+						"value": "12",
+						"type": "text"
+					},
+					{
+						"key": "entity",
+						"value": "12",
+						"type": "text"
+					},
+					{
+						"key": "SecertKey",
+						"value": "FinMobileCS",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"CorporateId\": \"1517524\",\r\n    \"password\": \"11111111\",\r\n    \"UserId\": \"testcompany\",\r\n    \"Email\": \"user@example.com\",\r\n    \"MobileNo\": \"966568247054\",\r\n    \"OTP\": \"965943\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cs-ce-sec-api-0.0.1/resetpassword",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cs-ce-sec-api-0.0.1",
+						"resetpassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Credential",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');\r",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}",
+						"type": "text"
+					},
+					{
+						"key": "channel",
+						"value": "Eximbills",
+						"type": "text"
+					},
+					{
+						"key": "timeStamp",
+						"value": "12",
+						"type": "text"
+					},
+					{
+						"key": "entity",
+						"value": "12",
+						"type": "text"
+					},
+					{
+						"key": "SecertKey",
+						"value": "FinMobileCS",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"CorporateId\": \"1517524\",\r\n    \"password\": \"11111111\",\r\n    \"UserId\": \"testcompany\",\r\n    \"Email\": \"user@example.com\",\r\n    \"MobileNo\": \"966568247054\",\r\n    \"OTP\": \"965943\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cs-ce-sec-api-0.0.1/resetpassword",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cs-ce-sec-api-0.0.1",
+						"resetpassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logoff",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');\r",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}",
+						"type": "text"
+					},
+					{
+						"key": "channel",
+						"value": "Eximbills",
+						"type": "text"
+					},
+					{
+						"key": "timeStamp",
+						"value": "12",
+						"type": "text"
+					},
+					{
+						"key": "entity",
+						"value": "12",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer \n eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWSUpBWUFOIiwiVXNlcklkIjoiVklKQVlBTiIsIkNvcnBvcmF0ZUlkIjoiMDAwMTIzMTIzIiwiZXhwIjoxNzA1MDg5MDM3LCJpYXQiOjE3MDUwODg0Mzd9.Q9XYe7elD3EuithKeRvgkkHdfGLqOS-CFteUVdLjVrk7Y4kKRw18XfkSZ7zjGDs8UIfBxlKhxpIlResM4SG3vg",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"CorporateId\": \"000123123\",\r\n  \"UserId\": \"VIJAYAN\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cs-ce-sec-api-0.0.1/Logoff",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cs-ce-sec-api-0.0.1",
+						"Logoff"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Profile",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');\r",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}"
+					},
+					{
+						"key": "channel",
+						"value": "Eximbills"
+					},
+					{
+						"key": "timeStamp",
+						"value": "12"
+					},
+					{
+						"key": "entity",
+						"value": "12"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"CorporateId\": \"6873261\",\r\n  \"UserId\": \"TEST001\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cs-ce-sec-api-0.0.1/Profile",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cs-ce-sec-api-0.0.1",
+						"Profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Preference",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');\r",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}",
+						"type": "text"
+					},
+					{
+						"key": "channel",
+						"value": "Eximbills",
+						"type": "text"
+					},
+					{
+						"key": "timeStamp",
+						"value": "12",
+						"type": "text"
+					},
+					{
+						"key": "entity",
+						"value": "12",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"CorporateId\": \"CSME\",\r\n    \"UserId\": \"CSMETEST\",\r\n    \"SavePreferenceRespInfo\": [\r\n        {\r\n            \"PreferenceListInfo\": {\r\n                \"MODULE\": \"IMLC;OWGT\",\r\n                \"LANG\": \"EN\"\r\n            }\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cs-ce-sec-api-0.0.1/Preference",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cs-ce-sec-api-0.0.1",
+						"Preference"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SaveFBToken",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');\r",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}",
+						"type": "text"
+					},
+					{
+						"key": "channel",
+						"value": "Eximbills",
+						"type": "text"
+					},
+					{
+						"key": "timeStamp",
+						"value": "12",
+						"type": "text"
+					},
+					{
+						"key": "entity",
+						"value": "12",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"CorporateId\": \"CSME\",\r\n    \"UserId\": \"CSMETEST\",\r\n    \"SaveFBTokenInfo\": [\r\n        {\r\n            \"TokenListInfo\": {\r\n                \"FBToken\": \"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx\"\r\n            }\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cs-ce-sec-api-0.0.1/SaveFBToken",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cs-ce-sec-api-0.0.1",
+						"SaveFBToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Preference",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');\r",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}"
+					},
+					{
+						"key": "channel",
+						"value": "Eximbills"
+					},
+					{
+						"key": "timeStamp",
+						"value": "12"
+					},
+					{
+						"key": "entity",
+						"value": "12"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/cs-ce-sec-api-0.0.1/Preference/CSME&CSMETEST",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cs-ce-sec-api-0.0.1",
+						"Preference",
+						"CSME&CSMETEST"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "InquireList",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');\r",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}"
+					},
+					{
+						"key": "channel",
+						"value": "Eximbills"
+					},
+					{
+						"key": "timeStamp",
+						"value": "12"
+					},
+					{
+						"key": "entity",
+						"value": "12"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"CorporateId\": \"6873261\",\r\n    \"Module\": \"EXLC\",\r\n    \"UserId\": \"TEST002\",\r\n    \"filterby\": [\r\n        // {\r\n        //     \"Currency\" : \"JPY\"\r\n        // }\r\n    ],\r\n    \"page\": 1,\r\n    \"per_page\": 10,\r\n    \"Type\": \"INQ\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cs-ce-sec-api-0.0.1/InquireList",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cs-ce-sec-api-0.0.1",
+						"InquireList"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "DyanamicInquire",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "channel",
+								"value": "Eximbills",
+								"type": "text"
+							},
+							{
+								"key": "timeStamp",
+								"value": "12",
+								"type": "text"
+							},
+							{
+								"key": "entity",
+								"value": "12",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"CorporateId\": \"1517524\",\r\n  \"Module\": \"IMLC\",\r\n  \"UserId\": \"testcompany\",\r\n  \"filterby\": [],\r\n  \"page\": 1,\r\n  \"per_page\": 10\r\n}"
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/DyanamicInquire",
+							"protocol": "http",
+							"host": [
+								"dev-arb"
+							],
+							"port": "9081",
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"DyanamicInquire"
+							]
+						}
+					},
+					"status": "Not Implemented",
+					"code": 501,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Servlet/3.1"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Language",
+							"value": "en-GB"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "Close"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 15 Jan 2024 06:47:34 GMT"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "GlobalSearch",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');\r",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}",
+						"type": "text"
+					},
+					{
+						"key": "channel",
+						"value": "Eximbills",
+						"type": "text"
+					},
+					{
+						"key": "timeStamp",
+						"value": "12",
+						"type": "text"
+					},
+					{
+						"key": "entity",
+						"value": "12",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"CorporateId\": \"6873261\",\r\n    \"Module\": \"IMLC\",\r\n    \"UserId\": \"TEST001\",\r\n    \"page\": 1,\r\n    \"per_page\": 10,\r\n    \"Type\": \"AUTH\",\r\n    \"search\" : \"10\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cs-ce-sec-api-0.0.1/globalsearch",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cs-ce-sec-api-0.0.1",
+						"globalsearch"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "DyanamicInquire",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "requestId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "channel",
+								"value": "Eximbills",
+								"type": "text"
+							},
+							{
+								"key": "timeStamp",
+								"value": "12",
+								"type": "text"
+							},
+							{
+								"key": "entity",
+								"value": "12",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"CorporateId\": \"1517524\",\r\n  \"Module\": \"IMLC\",\r\n  \"UserId\": \"testcompany\",\r\n  \"filterby\": [],\r\n  \"page\": 1,\r\n  \"per_page\": 10\r\n}"
+						},
+						"url": {
+							"raw": "http://213.42.43.227/cs-ce-sec-api-0.0.1/DyanamicInquire",
+							"protocol": "http",
+							"host": [
+								"dev-arb"
+							],
+							"port": "9081",
+							"path": [
+								"cs-ce-sec-api-0.0.1",
+								"DyanamicInquire"
+							]
+						}
+					},
+					"status": "Not Implemented",
+					"code": 501,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Servlet/3.1"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Language",
+							"value": "en-GB"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "Close"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 15 Jan 2024 06:47:34 GMT"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "InquireTransaction",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');\r",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}",
+						"type": "text"
+					},
+					{
+						"key": "channel",
+						"value": "Eximbills",
+						"type": "text"
+					},
+					{
+						"key": "timeStamp",
+						"value": "12",
+						"type": "text"
+					},
+					{
+						"key": "entity",
+						"value": "12",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"CorporateId\": \"1517524\",\r\n  \"EventTimes\": \"1\",\r\n  \"MainRef\": \"488000004922011\",\r\n  \"Module\": \"OWGT\",\r\n  \"UserId\": \"test\",\r\n  \"functionId\": \"F05030700826\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cs-ce-sec-api-0.0.1/InquireTransaction",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cs-ce-sec-api-0.0.1",
+						"InquireTransaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "InquireAuthUserList",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');\r",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}",
+						"type": "text"
+					},
+					{
+						"key": "channel",
+						"value": "Eximbills",
+						"type": "text"
+					},
+					{
+						"key": "timeStamp",
+						"value": "12",
+						"type": "text"
+					},
+					{
+						"key": "entity",
+						"value": "12",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"CorporateId\": \"6873261\",\r\n  \"EventTimes\": \"1\",\r\n  \"MainRef\": \"488OWG0001132012\",\r\n  \"Module\": \"OWGT\",\r\n  \"UserId\": \"test\",\r\n  \"functionId\": \"F05030700826\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cs-ce-sec-api-0.0.1/InquireAuthUserList",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cs-ce-sec-api-0.0.1",
+						"InquireAuthUserList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "InquireAttachment",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');\r",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}",
+						"type": "text"
+					},
+					{
+						"key": "channel",
+						"value": "Eximbills",
+						"type": "text"
+					},
+					{
+						"key": "timeStamp",
+						"value": "12",
+						"type": "text"
+					},
+					{
+						"key": "entity",
+						"value": "12",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"AttachmentRef\": \"20230928134918526977203369140625\",\r\n  \"MainRef\": \"488000004922011\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cs-ce-sec-api-0.0.1/InquireAttachment",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cs-ce-sec-api-0.0.1",
+						"InquireAttachment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Notification",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');\r",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.globals.get(\"Token\");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}",
+						"type": "text"
+					},
+					{
+						"key": "channel",
+						"value": "Eximbills",
+						"type": "text"
+					},
+					{
+						"key": "timeStamp",
+						"value": "12",
+						"type": "text"
+					},
+					{
+						"key": "entity",
+						"value": "12",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"CorporateId\": \"1517524\",    \r\n    \"UserId\": \"testcompany\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cs-ce-sec-api-0.0.1/Notification",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cs-ce-sec-api-0.0.1",
+						"Notification"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NotificationJob",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');\r",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.globals.get(\"Token\");"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}",
+						"type": "text"
+					},
+					{
+						"key": "channel",
+						"value": "Eximbills",
+						"type": "text"
+					},
+					{
+						"key": "timeStamp",
+						"value": "12",
+						"type": "text"
+					},
+					{
+						"key": "entity",
+						"value": "12",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cronExpression\": \"0 */20 * * * *\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cs-ce-sec-api-0.0.1/updateBatchJobTiming",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cs-ce-sec-api-0.0.1",
+						"updateBatchJobTiming"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BankLimitInquire",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');\r",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.globals.get(\"Token\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}",
+						"type": "text"
+					},
+					{
+						"key": "channel",
+						"value": "Eximbills",
+						"type": "text"
+					},
+					{
+						"key": "timeStamp",
+						"value": "12",
+						"type": "text"
+					},
+					{
+						"key": "entity",
+						"value": "12",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"CorporateId\": \"1517524\",\r\n    \"UserId\": \"testcompany\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cs-ce-sec-api-0.0.1/BankLimitInquire",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cs-ce-sec-api-0.0.1",
+						"BankLimitInquire"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authorize",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');\r",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}",
+						"type": "text"
+					},
+					{
+						"key": "channel",
+						"value": "Eximbills",
+						"type": "text"
+					},
+					{
+						"key": "timeStamp",
+						"value": "12",
+						"type": "text"
+					},
+					{
+						"key": "entity",
+						"value": "12",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Action\": \"Accepted\",\r\n  \"AuthorizerBy\": \"CSMETEST\",\r\n  \"AuthorizerDate\": \"2024-01-07\",\r\n  \"AuthorizerTime\": \"9:36\",\r\n  \"CorporateId\": \"CSME\",\r\n  \"MainRef\": \"488OGT000007AA\",\r\n  \"UserId\": \"CSMETEST\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cs-ce-sec-api-0.0.1/Authorize",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cs-ce-sec-api-0.0.1",
+						"Authorize"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EventHistory",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');\r",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}",
+						"type": "text"
+					},
+					{
+						"key": "channel",
+						"value": "Eximbills",
+						"type": "text"
+					},
+					{
+						"key": "timeStamp",
+						"value": "12",
+						"type": "text"
+					},
+					{
+						"key": "entity",
+						"value": "12",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"CorporateId\": \"1517524\",\r\n    \"MainRef\": \"488OG0004132011\",\r\n    \"Module\": \"OWGT\",\r\n    \"UserId\": \"testcompany\",\r\n    \"page\": 1,\r\n    \"per_page\": 10\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cs-ce-sec-api-0.0.1/InquireEvent",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cs-ce-sec-api-0.0.1",
+						"InquireEvent"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NotificationFirebase",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FireBaseNotification",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "key=AAAAbr0zVNw:APA91bEA31ntK-nASSEcmrTdohaXARuSUgrsf9XW_zPj3vmVhtXk_pbVFd2i7yWncczuBs9UEULRREBNfFXP9YZQ3mJzCABzlWO-AOHEifsop4iFyFTTT798QLkYm7zxuvcQpbzrizDc"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"to\": \"fEMwEHIJRPC1NF5HYCubmp:APA91bG20GUHhd5FKBxZDSpZa_hJ9om3NTu83KAOwQWdTEsAmdEMsEqfDI3dY3lPzYplzp8FbPKWx5cCQVVPsJL2_qZQU_RC_wKyC5Befteb0fzCrEuKgft-94QFkmmWB0I2WBgdOtvn\",\r\n    \"notification\": {\r\n        \"body\": \"New announcement assigned\",\r\n        \"content_available\": true,\r\n        \"priority\": \"high\",\r\n        \"subtitle\": \"Elementary School\",\r\n        \"title\": \"test\"\r\n    },\r\n    \"data\": {\r\n        \"body\": \"New announcement assigned\",\r\n        \"content_available\": true,\r\n        \"priority\": \"high\",\r\n        \"subtitle\": \"Elementary School\",\r\n        \"title\": \"test\",\r\n        \"image_url\": \"https://example.com/image.jpg\"\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/fcm/send",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"fcm",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');\r",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}",
+						"type": "text"
+					},
+					{
+						"key": "channel",
+						"value": "Eximbills",
+						"type": "text"
+					},
+					{
+						"key": "timeStamp",
+						"value": "12",
+						"type": "text"
+					},
+					{
+						"key": "entity",
+						"value": "12",
+						"type": "text"
+					},
+					{
+						"key": "CIC",
+						"value": "0001517524",
+						"type": "text"
+					},
+					{
+						"key": "UserId",
+						"value": "OWGT_Checker",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Date\": \"2025-02-10\",\r\n    \"Branch\": \"488\",\r\n    \"BranchDetails\": {\r\n        \"City\": \"riyadh\",\r\n        \"BranchName\": \"riyadhARR\",\r\n        \"ContactPerson\": \"digital\",\r\n        \"BranchAddress\": \"NRR\",\r\n        \"BranchLocationLink\": \"NRR\"\r\n    },\r\n    \"ApplicationDetails\": {\r\n        \"TextGuaranteeIssued\": {\r\n            \"option\": \"UndersignedOption\"\r\n        },\r\n        \"OutwardGuarantee\": \"Local\",\r\n        \"LocalDetails\": {\r\n            \"BeneficiaryName\": \"Aliha\",\r\n            \"Address\": \"Alexandria\",\r\n            \"ZipCode\": \"293\",\r\n            \"POBox\": \"0025\",\r\n            \"City\": \"Alexandria\",\r\n            \"MobileNumber\": \"567627363\"\r\n        }\r\n    },\r\n    \"GuaranteeDetails\": {\r\n        \"Typeofguarantee\": \"Bid Bond\",\r\n        \"PurposeofGuarantee\": \"Testing team\",\r\n        \"CashMargin\": \"FullCover\",\r\n        \"Amount\": \"1000\",\r\n        \"Currency\": \"SAR\",\r\n        \"AmountInWords\": \"الف ريال\",\r\n        \"ContractValue\": \"1\",\r\n        \"ExpiryDate\": \"2025-05-08\",\r\n        \"GuaranateeWording\": \"ilyas hussain \"\r\n    },\r\n    \"CustomerDetails\": {\r\n        \"CustomerName\": \"haj umrah\",\r\n        \"AccountNumber\": \"000608874589117212321\",\r\n        \"ContactName\": \"haj umrah\",\r\n        \"ContactNumber\": \"0507797728\"\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cs-ce-sec-api-0.0.1/RequestLG?Module=OWGT",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cs-ce-sec-api-0.0.1",
+						"RequestLG"
+					],
+					"query": [
+						{
+							"key": "Module",
+							"value": "OWGT"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DashboardAnalytics",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}",
+						"type": "text"
+					},
+					{
+						"key": "channel",
+						"value": "FinMobileBankingApp",
+						"type": "text"
+					},
+					{
+						"key": "timeStamp",
+						"value": "{{$timestamp}}",
+						"type": "text"
+					},
+					{
+						"key": "version",
+						"value": "1.0.0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"CorporateId\": \"1517524\",\n    \"UserId\": \"testcompany\",\n    \"Period\": \"30d\",\n    \"Module\": \"IWGT;OWGT;IMLC\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cs-ce-sec-api-0.0.1/DashboardAnalytics",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cs-ce-sec-api-0.0.1",
+						"DashboardAnalytics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TransactionAnalytics",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}",
+						"type": "text"
+					},
+					{
+						"key": "channel",
+						"value": "FinMobileBankingApp",
+						"type": "text"
+					},
+					{
+						"key": "timeStamp",
+						"value": "{{$timestamp}}",
+						"type": "text"
+					},
+					{
+						"key": "version",
+						"value": "1.0.0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"CorporateId\": \"1517524\",\n    \"UserId\": \"testcompany\",\n    \"StartDate\": \"2024-01-01\",\n    \"EndDate\": \"2024-12-31\",\n    \"Module\": \"IWGT\",\n    \"TransactionType\": \"ALL\",\n    \"Currency\": \"SAR\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cs-ce-sec-api-0.0.1/TransactionAnalytics",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cs-ce-sec-api-0.0.1",
+						"TransactionAnalytics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ProductDistribution",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}",
+						"type": "text"
+					},
+					{
+						"key": "channel",
+						"value": "FinMobileBankingApp",
+						"type": "text"
+					},
+					{
+						"key": "timeStamp",
+						"value": "{{$timestamp}}",
+						"type": "text"
+					},
+					{
+						"key": "version",
+						"value": "1.0.0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"CorporateId\": \"1517524\",\n    \"UserId\": \"testcompany\",\n    \"Period\": \"90d\",\n    \"GroupBy\": \"product\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cs-ce-sec-api-0.0.1/ProductDistribution",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cs-ce-sec-api-0.0.1",
+						"ProductDistribution"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PortfolioValue",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}",
+						"type": "text"
+					},
+					{
+						"key": "channel",
+						"value": "FinMobileBankingApp",
+						"type": "text"
+					},
+					{
+						"key": "timeStamp",
+						"value": "{{$timestamp}}",
+						"type": "text"
+					},
+					{
+						"key": "version",
+						"value": "1.0.0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"CorporateId\": \"1517524\",\n    \"UserId\": \"testcompany\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cs-ce-sec-api-0.0.1/PortfolioValue",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cs-ce-sec-api-0.0.1",
+						"PortfolioValue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ModuleAnalytics",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');",
+							"postman.setEnvironmentVariable('guid', uuid.v4());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{authToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "requestId",
+						"value": "{{$guid}}",
+						"type": "text"
+					},
+					{
+						"key": "channel",
+						"value": "FinMobileBankingApp",
+						"type": "text"
+					},
+					{
+						"key": "timeStamp",
+						"value": "{{$timestamp}}",
+						"type": "text"
+					},
+					{
+						"key": "version",
+						"value": "1.0.0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"CorporateId\": \"1517524\",\n    \"UserId\": \"testcompany\",\n    \"Module\": \"IMLC\",\n    \"Period\": \"30d\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/cs-ce-sec-api-0.0.1/ModuleAnalytics",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"cs-ce-sec-api-0.0.1",
+						"ModuleAnalytics"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "Token",
+			"value": "Token"
+		},
+		{
+			"key": "NewToken",
+			"value": "NewToken"
+		},
+		{
+			"key": "baseUrl",
+			"value": "http://213.42.43.227",
+			"type": "string"
+		}
+	]
+}

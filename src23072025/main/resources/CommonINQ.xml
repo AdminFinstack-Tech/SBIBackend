@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<InquirySqlQueryFirst>
+		<![CDATA[ SELECT * FROM ( SELECT A.*, rownum r FROM ( ]]></InquirySqlQueryFirst>
+	<InquirySqlQueryMiddle>
+		<![CDATA[ SELECT * FROM CETRX.TRX_INBOX  ]]></InquirySqlQueryMiddle>
+	<InquirySqlQueryEnd>
+		<![CDATA[ ORDER BY CUST_NO ) A WHERE rownum < (( ${pageNo} * ${pageSize}) + 1 ) ) WHERE WHERE ( 1=1 ) AND C_BK_GROUP_ID = 'CSBANK' AND  C_UNIT_CODE = '${unitcode}' AND r >= ((( ${pageNo} -1) * ${pageSize}) + 1) ]]></InquirySqlQueryEnd>
+	<IMLC>
+			<![CDATA[ SELECT * FROM CETRX.IMLC_EM_ISSUE ]]></IMLC>
+	<GTEE>
+			<![CDATA[ SELECT * FROM CETRX.OWGT_EM_GTEEDTLS ]]></GTEE>
+	<CommonInquiry>
+		<C_TRX_STATUS value="C_TRX_STATUS" labelname="Transaction Status" style="fontfamily:inter;fontstyle:normal;fontweight:w600;color:#F16727;fontsize:9;" orderby="1"/>
+		<C_MAIN_REF value="C_MAIN_REF" labelname="Reference" style="fontfamily:inter;fontstyle:normal;fontweight:w400;color:#3E3E3E;fontsize:9;" orderby="3"/>
+		<C_MODULE value="C_MODULE" labelname="Module" style="fontfamily:inter;fontstyle:normal;fontweight:w600;color:#F16727;fontsize:9;" orderby="4"/>
+		<C_FUNC_ID value="C_FUNC_ID" labelname="Function Id" style="fontfamily:inter;fontstyle:normal;fontweight:w400;color:#3E3E3E;fontsize:9;" orderby="5"/>
+		<I_EVENT_TIMES value="I_EVENT_TIMES" labelname="Event Times" style="fontfamily:inter;fontstyle:normal;fontweight:w400;color:#3E3E3E;fontsize:9;" orderby="6"/>
+		<C_BK_GROUP_ID value="C_BK_GROUP_ID" labelname="Bank Group Id" style="fontfamily:inter;fontstyle:normal;fontweight:w400;color:#3E3E3E;fontsize:9;" orderby="6"/>
+		<C_UNIT_CODE value="C_UNIT_CODE" labelname="Corporate Id" style="fontfamily:inter;fontstyle:normal;fontweight:w400;color:#3E3E3E;fontsize:9;" orderby="6"/>
+	</CommonInquiry>
+</root>

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.4.1</version>
+		<relativePath />
+		<!-- lookup parent from repository -->
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>FinMobileApp</groupId>
+	<artifactId>FinMobileApp</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>FinMobileApp</name>
+	<description>FinMobileApp</description>
+	<packaging>war</packaging>
+	<properties>
+		<java.version>1.8</java.version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<springfox-version>2.7.0</springfox-version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-annotations</artifactId>
+			<version>1.5.21</version>
+		</dependency>
+		<dependency>
+			<groupId>io.swagger.core.v3</groupId>
+			<artifactId>swagger-annotations</artifactId>
+			<version>2.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-models</artifactId>
+			<version>1.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${springfox-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${springfox-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.joschi.jackson</groupId>
+			<artifactId>jackson-datatype-threetenbp</artifactId>
+			<version>2.6.4</version>
+		</dependency>
+		<!-- Bean Validation API support -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.woodstox</groupId>
+			<artifactId>stax2-api</artifactId>
+			<version>4.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang-2.1</artifactId>
+			<version>2.1</version>
+			<scope>system</scope>
+			<systemPath>/Users/ilyasashu/StudioProjects/banking1/backend/src/main/resources/CE_LIB/commons-lang-2.1.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.csme.sec</groupId>
+			<artifactId>com.csme.sec.service</artifactId>
+			<version>2.1</version>
+			<scope>system</scope>
+			<systemPath>/Users/ilyasashu/StudioProjects/banking1/backend/src/main/resources/CE_LIB/csme-ce-sec-services.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.csme.sec</groupId>
+			<artifactId>com.csme.sec.service</artifactId>
+			<version>2.2</version>
+			<scope>system</scope>
+			<systemPath>/Users/ilyasashu/StudioProjects/banking1/backend/src/main/resources/CE_LIB/OpenBankingServices.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+		<!-- >dependency> <groupId>com.sun.xml.bind</groupId> <artifactId>jaxb-xjc</artifactId> 
+			<version>2.1.6</version> </dependency -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>JSONObject</artifactId>
+			<version>0.9.1</version>
+			<scope>system</scope>
+			<systemPath>/Users/ilyasashu/StudioProjects/banking1/backend/src/main/resources/CE_LIB/org.json.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.cs.ceap</groupId>
+			<artifactId>CEEJB</artifactId>
+			<version>2.3</version>
+			<scope>system</scope>
+			<systemPath>/Users/ilyasashu/StudioProjects/banking1/backend/src/main/resources/CE_LIB/CEEJB.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>2.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<!-- Tess4J for OCR -->
+		<dependency>
+			<groupId>net.sourceforge.tess4j</groupId>
+			<artifactId>tess4j</artifactId>
+			<version>4.5.5</version>
+		</dependency>
+
+		<!-- Maven Dependency for OpenNLP -->
+		<!-- https://mvnrepository.com/artifact/org.apache.opennlp/opennlp-tools -->
+		<dependency>
+			<groupId>org.apache.opennlp</groupId>
+			<artifactId>opennlp-tools</artifactId>
+			<version>1.9.3</version>
+		</dependency>
+
+		<!--dependency> <groupId>com.xmlcalabash</groupId> <artifactId>xmlcalabash</artifactId> 
+			<version>1.1.16-97</version> </dependency -->
+
+		<!-- https://mvnrepository.com/artifact/xerces/xercesImpl -->
+		<!--dependency> <groupId>xerces</groupId> <artifactId>xercesImpl</artifactId> 
+			<version>2.11.0</version> </dependency -->
+
+		<!-- https://mvnrepository.com/artifact/javax.xml/jaxp-api -->
+		<!--dependency> <groupId>javax.xml</groupId> <artifactId>jaxp-api</artifactId> 
+			<version>1.4</version> </dependency -->
+
+		<!--dependency> <groupId>xml-apis</groupId> <artifactId>xml-apis</artifactId> 
+			<version>1.4.01</version> </dependency -->
+
+		<dependency>
+			<groupId>edu.stanford.nlp</groupId>
+			<artifactId>stanford-corenlp</artifactId>
+			<version>4.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>edu.stanford.nlp</groupId>
+			<artifactId>stanford-corenlp</artifactId>
+			<version>4.4.0</version>
+			<classifier>models</classifier>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-text</artifactId>
+			<version>1.10.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc6 -->
+		<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.2.0.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.twilio.sdk</groupId>
+			<artifactId>twilio</artifactId>
+			<version>8.20.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.13</version> <!-- Or any compatible version -->
+		</dependency>
+
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.2</version> <!-- Or the latest version -->
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.tensorflow/tensorflow -->
+		<dependency>
+			<groupId>org.tensorflow</groupId>
+			<artifactId>tensorflow</artifactId>
+			<version>1.15.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-batch</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.jsqlparser</groupId>
+			<artifactId>jsqlparser</artifactId>
+			<version>4.8</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.firebase</groupId>
+			<artifactId>firebase-admin</artifactId>
+			<version>8.0.0</version> <!-- Use the latest version -->
+		</dependency>
+
+	</dependencies>
+	<build>
+		<plugins>
+			<!-- plugin> <groupId>io.swagger.codegen.v3</groupId> <artifactId>swagger-codegen-maven-plugin</artifactId> 
+				<version>3.0.18</version> <executions> <execution> <goals> <goal>generate</goal> 
+				</goals> <configuration> <inputSpec>C:\Users\ilyas\Desktop\Ilyas\LastestFinMobileApp\src\main\resources\FinMobileAPI.yaml</inputSpec> 
+				<language>spring</language> <output>${project.basedir}</output> <generateSupportingFiles>false</generateSupportingFiles> 
+				<apiPackage>com.csme.csmeapi.api</apiPackage> <modelPackage>com.csme.csmeapi.fin.models</modelPackage> 
+				<configOptions> <dateLibrary>java8</dateLibrary> <java8>true</java8> <defaultInterfaces>false</defaultInterfaces> 
+				</configOptions> </configuration> </execution> </executions> </plugin -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<fork>true</fork>
+					<executable>C:\Program Files\Java\jdk1.8.0_241\bin\javac.exe</executable>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

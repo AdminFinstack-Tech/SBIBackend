@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <query id="getTransactionSummary">
+        <![CDATA[
+        SELECT 
+            COUNT(*) AS TOTAL_TRANSACTIONS,
+            SUM(CASE 
+                WHEN C_MODULE = 'IMLC' THEN NVL(LC_AMT, 0)
+                WHEN C_MODULE = 'EXLC' THEN NVL(LC_AMT, 0)
+                WHEN C_MODULE = 'OWGT' THEN NVL(GTEE_AMT, 0)
+                WHEN C_MODULE = 'IWGT' THEN NVL(GTEE_AMT, 0)
+                WHEN C_MODULE = 'IMCO' THEN NVL(COLL_AMT, 0)
+                WHEN C_MODULE = 'EXCO' THEN NVL(COLL_AMT, 0)
+                ELSE 0
+            END) AS TOTAL_VALUE
+        FROM CETRX.TRX_INBOX 
+        WHERE C_UNIT_CODE = '${unitcode}'
+            ${dateFilter}
+            ${moduleFilter}
+        ]]>
+    </query>
+    
+    <query id="getTransactionsByPeriod">
+        <![CDATA[
+        SELECT 
+            CASE 
+                WHEN TRX_DT >= SYSDATE - 7 THEN 'Last 7 Days'
+                WHEN TRX_DT >= SYSDATE - 30 THEN 'Last 30 Days'
+                WHEN TRX_DT >= SYSDATE - 90 THEN 'Last 90 Days'
+                ELSE 'Last Year'
+            END AS PERIOD,
+            COUNT(*) AS TRANSACTION_COUNT,
+            SUM(CASE 
+                WHEN C_MODULE = 'IMLC' THEN NVL(LC_AMT, 0)
+                WHEN C_MODULE = 'EXLC' THEN NVL(LC_AMT, 0)
+                WHEN C_MODULE = 'OWGT' THEN NVL(GTEE_AMT, 0)
+                WHEN C_MODULE = 'IWGT' THEN NVL(GTEE_AMT, 0)
+                WHEN C_MODULE = 'IMCO' THEN NVL(COLL_AMT, 0)
+                WHEN C_MODULE = 'EXCO' THEN NVL(COLL_AMT, 0)
+                ELSE 0
+            END) AS TOTAL_VALUE
+        FROM CETRX.TRX_INBOX 
+        WHERE C_UNIT_CODE = '${unitcode}'
+            AND TRX_DT >= SYSDATE - 365
+            ${moduleFilter}
+        GROUP BY 
+            CASE 
+                WHEN TRX_DT >= SYSDATE - 7 THEN 'Last 7 Days'
+                WHEN TRX_DT >= SYSDATE - 30 THEN 'Last 30 Days'
+                WHEN TRX_DT >= SYSDATE - 90 THEN 'Last 90 Days'
+                ELSE 'Last Year'
+            END
+        ]]>
+    </query>
+    
+    <query id="getModuleBreakdown">
+        <![CDATA[
+        SELECT 
+            C_MODULE AS MODULE,
+            COUNT(*) AS TRANSACTION_COUNT,
+            SUM(CASE 
+                WHEN C_MODULE = 'IMLC' THEN NVL(LC_AMT, 0)
+                WHEN C_MODULE = 'EXLC' THEN NVL(LC_AMT, 0)
+                WHEN C_MODULE = 'OWGT' THEN NVL(GTEE_AMT, 0)
+                WHEN C_MODULE = 'IWGT' THEN NVL(GTEE_AMT, 0)
+                WHEN C_MODULE = 'IMCO' THEN NVL(COLL_AMT, 0)
+                WHEN C_MODULE = 'EXCO' THEN NVL(COLL_AMT, 0)
+                ELSE 0
+            END) AS TOTAL_VALUE
+        FROM CETRX.TRX_INBOX 
+        WHERE C_UNIT_CODE = '${unitcode}'
+            ${dateFilter}
+        GROUP BY C_MODULE
+        ORDER BY TRANSACTION_COUNT DESC
+        ]]>
+    </query>
+    
+    <query id="getStatusDistribution">
+        <![CDATA[
+        SELECT 
+            CASE 
+                WHEN C_TRX_STATUS IN ('A', 'C') THEN 'APPROVED'
+                WHEN C_TRX_STATUS IN ('P', 'T') THEN 'PENDING'
+                WHEN C_TRX_STATUS = 'R' THEN 'REJECTED'
+                WHEN C_TRX_STATUS = 'D' THEN 'DRAFT'
+                ELSE 'OTHER'
+            END AS STATUS,
+            COUNT(*) AS TRANSACTION_COUNT
+        FROM CETRX.TRX_INBOX 
+        WHERE C_UNIT_CODE = '${unitcode}'
+            ${dateFilter}
+            ${moduleFilter}
+        GROUP BY 
+            CASE 
+                WHEN C_TRX_STATUS IN ('A', 'C') THEN 'APPROVED'
+                WHEN C_TRX_STATUS IN ('P', 'T') THEN 'PENDING'
+                WHEN C_TRX_STATUS = 'R' THEN 'REJECTED'
+                WHEN C_TRX_STATUS = 'D' THEN 'DRAFT'
+                ELSE 'OTHER'
+            END
+        ]]>
+    </query>
+    
+    <query id="getMonthlyTrends">
+        <![CDATA[
+        SELECT 
+            TO_CHAR(TRX_DT, 'Mon YYYY') AS MONTH,
+            TO_CHAR(TRX_DT, 'YYYY-MM') AS MONTH_SORT,
+            COUNT(*) AS TRANSACTION_COUNT,
+            SUM(CASE 
+                WHEN C_MODULE = 'IMLC' THEN NVL(LC_AMT, 0)
+                WHEN C_MODULE = 'EXLC' THEN NVL(LC_AMT, 0)
+                WHEN C_MODULE = 'OWGT' THEN NVL(GTEE_AMT, 0)
+                WHEN C_MODULE = 'IWGT' THEN NVL(GTEE_AMT, 0)
+                WHEN C_MODULE = 'IMCO' THEN NVL(COLL_AMT, 0)
+                WHEN C_MODULE = 'EXCO' THEN NVL(COLL_AMT, 0)
+                ELSE 0
+            END) AS TOTAL_VALUE
+        FROM CETRX.TRX_INBOX 
+        WHERE C_UNIT_CODE = '${unitcode}'
+            AND TRX_DT >= ADD_MONTHS(SYSDATE, -6)
+            ${moduleFilter}
+        GROUP BY TO_CHAR(TRX_DT, 'Mon YYYY'), TO_CHAR(TRX_DT, 'YYYY-MM')
+        ORDER BY TO_CHAR(TRX_DT, 'YYYY-MM')
+        ]]>
+    </query>
+</root>

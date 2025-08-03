@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<EventSqlQuery>
+		<![CDATA[ SELECT CURRNT_STATUS,C_RELE_BY,PARENT_MAIN_REF,C_TRX_STATUS,C_CREA_BY,C_MAIN_REF,'IMLC' C_MODULE,C_FUNC_ID,I_EVENT_TIMES,C_FUNC_SHORT_NAME,D_RELE_DATE  FROM CETRX.IMLC_LEDGER WHERE ( C_MAIN_REF = '${mainref}' OR PARENT_MAIN_REF = (SELECT PARENT_MAIN_REF FROM CETRX.TRX_INBOX WHERE C_MAIN_REF = '${mainref}' ))  AND  C_UNIT_CODE = '${unitcode}' ]]></EventSqlQuery>
+	<CommonInquiry>
+		<CURRNT_STATUS value="CURRNT_STATUS" labelname="Status"  orderby="1"/>
+		<C_RELE_BY value="C_RELE_BY" labelname="Authorized By"  orderby="1"/>
+		<PARENT_MAIN_REF value="PARENT_MAIN_REF" labelname="Customer Reference"  orderby="1"/>
+		<C_MAIN_REF value="C_MAIN_REF" labelname="Bank Reference"  orderby="1"/>
+		<D_RELE_DATE value="D_RELE_DATE" labelname="Authorized Date"  orderby="8"/>
+		<C_TRX_STATUS value="C_TRX_STATUS" labelname="Transaction Status"  orderby="1"/>
+		<C_CREA_BY value="C_CREA_BY" labelname="Created By"  orderby="2"/>
+		<C_MODULE value="C_MODULE" labelname="Module"  orderby="4"/>
+		<C_FUNC_ID value="C_FUNC_ID" labelname="Function Id"  orderby="5"/>
+		<I_EVENT_TIMES value="I_EVENT_TIMES" labelname="Event Times"  orderby="6"/>
+		<C_FUNC_SHORT_NAME value="C_FUNC_SHORT_NAME" labelname="Function Short Name"  orderby="7"/>		
+	</CommonInquiry>
+</root>

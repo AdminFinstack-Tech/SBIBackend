@@ -1,0 +1,660 @@
+openapi: 3.0.1
+info:
+  title: Dashboard Analytics API
+  description: Comprehensive analytics and performance metrics API for Fin Mobile Banking App
+  contact:
+    email: ilyas@chinasystems-me.com
+  license:
+    name: FinMobileBankingApp
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+  - url: https://localhost/FinMobileBankingApp/
+  - url: http://localhost/FinMobileBankingApp/
+tags:
+  - name: Dashboard Analytics
+    description: Dashboard analytics and performance metrics
+paths:
+  /dashboardAnalytics:
+    post:
+      tags:
+        - Dashboard Analytics
+      summary: Get comprehensive dashboard analytics
+      description: Returns yearly and monthly statistics for all modules based on user access
+      operationId: getDashboardAnalytics
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id (UUID format)
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: SecertKey
+          in: header
+          description: Secret Key
+          schema:
+            type: string
+          example: FinMobileCS
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+      requestBody:
+        description: Dashboard analytics request
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DashboardAnalyticsRequest"
+        required: true
+      responses:
+        200:
+          description: Dashboard analytics retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DashboardAnalyticsResponse"
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /moduleAnalytics:
+    post:
+      tags:
+        - Dashboard Analytics
+      summary: Get module-specific analytics
+      description: Returns analytics for a specific module with filtering by number of months
+      operationId: getModuleAnalytics
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id (UUID format)
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: SecertKey
+          in: header
+          description: Secret Key
+          schema:
+            type: string
+          example: FinMobileCS
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+      requestBody:
+        description: Module analytics request
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ModuleAnalyticsRequest"
+        required: true
+      responses:
+        200:
+          description: Module analytics retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ModuleAnalyticsResponse"
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /beneficiaryAnalytics:
+    post:
+      tags:
+        - Dashboard Analytics
+      summary: Get beneficiary analytics
+      description: Returns top beneficiaries by transaction count with detailed statistics
+      operationId: getBeneficiaryAnalytics
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id (UUID format)
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: SecertKey
+          in: header
+          description: Secret Key
+          schema:
+            type: string
+          example: FinMobileCS
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+      requestBody:
+        description: Beneficiary analytics request
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BeneficiaryAnalyticsRequest"
+        required: true
+      responses:
+        200:
+          description: Beneficiary analytics retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BeneficiaryAnalyticsResponse"
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /performanceSummary:
+    post:
+      tags:
+        - Dashboard Analytics
+      summary: Get performance summary
+      description: Returns key performance metrics and trends summary
+      operationId: getPerformanceSummary
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id (UUID format)
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: SecertKey
+          in: header
+          description: Secret Key
+          schema:
+            type: string
+          example: FinMobileCS
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+      requestBody:
+        description: Performance summary request
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DashboardAnalyticsRequest"
+        required: true
+      responses:
+        200:
+          description: Performance summary retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        400:
+          description: Bad Request
+        500:
+          description: Internal Server Error
+
+components:
+  schemas:
+    DashboardAnalyticsRequest:
+      type: object
+      required:
+        - CorporateId
+        - UserId
+      properties:
+        CorporateId:
+          type: string
+          description: Corporate ID
+          example: "CORP001"
+        UserId:
+          type: string
+          description: User ID
+          example: "USER001"
+        DateFrom:
+          type: string
+          description: Start date for analytics (YYYY-MM-DD)
+          example: "2024-01-01"
+        DateTo:
+          type: string
+          description: End date for analytics (YYYY-MM-DD)
+          example: "2024-12-31"
+        IncludeYearlyTrends:
+          type: boolean
+          description: Include yearly trend analysis
+          default: true
+        IncludeMonthlyBreakdown:
+          type: boolean
+          description: Include monthly breakdown
+          default: true
+        GroupByCustomer:
+          type: boolean
+          description: Group results by customer
+          default: false
+
+    ModuleAnalyticsRequest:
+      type: object
+      required:
+        - CorporateId
+        - UserId
+        - Module
+        - Months
+      properties:
+        CorporateId:
+          type: string
+          description: Corporate ID
+          example: "CORP001"
+        UserId:
+          type: string
+          description: User ID
+          example: "USER001"
+        Module:
+          type: string
+          description: Module name to analyze
+          example: "IMLC"
+        Months:
+          type: integer
+          description: Number of months to analyze (looking back)
+          example: 9
+        IncludeTrends:
+          type: boolean
+          description: Include trend analysis
+          default: true
+        IncludeComparison:
+          type: boolean
+          description: Include period comparison
+          default: true
+
+    BeneficiaryAnalyticsRequest:
+      type: object
+      required:
+        - CorporateId
+        - UserId
+        - Months
+      properties:
+        CorporateId:
+          type: string
+          description: Corporate ID
+          example: "CORP001"
+        UserId:
+          type: string
+          description: User ID
+          example: "USER001"
+        Months:
+          type: integer
+          description: Number of months to analyze (looking back)
+          example: 12
+        TopCount:
+          type: integer
+          description: Number of top beneficiaries to return
+          default: 50
+        MinTransactionCount:
+          type: integer
+          description: Minimum transaction count filter
+          default: 1
+        IncludeAmountAnalysis:
+          type: boolean
+          description: Include amount-based analysis
+          default: true
+        SortBy:
+          type: string
+          description: Sort criteria
+          enum: [TRANSACTION_COUNT, TOTAL_AMOUNT, BENEFICIARY_NAME]
+          default: TRANSACTION_COUNT
+
+    DashboardAnalyticsResponse:
+      type: object
+      properties:
+        StatusCode:
+          type: string
+          description: Response status code
+          example: "00"
+        StatusDescription:
+          type: string
+          description: Response status description
+          example: "Success"
+        ModuleStatistics:
+          type: array
+          items:
+            $ref: "#/components/schemas/ModuleStatistics"
+        PerformanceMetrics:
+          type: array
+          items:
+            $ref: "#/components/schemas/PerformanceMetrics"
+        SummaryMetrics:
+          type: object
+          additionalProperties: true
+        TotalRecords:
+          type: integer
+          description: Total number of records returned
+          example: 150
+        GeneratedAt:
+          type: string
+          description: Timestamp when analytics were generated
+        AnalyticsPeriod:
+          type: string
+          description: Period covered by analytics
+
+    ModuleAnalyticsResponse:
+      type: object
+      properties:
+        StatusCode:
+          type: string
+          description: Response status code
+          example: "00"
+        StatusDescription:
+          type: string
+          description: Response status description
+          example: "Success"
+        ModuleStatistics:
+          type: array
+          items:
+            $ref: "#/components/schemas/ModuleStatistics"
+        TotalMetrics:
+          $ref: "#/components/schemas/PerformanceMetrics"
+        TotalRecords:
+          type: integer
+          description: Total number of records returned
+          example: 25
+        AnalyzedModule:
+          type: string
+          description: Module that was analyzed
+          example: "IMLC"
+        AnalyzedPeriod:
+          type: integer
+          description: Period analyzed in months
+          example: 9
+        GeneratedAt:
+          type: string
+          description: Timestamp when analytics were generated
+
+    BeneficiaryAnalyticsResponse:
+      type: object
+      properties:
+        StatusCode:
+          type: string
+          description: Response status code
+          example: "00"
+        StatusDescription:
+          type: string
+          description: Response status description
+          example: "Success"
+        BeneficiaryStatistics:
+          type: array
+          items:
+            $ref: "#/components/schemas/BeneficiaryStatistics"
+        TotalBeneficiaries:
+          type: integer
+          description: Total number of beneficiaries
+          example: 125
+        TotalTransactions:
+          type: integer
+          description: Total number of transactions
+          example: 1500
+        AnalyzedPeriod:
+          type: integer
+          description: Period analyzed in months
+          example: 12
+        GeneratedAt:
+          type: string
+          description: Timestamp when analytics were generated
+
+    ModuleStatistics:
+      type: object
+      properties:
+        Module:
+          type: string
+          description: Module name
+          example: "IMLC"
+        Year:
+          type: string
+          description: Year
+          example: "2024"
+        Month:
+          type: string
+          description: Month
+          example: "Jan"
+        Customer:
+          type: string
+          description: Customer code
+          example: "CUST001"
+        TotalLcAmt:
+          type: number
+          format: decimal
+          description: Total LC amount
+          example: 1000000.00
+        TotalCollAmt:
+          type: number
+          format: decimal
+          description: Total collection amount
+          example: 500000.00
+        TotalGteeAmt:
+          type: number
+          format: decimal
+          description: Total guarantee amount
+          example: 750000.00
+        LatestExpiry:
+          type: string
+          format: date
+          description: Latest expiry date
+        TransactionCount:
+          type: integer
+          description: Number of transactions
+          example: 25
+        AverageAmount:
+          type: number
+          format: decimal
+          description: Average transaction amount
+          example: 40000.00
+        GrowthRate:
+          type: number
+          format: double
+          description: Growth rate compared to previous period
+          example: 15.5
+
+    PerformanceMetrics:
+      type: object
+      properties:
+        Module:
+          type: string
+          description: Module name
+          example: "IMLC"
+        TotalTransactions:
+          type: integer
+          description: Total number of transactions
+          example: 150
+        TotalLcAmount:
+          type: number
+          format: decimal
+          description: Total LC amount
+          example: 15000000.00
+        TotalCollAmount:
+          type: number
+          format: decimal
+          description: Total collection amount
+          example: 8000000.00
+        TotalGteeAmount:
+          type: number
+          format: decimal
+          description: Total guarantee amount
+          example: 12000000.00
+        AverageTransactionValue:
+          type: number
+          format: decimal
+          description: Average transaction value
+          example: 233333.33
+        MonthlyGrowthRate:
+          type: number
+          format: double
+          description: Monthly growth rate percentage
+          example: 8.5
+        YearlyGrowthRate:
+          type: number
+          format: double
+          description: Yearly growth rate percentage
+          example: 25.3
+        MarketShare:
+          type: number
+          format: double
+          description: Market share percentage
+          example: 35.2
+        PerformanceScore:
+          type: number
+          format: double
+          description: Overall performance score
+          example: 85.5
+        Trend:
+          type: string
+          description: Performance trend
+          enum: [INCREASING, DECREASING, STABLE]
+          example: "INCREASING"
+
+    BeneficiaryStatistics:
+      type: object
+      properties:
+        Applicant:
+          type: string
+          description: Applicant name
+          example: "ABC Corporation"
+        Beneficiary:
+          type: string
+          description: Beneficiary name
+          example: "XYZ Trading Company"
+        TransactionCount:
+          type: integer
+          description: Number of transactions
+          example: 35
+        TotalLcAmt:
+          type: number
+          format: decimal
+          description: Total LC amount
+          example: 2500000.00
+        TotalCollAmt:
+          type: number
+          format: decimal
+          description: Total collection amount
+          example: 1200000.00
+        TotalGteeAmt:
+          type: number
+          format: decimal
+          description: Total guarantee amount
+          example: 1800000.00
+        LastTransactionDate:
+          type: string
+          format: date
+          description: Date of last transaction
+        AverageTransactionValue:
+          type: number
+          format: decimal
+          description: Average transaction value
+          example: 157142.86
+        RelationshipScore:
+          type: number
+          format: double
+          description: Relationship strength score
+          example: 85.5
+        FrequencyRank:
+          type: integer
+          description: Frequency ranking
+          example: 5
+        VolumeRank:
+          type: integer
+          description: Volume ranking
+          example: 3
+
+    ErrorResponse:
+      type: object
+      properties:
+        StatusCode:
+          type: string
+          description: Error status code
+          example: "10"
+        StatusDescription:
+          type: string
+          description: Error description
+          example: "Invalid request parameters"

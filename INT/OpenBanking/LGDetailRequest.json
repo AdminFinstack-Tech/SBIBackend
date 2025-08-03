@@ -1,0 +1,121 @@
+{
+  "LetterOfGuaranteeID": "",
+  "ConsentID": "",
+  "Status": "Pending",
+  "StatusUpdateDateTime": "2023-02-19T08:36:08.236Z",
+  "LGInfo": {
+    "Format": "MT798",
+    "CustomerRefNumber": "",
+    "CustomerCIC": "",
+    "MessageCreationDateTime": "2023-02-19T08:36:08.236Z",
+    "KindOfGuarantee": "",
+    "TypeOfGuarantee": "",
+    "FormOfGuarantee": "",
+    "WordingOfGuarantee": "",
+    "SpecialTerms": "",
+    "LanguageOfStandardWording": "",
+    "ProjectName": "",
+    "ProjectNumber": "",
+    "Applicant": {
+      "ApplicantName": "",
+      "ApplicantCRNumber": "",
+      "ApplicantType": "",
+      "ApplicantNumber": 0,
+      "ApplicantAddress": {
+        "AddressType": "KSAOB.Business",
+        "ShortAddress": "",
+        "BuildingNumber": "",
+        "UnitNumber": 0,
+        "StreetName": "",
+        "SecondaryNumber": "",
+        "District": "",
+        "PostCode": "",
+        "City": "",
+        "Country": ""
+      }
+    },
+    "GuaranteeAmount": {
+      "Type": "",
+      "Amount": "",
+      "Currency": ""
+    },
+    "ValidityType": "",
+    "ValidityExpiryDate": "",
+    "DeliveryOfOriginalGuarantee": "",
+    "DeliveryTo": "",
+    "DeliveryAddress": {
+      "Name": "",
+      "Address": {
+        "AddressType": "KSAOB.Business",
+        "ShortAddress": "",
+        "BuildingNumber": "",
+        "UnitNumber": 0,
+        "StreetName": "",
+        "SecondaryNumber": "",
+        "District": "",
+        "PostCode": "",
+        "City": "",
+        "Country": ""
+      }
+    },
+    "Beneficiary": {
+      "BeneficiaryName": "",
+      "BeneficiaryCRNumber": "",
+      "BeneficiaryType": "",
+      "BeneficiaryNumber": 0,
+      "BeneficiaryAddress": {
+        "AddressType": "KSAOB.Business",
+        "ShortAddress": "",
+        "BuildingNumber": "",
+        "UnitNumber": 0,
+        "StreetName": "",
+        "SecondaryNumber": "",
+        "District": "",
+        "PostCode": "",
+        "City": "",
+        "Country": ""
+      }
+    },
+    "LiabilityDetails": "",
+    "Reference": "",
+    "ReferenceDate1": "2023-02-19T08:36:08.236Z",
+    "ReferenceDate2": "",
+    "TotalOrderAmount": {
+      "TotalOrderAmount": "",
+      "TotalOrderCurrency": ""
+    },
+    "GuaranteeValueInPercent": 10,
+    "CustomerContact": "",
+    "BeneficiaryContact": "",
+    "BankReferenceNumber": "",
+    "TransactionReferenceNumber": "",
+    "FurtherIdentification": "",
+    "ApplicableRules": "",
+    "ChargesAndFees": "",
+    "DetailsOfGuarantee": "",
+    "TermsAndConditions": "",
+    "StartDate": "2023-02-19",
+    "GuaranteeNumber": "",
+    "SpecialAgreements": "",
+    "BankContact": "",
+    "BankToCorporateInformation": "",
+    "SpecificationOfExpiry": "",
+    "CashMarginIBAN": "",
+    "CashMarginPer": "",
+    "ChargesFeesIBAN": ""
+  },
+  "Refusal": {
+    "DemandSubmissionDate": "",
+    "DemandAmount": "",
+    "ReasonForRefusal": ""
+  },
+  "MultipleAuthorizers": {
+    "TotalRequired": 0,
+    "Authorizations": [
+    ]
+  },
+  "Attachment": {
+    "Name": "",
+    "type": ""
+  }
+}

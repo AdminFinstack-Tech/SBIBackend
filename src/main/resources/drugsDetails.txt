@@ -1,0 +1,10 @@
+anki_Brand overdrive_Brand
+just_ModelName dance_ModelName 2018_ModelName
+aoc_Brand 27"_ScreenSize monitor_Category
+horizon_ModelName zero_ModelName dawn_ModelName
+cm_Unknown 700_Unknown modem_Category
+computer_Category
+bt_Category transmitter_Category
+120hz_Unknown led_Unknown tv_Category
+vizio_Brand 4k_Unknown tv_Category
+battlefront_ModelName 2_ModelName ps4_Unknown

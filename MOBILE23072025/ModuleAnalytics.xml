@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ModuleAnalytics>
+    <!-- Module Analytics Queries -->
+    
+    <!-- Get Module Summary Analytics -->
+    <query id="getModuleSummaryAnalytics">
+        <![CDATA[
+        SELECT
+            C_MODULE AS Module,
+            COUNT(DISTINCT C_UNIT_CODE) AS TotalCustomers,
+            COUNT(*) AS TotalTransactions,
+            SUM(CASE WHEN C_STATUS = 'PENDING' THEN 1 ELSE 0 END) AS PendingCount,
+            SUM(CASE 
+                WHEN C_MODULE IN ('IMLC', 'EXLC') THEN LC_AMT
+                WHEN C_MODULE IN ('IMCO', 'EXCO') THEN COLL_AMT
+                WHEN C_MODULE = 'OWGT' THEN GTEE_AMT
+                ELSE 0
+            END) AS TotalValue,
+            C_CCY AS Currency
+        FROM
+            CETRX.TRX_INBOX
+        WHERE
+            C_UNIT_CODE = ?
+            AND C_MODULE = ?
+            AND D_SYS_OP_DATE >= ADD_MONTHS(SYSDATE, ?)
+        GROUP BY
+            C_MODULE, C_CCY
+        ]]>
+    </query>
+    
+    <!-- Get Module Transaction Trends -->
+    <query id="getModuleTransactionTrends">
+        <![CDATA[
+        SELECT
+            TO_CHAR(D_SYS_OP_DATE, 'Mon') AS Month,
+            COUNT(*) AS TransactionCount,
+            SUM(CASE 
+                WHEN C_MODULE IN ('IMLC', 'EXLC') THEN LC_AMT
+                WHEN C_MODULE IN ('IMCO', 'EXCO') THEN COLL_AMT
+                WHEN C_MODULE = 'OWGT' THEN GTEE_AMT
+                ELSE 0
+            END) AS TransactionValue
+        FROM
+            CETRX.TRX_INBOX
+        WHERE
+            C_UNIT_CODE = ?
+            AND C_MODULE = ?
+            AND D_SYS_OP_DATE >= ADD_MONTHS(SYSDATE, ?)
+            AND D_SYS_OP_DATE IS NOT NULL
+        GROUP BY
+            TO_CHAR(D_SYS_OP_DATE, 'Mon'),
+            TO_NUMBER(TO_CHAR(D_SYS_OP_DATE, 'MM'))
+        ORDER BY
+            TO_NUMBER(TO_CHAR(D_SYS_OP_DATE, 'MM'))
+        ]]>
+    </query>
+    
+    <!-- Get Top Beneficiaries by Module -->
+    <query id="getTopBeneficiariesByModule">
+        <![CDATA[
+        SELECT * FROM (
+            SELECT
+                C_BEN_NAME AS BeneficiaryName,
+                COUNT(*) AS TransactionCount,
+                SUM(CASE 
+                    WHEN C_MODULE IN ('IMLC', 'EXLC') THEN LC_AMT
+                    WHEN C_MODULE IN ('IMCO', 'EXCO') THEN COLL_AMT
+                    WHEN C_MODULE = 'OWGT' THEN GTEE_AMT
+                    ELSE 0
+                END) AS TotalValue
+            FROM
+                CETRX.TRX_INBOX
+            WHERE
+                C_UNIT_CODE = ?
+                AND C_MODULE = ?
+                AND D_SYS_OP_DATE >= ADD_MONTHS(SYSDATE, ?)
+                AND C_BEN_NAME IS NOT NULL
+            GROUP BY
+                C_BEN_NAME
+            ORDER BY
+                TotalValue DESC
+        ) WHERE ROWNUM <= 5
+        ]]>
+    </query>
+    
+    <!-- Get Module Analytics by Year and Month -->
+    <query id="getModuleAnalyticsByPeriod">
+        <![CDATA[
+        SELECT
+            C_MODULE AS Module,
+            TO_CHAR(D_SYS_OP_DATE, 'YYYY') AS Year,
+            TO_CHAR(D_SYS_OP_DATE, 'Mon') AS Month,
+            C_UNIT_CODE AS Customer,
+            SUM(LC_AMT) AS Total_LcAmt,
+            SUM(COLL_AMT) AS Total_CollAmt,
+            SUM(GTEE_AMT) AS Total_GteeAmt,
+            MAX(EXPIRY_DT) AS Latest_Expiry
+        FROM
+            CETRX.TRX_INBOX
+        WHERE
+            D_SYS_OP_DATE IS NOT NULL
+            AND C_UNIT_CODE = ?
+            AND C_MODULE = ?
+            AND D_SYS_OP_DATE >= ADD_MONTHS(SYSDATE, ?)
+        GROUP BY
+            C_MODULE,
+            TO_CHAR(D_SYS_OP_DATE, 'YYYY'),
+            TO_CHAR(D_SYS_OP_DATE, 'Mon'),
+            C_UNIT_CODE
+        ORDER BY
+            Module,
+            Year,
+            Month,
+            Customer
+        ]]>
+    </query>
+    
+    <!-- Get Pending Transactions Count -->
+    <query id="getPendingTransactionsCount">
+        <![CDATA[
+        SELECT
+            COUNT(*) AS PendingCount
+        FROM
+            CETRX.TRX_INBOX
+        WHERE
+            C_UNIT_CODE = ?
+            AND C_MODULE = ?
+            AND C_STATUS IN ('PENDING', 'AWAITING_AUTH', 'IN_PROCESS')
+        ]]>
+    </query>
+    
+    <!-- Get Module Performance Metrics -->
+    <query id="getModulePerformanceMetrics">
+        <![CDATA[
+        SELECT
+            C_MODULE AS Module,
+            AVG(CASE 
+                WHEN C_MODULE IN ('IMLC', 'EXLC') THEN LC_AMT
+                WHEN C_MODULE IN ('IMCO', 'EXCO') THEN COLL_AMT
+                WHEN C_MODULE = 'OWGT' THEN GTEE_AMT
+                ELSE 0
+            END) AS AvgTransactionValue,
+            MIN(D_SYS_OP_DATE) AS FirstTransaction,
+            MAX(D_SYS_OP_DATE) AS LastTransaction,
+            COUNT(DISTINCT C_BEN_NAME) AS UniqueB                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                eneficiaries
+        FROM
+            CETRX.TRX_INBOX
+        WHERE
+            C_UNIT_CODE = ?
+            AND C_MODULE = ?
+            AND D_SYS_OP_DATE >= ADD_MONTHS(SYSDATE, -12)
+        GROUP BY
+            C_MODULE
+        ]]>
+    </query>
+    
+    <!-- Get Currency Distribution by Module -->
+    <query id="getCurrencyDistribution">
+        <![CDATA[
+        SELECT
+            C_CCY AS Currency,
+            COUNT(*) AS TransactionCount,
+            SUM(CASE 
+                WHEN C_MODULE IN ('IMLC', 'EXLC') THEN LC_AMT
+                WHEN C_MODULE IN ('IMCO', 'EXCO') THEN COLL_AMT
+                WHEN C_MODULE = 'OWGT' THEN GTEE_AMT
+                ELSE 0
+            END) AS TotalAmount
+        FROM
+            CETRX.TRX_INBOX
+        WHERE
+            C_UNIT_CODE = ?
+            AND C_MODULE = ?
+            AND D_SYS_OP_DATE >= ADD_MONTHS(SYSDATE, ?)
+        GROUP BY
+            C_CCY
+        ORDER BY
+            TotalAmount DESC
+        ]]>
+    </query>
+    
+    <!-- Module Type Mapping -->
+    <moduleTypes>
+        <module code="IMLC" name="Import Letter of Credit" type="LC" amountField="LC_AMT"/>
+        <module code="EXLC" name="Export Letter of Credit" type="LC" amountField="LC_AMT"/>
+        <module code="IMCO" name="Import Collection" type="COLL" amountField="COLL_AMT"/>
+        <module code="EXCO" name="Export Collection" type="COLL" amountField="COLL_AMT"/>
+        <module code="OWGT" name="Outward Bank Guarantee" type="GTEE" amountField="GTEE_AMT"/>
+        <module code="IWGT" name="Inward Bank Guarantee" type="GTEE" amountField="GTEE_AMT"/>
+        <module code="TFIN" name="Trade Finance" type="TFIN" amountField="LOAN_AMT"/>
+    </moduleTypes>
+</ModuleAnalytics>

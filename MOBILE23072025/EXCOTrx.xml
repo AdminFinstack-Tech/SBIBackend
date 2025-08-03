@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<F05030700895>
+		<Query>
+        <![CDATA[SELECT * FROM CETRX.EXCO_EM_CREATE WHERE C_MAIN_REF = '${mainref}' AND C_UNIT_CODE = '${unitcode}' AND I_EVENT_TIMES = ${eventtimes} ]]></Query>
+		<info>
+			<MainInfo label="Main Info">
+				<TRX_DT value="TRX_DT" label="Date of Application" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<COLL_TYPE value="COLL_TYPE" label="Type of Collection" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="2"/>
+				<CUST_NO value="CUST_NO" label="Our Ref Number" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="3"/>
+				<EXPORT_REF value="EXPORT_REF" label="Exporter Reference" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="4"/>
+				<DRWR_NM value="DRWR_NM" label="Drawer Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="5"/>
+				<DRWE_NM value="DRWE_NM" label="Drawee Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="6"/>
+				<DRWE_ADD1 value="DRWE_ADD1" label="Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="7"/>
+				<DRWE_ADD2 value="DRWE_ADD2" label="City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="8"/>
+				<DRWE_ADD3 value="DRWE_ADD3" label="Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="9"/>
+				<COLL_BK_SW_ADD value="COLL_BK_SW_ADD" label="Collection Bank Id" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="10"/>
+				<COLL_BK_NM value="COLL_BK_NM" label="Collection Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="11"/>
+				<COLL_BK_ADD1 value="COLL_BK_ADD2" label="Collection Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="12"/>
+				<COLL_BK_ADD2 value="COLL_BK_ADD2" label="Collection Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="13"/>
+				<COLL_BK_ADD3 value="COLL_BK_ADD3" label="Collection Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="14"/>
+			</MainInfo>
+			<CollectionInfo label="Collection Instruction">
+				<DOC_AGST value="DOC_AGST" label="Deliver Documents Against" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<COLL_CCY value="COLL_CCY" label="Collection Currency" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="2"/>
+				<COLL_AMT value="COLL_AMT" label="Collection Amount" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="3"/>
+				<COLL_CRET_DT value="COLL_CRET_DT" label="Collection Creation Date" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="4"/>
+				<TENOR_DAYS value="TENOR_DAYS" label="Tenor Days" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="5"/>
+				<TENOR_DAYS value="TENOR_DAYS" label="Tenor Month" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="6"/>
+				<TENOR_DAYS_MNTH value="TENOR_DAYS_MNTH" label="Tenor Type" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="7"/>
+				<TENOR_START_DT value="TENOR_START_DT" label="Tenor Start Date" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="8"/>
+				<DUE_DT value="DUE_DT" label="Due Date" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="9"/>
+				<AVAL_BY value="AVAL_BY" label="Due Date" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="10"/>
+				<PROTEST_FOR value="PROTEST_FOR" label="Protest for" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="11"/>
+				<CUST_INSTR value="CUST_INSTR" label="Customer Instructions" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="12"/>
+			</CollectionInfo>
+		</info>
+	</F05030700895>
+	<F05030700929>
+		<Query>
+			<![CDATA[SELECT * FROM CETRX.EXCO_EM_CREATE WHERE C_MAIN_REF = '${mainref}' AND C_UNIT_CODE = '${unitcode}' AND I_EVENT_TIMES = ${eventtimes} ]]></Query>
+		<info>
+			<MainInfo label="Main Info">
+				<TRX_DT value="TRX_DT" label="Date of Application" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<COLL_TYPE value="COLL_TYPE" label="Type of Collection" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="2"/>
+				<CUST_NO value="CUST_NO" label="Our Ref Number" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="3"/>
+				<EXPORT_REF value="EXPORT_REF" label="Exporter Reference" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="4"/>
+				<DRWR_NM value="DRWR_NM" label="Drawer Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="5"/>
+				<DRWE_NM value="DRWE_NM" label="Drawee Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="6"/>
+				<DRWE_ADD1 value="DRWE_ADD1" label="Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="7"/>
+				<DRWE_ADD2 value="DRWE_ADD2" label="City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="8"/>
+				<DRWE_ADD3 value="DRWE_ADD3" label="Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="9"/>
+				<COLL_BK_SW_ADD value="COLL_BK_SW_ADD" label="Collection Bank Id" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="10"/>
+				<COLL_BK_NM value="COLL_BK_NM" label="Collection Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="11"/>
+				<COLL_BK_ADD1 value="COLL_BK_ADD2" label="Collection Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="12"/>
+				<COLL_BK_ADD2 value="COLL_BK_ADD2" label="Collection Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="13"/>
+				<COLL_BK_ADD3 value="COLL_BK_ADD3" label="Collection Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="14"/>
+			</MainInfo>
+			<CollectionInfo label="Collection Instruction">
+				<DOC_AGST value="DOC_AGST" label="Deliver Documents Against" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<COLL_CCY value="COLL_CCY" label="Collection Currency" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="2"/>
+				<COLL_AMT value="COLL_AMT" label="Collection Amount" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="3"/>
+				<COLL_CRET_DT value="COLL_CRET_DT" label="Collection Creation Date" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="4"/>
+				<TENOR_DAYS value="TENOR_DAYS" label="Tenor Days" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="5"/>
+				<TENOR_DAYS value="TENOR_DAYS" label="Tenor Month" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="6"/>
+				<TENOR_DAYS_MNTH value="TENOR_DAYS_MNTH" label="Tenor Type" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="7"/>
+				<TENOR_START_DT value="TENOR_START_DT" label="Tenor Start Date" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="8"/>
+				<DUE_DT value="DUE_DT" label="Due Date" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="9"/>
+				<AVAL_BY value="AVAL_BY" label="Due Date" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="10"/>
+				<PROTEST_FOR value="PROTEST_FOR" label="Protest for" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="11"/>
+				<CUST_INSTR value="CUST_INSTR" label="Customer Instructions" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="12"/>
+			</CollectionInfo>
+		</info>
+	</F05030700929>
+	<F05030700928>
+		<Query>
+			<![CDATA[SELECT * FROM CETRX.EXCO_EM_CREATE WHERE C_MAIN_REF = '${mainref}' AND C_UNIT_CODE = '${unitcode}' AND I_EVENT_TIMES = ${eventtimes} ]]></Query>
+		<info>
+			<MainInfo label="Main Info">
+				<TRX_DT value="TRX_DT" label="Date of Application" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<COLL_TYPE value="COLL_TYPE" label="Type of Collection" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="2"/>
+				<CUST_NO value="CUST_NO" label="Our Ref Number" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="3"/>
+				<EXPORT_REF value="EXPORT_REF" label="Exporter Reference" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="4"/>
+				<DRWR_NM value="DRWR_NM" label="Drawer Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="5"/>
+				<DRWE_NM value="DRWE_NM" label="Drawee Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="6"/>
+				<DRWE_ADD1 value="DRWE_ADD1" label="Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="7"/>
+				<DRWE_ADD2 value="DRWE_ADD2" label="City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="8"/>
+				<DRWE_ADD3 value="DRWE_ADD3" label="Country" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="9"/>
+				<COLL_BK_SW_ADD value="COLL_BK_SW_ADD" label="Collection Bank Id" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="10"/>
+				<COLL_BK_NM value="COLL_BK_NM" label="Collection Bank Name" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="11"/>
+				<COLL_BK_ADD1 value="COLL_BK_ADD2" label="Collection Bank Address" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="12"/>
+				<COLL_BK_ADD2 value="COLL_BK_ADD2" label="Collection Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="13"/>
+				<COLL_BK_ADD3 value="COLL_BK_ADD3" label="Collection Bank City" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="14"/>
+			</MainInfo>
+			<CollectionInfo label="Collection Instruction">
+				<DOC_AGST value="DOC_AGST" label="Deliver Documents Against" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="1"/>
+				<COLL_CCY value="COLL_CCY" label="Collection Currency" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="2"/>
+				<COLL_AMT value="COLL_AMT" label="Collection Amount" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="3"/>
+				<COLL_CRET_DT value="COLL_CRET_DT" label="Collection Creation Date" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="4"/>
+				<TENOR_DAYS value="TENOR_DAYS" label="Tenor Days" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="5"/>
+				<TENOR_DAYS value="TENOR_DAYS" label="Tenor Month" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="6"/>
+				<TENOR_DAYS_MNTH value="TENOR_DAYS_MNTH" label="Tenor Type" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="7"/>
+				<TENOR_START_DT value="TENOR_START_DT" label="Tenor Start Date" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="8"/>
+				<DUE_DT value="DUE_DT" label="Due Date" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="9"/>
+				<AVAL_BY value="AVAL_BY" label="Due Date" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="10"/>
+				<PROTEST_FOR value="PROTEST_FOR" label="Protest for" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="11"/>
+				<CUST_INSTR value="CUST_INSTR" label="Customer Instructions" style="fontfamily:inter;fontstyle:normal;fontweight:w500;color:#5E3E09;fontsize:12;" orderby="12"/>
+			</CollectionInfo>
+		</info>
+	</F05030700928>
+</root>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <query id="getBeneficiaryStatistics">
+        <![CDATA[ 
+        SELECT * FROM (
+            SELECT 
+                BENE_NM AS BENEFICIARY_NAME,
+                COUNT(*) AS TRANSACTION_COUNT,
+                SUM(CASE 
+                    WHEN C_MODULE = 'IMLC' THEN NVL(LC_AMT, 0)
+                    WHEN C_MODULE = 'EXLC' THEN NVL(LC_AMT, 0)
+                    WHEN C_MODULE = 'OWGT' THEN NVL(GTEE_AMT, 0)
+                    WHEN C_MODULE = 'IWGT' THEN NVL(GTEE_AMT, 0)
+                    WHEN C_MODULE = 'IMCO' THEN NVL(COLL_AMT, 0)
+                    WHEN C_MODULE = 'EXCO' THEN NVL(COLL_AMT, 0)
+                    ELSE 0
+                END) AS TOTAL_AMOUNT,
+                AVG(CASE 
+                    WHEN C_MODULE = 'IMLC' THEN NVL(LC_AMT, 0)
+                    WHEN C_MODULE = 'EXLC' THEN NVL(LC_AMT, 0)
+                    WHEN C_MODULE = 'OWGT' THEN NVL(GTEE_AMT, 0)
+                    WHEN C_MODULE = 'IWGT' THEN NVL(GTEE_AMT, 0)
+                    WHEN C_MODULE = 'IMCO' THEN NVL(COLL_AMT, 0)
+                    WHEN C_MODULE = 'EXCO' THEN NVL(COLL_AMT, 0)
+                    ELSE 0
+                END) AS AVG_AMOUNT,
+                MAX(TRX_DT) AS LAST_TRANSACTION_DATE,
+                LISTAGG(DISTINCT C_MODULE, ',') WITHIN GROUP (ORDER BY C_MODULE) AS MODULES,
+                MIN(C_CUST_REF) AS COUNTRY
+            FROM CETRX.TRX_INBOX 
+            WHERE C_UNIT_CODE = '${unitcode}' 
+                AND TRX_DT >= ADD_MONTHS(SYSDATE, -${months})
+                AND BENE_NM IS NOT NULL
+                ${moduleFilter}
+            GROUP BY BENE_NM
+            HAVING COUNT(*) >= ${minTransactionCount}
+            ORDER BY ${sortBy}
+        ) WHERE ROWNUM <= ${topCount}
+        ]]>
+    </query>
+    
+    <query id="getBeneficiaryModuleBreakdown">
+        <![CDATA[
+        SELECT 
+            BENE_NM AS BENEFICIARY_NAME,
+            C_MODULE AS MODULE,
+            COUNT(*) AS TRANSACTION_COUNT,
+            SUM(CASE 
+                WHEN C_MODULE = 'IMLC' THEN NVL(LC_AMT, 0)
+                WHEN C_MODULE = 'EXLC' THEN NVL(LC_AMT, 0)
+                WHEN C_MODULE = 'OWGT' THEN NVL(GTEE_AMT, 0)
+                WHEN C_MODULE = 'IWGT' THEN NVL(GTEE_AMT, 0)
+                WHEN C_MODULE = 'IMCO' THEN NVL(COLL_AMT, 0)
+                WHEN C_MODULE = 'EXCO' THEN NVL(COLL_AMT, 0)
+                ELSE 0
+            END) AS TOTAL_AMOUNT
+        FROM CETRX.TRX_INBOX 
+        WHERE C_UNIT_CODE = '${unitcode}' 
+            AND TRX_DT >= ADD_MONTHS(SYSDATE, -${months})
+            AND BENE_NM IN (${beneficiaryList})
+            ${moduleFilter}
+        GROUP BY BENE_NM, C_MODULE
+        ORDER BY BENE_NM, TRANSACTION_COUNT DESC
+        ]]>
+    </query>
+</root>

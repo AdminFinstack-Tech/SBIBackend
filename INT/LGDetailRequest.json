@@ -1,0 +1,123 @@
+{
+  "LetterOfGuaranteeID": "string",
+  "ConsentID": "string",
+  "Status": "Approved",
+  "StatusUpdateDateTime": "2023-02-19T19:11:37.750Z",
+  "LGInfo": {
+    "Format": "MT798",
+    "CustomerRefNumber": null,
+    "CustomerCIC": null,
+    "MessageCreationDateTime": "2023-02-19T19:11:37.750Z",
+    "KindOfGuarantee": "GUAR",
+    "TypeOfGuarantee": "TEND",
+    "FormOfGuarantee": "DIRC",
+    "WordingOfGuarantee": "STND",
+    "SpecialTerms": "EFCT",
+    "LanguageOfStandardWording": "EN",
+    "ProjectName": "TEST",
+    "ProjectNumber": "1234",
+    "Applicant": {
+      "ApplicantName": "string",
+      "ApplicantCRNumber": "string",
+      "ApplicantType": "string",
+      "ApplicantNumber": 0,
+      "ApplicantAddress": {
+        "AddressType": "KSAOB.Business",
+        "ShortAddress": "string",
+        "BuildingNumber": "string",
+        "UnitNumber": 0,
+        "StreetName": "string",
+        "SecondaryNumber": "string",
+        "District": "string",
+        "PostCode": "string",
+        "City": "string",
+        "Country": "string"
+      }
+    },
+    "GuaranteeAmount": {
+      "Type": "PRIN",
+      "Amount": "string",
+      "Currency": "LZH"
+    },
+    "ValidityType": "LIMT",
+    "ValidityExpiryDate": "2023-02-19T19:11:37.750Z",
+    "DeliveryOfOriginalGuarantee": "COUR",
+    "DeliveryTo": "SPEC",
+    "DeliveryAddress": {
+      "Name": "string",
+      "Address": {
+        "AddressType": "KSAOB.Business",
+        "ShortAddress": "string",
+        "BuildingNumber": "string",
+        "UnitNumber": 0,
+        "StreetName": "string",
+        "SecondaryNumber": "string",
+        "District": "string",
+        "PostCode": "string",
+        "City": "string",
+        "Country": "string"
+      }
+    },
+    "Beneficiary": {
+      "BeneficiaryName": "string",
+      "BeneficiaryCRNumber": "string",
+      "BeneficiaryType": "string",
+      "BeneficiaryNumber": 0,
+      "BeneficiaryAddress": {
+        "AddressType": "KSAOB.Business",
+        "ShortAddress": "string",
+        "BuildingNumber": "string",
+        "UnitNumber": 0,
+        "StreetName": "string",
+        "SecondaryNumber": "string",
+        "District": "string",
+        "PostCode": "string",
+        "City": "string",
+        "Country": "string"
+      }
+    },
+    "LiabilityDetails": "string",
+    "Reference": "COUR",
+    "ReferenceDate1": "2023-02-19T19:11:37.750Z",
+    "ReferenceDate2": "string",
+    "TotalOrderAmount": {
+      "TotalOrderAmount": "string",
+      "TotalOrderCurrency": "XXJ"
+    },
+    "GuaranteeValueInPercent": 10,
+    "CustomerContact": "string",
+    "BeneficiaryContact": "string",
+    "BankReferenceNumber": "string",
+    "TransactionReferenceNumber": "string",
+    "FurtherIdentification": "ISSUE",
+    "ApplicableRules": "NONE",
+    "ChargesAndFees": "string",
+    "DetailsOfGuarantee": "string",
+    "TermsAndConditions": "string",
+    "StartDate": "2023-02-19",
+    "GuaranteeNumber": "string",
+    "SpecialAgreements": "string",
+    "BankContact": "string",
+    "BankToCorporateInformation": "string",
+    "SpecificationOfExpiry": "string",
+    "CashMarginIBAN": "string",
+    "CashMarginPer": "string",
+    "ChargesFeesIBAN": "string"
+  },
+  "Refusal": {
+    "DemandSubmissionDate": "2023-02-19T19:11:37.750Z",
+    "DemandAmount": "PRIN/SAR50000",
+    "ReasonForRefusal": "string"
+  },
+  "MultipleAuthorizers": {
+    "TotalRequired": 0,
+    "Authorizations": [
+      {
+      }
+    ]
+  },
+  "Attachment": {
+    "Name": "string",
+    "type": "PDF"
+  }
+}

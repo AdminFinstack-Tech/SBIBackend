@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<VersionInfo>
+		<info>0.0.10</info>
+	</VersionInfo>
+	<PageInfo>
+		<image>https://previews.123rf.com/images/rawpixel/rawpixel1608/rawpixel160843077/61504669-trade-exchange-deal-business-economy-concept.jpg</image>
+		<title>Trade Finance At Fingertips</title>
+		<sub_title>Advanced Mobile application for trade finance to empower you to efficiently inquire about and authorize trade instruments. Through intuitive interfaces securely, seamless access to real-time information enabling you to stay informed and responsive.</sub_title>
+	</PageInfo>
+	<PageInfo>
+		<image>https://cdn.pixabay.com/photo/2015/02/27/08/12/handshake-651818_1280.png</image>
+		<title>Inquires Made Easy</title>
+		<sub_title>This application streamlines the inquiry process by providing you with instant access to critical details related to your trade instruments. you can quickly retrieve the necessary data and make informed decisions.</sub_title>
+	</PageInfo>
+	<PageInfo>
+		<image>https://cdn.pixabay.com/photo/2018/02/08/11/13/network-3139201_1280.jpg</image>
+		<title>Authorization Made Easy</title>
+		<sub_title>Authorization functionality enables corporations to approve or reject trade instruments with ease, ensuring compliance with internal policies and regulatory requirements.  enhancing control and security over their trade finance activities.</sub_title>
+	</PageInfo>
+	<LandingPage>
+		<image>https://cdn.pixabay.com/photo/2018/02/08/11/13/network-3139201_1280.jpg</image>
+		<title>Trade Finance</title>
+		<sub_title>test</sub_title>
+	</LandingPage>		
+	<LoginPage>
+		<image>https://cdn.pixabay.com/photo/2018/02/08/11/13/network-3139201_1280.jpg</image>
+		<title>Trade Finance</title>
+		<sub_title>Trade Finance</sub_title>
+	</LoginPage>	
+	<disclaimer>
+		<text>Copyright © China Systems 1983-2024. All Rights Reserved.</text>
+	</disclaimer>
+</root>

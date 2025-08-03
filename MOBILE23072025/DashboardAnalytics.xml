@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<DashboardAnalyticsQuery>
+		<![CDATA[ 
+		SELECT 
+			C_MODULE, 
+			TO_CHAR(D_SYS_OP_DATE, 'YYYY') AS Year, 
+			TO_CHAR(D_SYS_OP_DATE, 'Mon') AS Month, 
+			C_UNIT_CODE, 
+			SUM(NVL(LC_AMT, 0)) AS Total_LcAmt, 
+			SUM(NVL(COLL_AMT, 0)) AS Total_CollAmt, 
+			SUM(NVL(GTEE_AMT, 0)) AS Total_GteeAmt, 
+			MAX(EXPIRY_DT) AS Latest_Expiry, 
+			COUNT(*) AS Transaction_Count
+		FROM CETRX.TRX_INBOX 
+		WHERE D_SYS_OP_DATE IS NOT NULL 
+			AND C_UNIT_CODE = '${unitcode}' 
+			AND C_MODULE IN (${modules})
+		GROUP BY C_MODULE, TO_CHAR(D_SYS_OP_DATE, 'YYYY'), TO_CHAR(D_SYS_OP_DATE, 'Mon'), C_UNIT_CODE
+		ORDER BY C_MODULE, Year DESC
+		]]>
+	</DashboardAnalyticsQuery>
+	
+	<ModuleAnalyticsQuery>
+		<![CDATA[ 
+		SELECT 
+			C_MODULE, 
+			TO_CHAR(D_SYS_OP_DATE, 'YYYY') AS Year, 
+			TO_CHAR(D_SYS_OP_DATE, 'Mon') AS Month, 
+			C_UNIT_CODE, 
+			SUM(NVL(LC_AMT, 0)) AS Total_LcAmt, 
+			SUM(NVL(COLL_AMT, 0)) AS Total_CollAmt, 
+			SUM(NVL(GTEE_AMT, 0)) AS Total_GteeAmt, 
+			MAX(EXPIRY_DT) AS Latest_Expiry, 
+			COUNT(*) AS Transaction_Count
+		FROM CETRX.TRX_INBOX 
+		WHERE D_SYS_OP_DATE IS NOT NULL 
+			AND C_MODULE = '${module}' 
+			AND C_UNIT_CODE = '${unitcode}' 
+			AND D_SYS_OP_DATE >= ADD_MONTHS(TRUNC(SYSDATE, 'MONTH'), ${months})
+		GROUP BY C_MODULE, TO_CHAR(D_SYS_OP_DATE, 'YYYY'), TO_CHAR(D_SYS_OP_DATE, 'Mon'), C_UNIT_CODE
+		ORDER BY C_MODULE, Year DESC
+		]]>
+	</ModuleAnalyticsQuery>
+	
+	<BeneficiaryAnalyticsQuery>
+		<![CDATA[ 
+		SELECT 
+			APPL_NM, 
+			BENE_NM, 
+			COUNT(*) AS Transaction_Count, 
+			SUM(NVL(LC_AMT, 0)) AS Total_LcAmt, 
+			SUM(NVL(COLL_AMT, 0)) AS Total_CollAmt, 
+			SUM(NVL(GTEE_AMT, 0)) AS Total_GteeAmt, 
+			MAX(D_SYS_OP_DATE) AS Last_Transaction_Date
+		FROM CETRX.TRX_INBOX 
+		WHERE D_SYS_OP_DATE >= TRUNC(ADD_MONTHS(SYSDATE, ${months}), 'MM') 
+			AND D_SYS_OP_DATE < TRUNC(SYSDATE, 'MM') 
+			AND C_UNIT_CODE = '${unitcode}' 
+			AND APPL_NM IS NOT NULL 
+			AND BENE_NM IS NOT NULL
+		GROUP BY APPL_NM, BENE_NM
+		ORDER BY Transaction_Count DESC
+		]]>
+	</BeneficiaryAnalyticsQuery>
+	
+	<SummaryMetricsQuery>
+		<![CDATA[ 
+		SELECT 
+			COUNT(*) AS total_transactions, 
+			SUM(NVL(LC_AMT, 0)) AS total_lc_amount, 
+			SUM(NVL(COLL_AMT, 0)) AS total_coll_amount, 
+			SUM(NVL(GTEE_AMT, 0)) AS total_gtee_amount
+		FROM CETRX.TRX_INBOX 
+		WHERE EXTRACT(YEAR FROM D_SYS_OP_DATE) = EXTRACT(YEAR FROM SYSDATE) 
+			AND C_UNIT_CODE = '${unitcode}' 
+			AND C_MODULE IN (${modules})
+		]]>
+	</SummaryMetricsQuery>
+	
+	<ActiveModulesQuery>
+		<![CDATA[ 
+		SELECT DISTINCT C_MODULE 
+		FROM CETRX.TRX_INBOX 
+		WHERE C_UNIT_CODE = '${unitcode}' 
+			AND D_SYS_OP_DATE >= ADD_MONTHS(SYSDATE, -12) 
+			AND C_MODULE IN (${modules})
+		]]>
+	</ActiveModulesQuery>
+</root>

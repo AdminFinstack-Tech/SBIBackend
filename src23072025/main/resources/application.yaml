@@ -1,0 +1,6 @@
+jwt:
+  secret: FinMobileCS
+  expiration: 600000 # 10 minutes in milliseconds
+  refreshExpiration: 900000 # 15 minutes in milliseconds
+path:
+  INT: \\DEV-ARB\profiles2\CE\installedApps\DEV-ARBNode02Cell\CE.ear\cs-ce-sec-api-0.0.1.war\WEB-INF\classes\

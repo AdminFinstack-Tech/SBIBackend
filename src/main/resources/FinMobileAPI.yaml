@@ -1,0 +1,3746 @@
+openapi: 3.0.1
+info:
+  title: Fin Mobile Banking App
+  description: This documentation forFin Mobile Banking App API
+  contact:
+    email: ilyas@chinasystems-me.com
+  license:
+    name: FinMobileBankingApp
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.10
+servers:
+  - url: https://localhost/FinMobileBankingApp/
+  - url: http://localhost/FinMobileBankingApp/
+tags:
+  - name: FinMobileBankingApp
+    description: API to FinMobileBankingApp
+paths:
+  /Intro:
+    get:
+      tags:
+        - Introduction
+      summary: Introduction
+      operationId: Introduction
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: SecertKey
+          in: header
+          description: Secert Key
+          schema:
+            type: string
+          example: FinMobileCS  
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/IntroResponse"
+        404:
+          description: Not Found
+          content: {}
+      x-codegen-request-body-name: Introduction
+  
+  /login:
+    post:
+      tags:
+        - Login
+      summary: Login
+      operationId: Login
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: SecertKey
+          in: header
+          description: Secert Key
+          schema:
+            type: string
+          example: FinMobileCS  
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+      requestBody:
+        description: Login Request
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginRequest"
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LoginResponse"
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      x-codegen-request-body-name: LoginRequest
+      
+  
+  /Profile:
+    post:
+      tags:
+        - Profile
+      summary: Profile Information
+      operationId: Profile
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+      requestBody:
+        description: Profile Inforamation Request
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProfileRequest"
+        required: true
+
+      responses:
+        200:
+          description: Profile Information Response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProfileResponse"
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      x-codegen-request-body-name: Profile
+  
+  /Preference:
+    post:
+      tags:
+        - Preference
+      summary: Preference
+      operationId: Preference
+      security:
+        - jwt: []
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+      requestBody:
+        description: Login Request
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PreferenceRequestPost"
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PreferenceResponsePost"
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      x-codegen-request-body-name: preference
+        
+  /Preference/{corporateId}&{userId}:
+    get:
+      tags:
+        - Preference
+      summary: Get Preference based on Corporate Id and User Id
+      operationId: get Preference
+      security:
+        - jwt: []
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+        - name: corporateId
+          in: path
+          description: 'corporateId'
+          required: true
+          schema:
+            type: string
+        - name: userId
+          in: path
+          description: 'userId'
+          required: true
+          schema:
+            type: string    
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetPreferenceResponse"
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      x-codegen-request-body-name: getpreference      
+
+  /Logoff:
+    post:
+      tags:
+        - Logoff
+      summary: Logoff
+      operationId: Logoff
+      security:
+        - jwt: []
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+      requestBody:
+        description: Login Request
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LogoffRequest"
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LogoffResponse"
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      x-codegen-request-body-name: LoginRequest
+      
+  /Authorize:
+    post:
+      summary: Authorize Transaction 
+      operationId: Authorize Transaction
+      tags:
+        - Authorize
+      security:
+        - jwt: []        
+      parameters:
+        - in: header
+          name: requestId
+          description: Request Id
+          schema:
+            type: string
+            format: uuid
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+          required: true
+
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/XAuthorizeRequest"
+
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/XAuthorizeResponse"
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+          
+  /InquireList:
+    post:
+      tags:
+        - Inquire List
+      summary: Inquire List
+      operationId: InquireList
+      security:
+        - jwt: []      
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+
+      requestBody:
+        description: Login Request
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/XInquiryListRequest"
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/XInquiryListResponse"
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+  
+  /InquireTransaction:
+    post:
+      tags:
+        - InquireTransaction
+      summary: InquireTransaction
+      operationId: InquireTransaction
+      security:
+        - jwt: []      
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+      requestBody:
+        description: Inquire based on Transaction
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/XInquireTransactionRequest"
+        required: true
+
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/XInquireTransactionResponse"
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+  
+  
+  /InquireEvent:
+    post:
+      tags:
+        - InquireEvent
+      summary: Inquire Event History
+      operationId: InquireEvent
+      security:
+        - jwt: []      
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+
+      requestBody:
+        description: Inquire Event History of Transaction
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/XInquireEventRequest"
+        required: true
+
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/XInquireEventResponse"
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+          
+  /BankLimitInquire:
+    post:
+      tags:
+        - BankLimitInquire
+      summary: Bank Limit Inquire
+      operationId: Bank Limit Inquire
+      security:
+        - jwt: []      
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+
+      requestBody:
+        description: Inquire Event History of Transaction
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/XBankLimitInquireRequest"
+        required: true
+
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/XBankLimitInquireResponse"
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+          
+  /forgotpassword:
+    post:
+      tags:
+        - forgotpassword
+      summary: Forgot Password
+      operationId: forgotpassword
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+
+      requestBody:
+        description: Forgot Password
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/XForgotPasswordRequest"
+        required: true
+
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/XForgotPasswordResponse"
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+          
+  /resetpassword:
+    post:
+      tags:
+        - Reset Password
+      summary: resetpassword
+      operationId: resetpassword
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+
+      requestBody:
+        description: Reset Password
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/XResetPasswordRequest"
+        required: true
+
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/XResetPasswordResponse"
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}      
+          
+  /forgotcredential:
+    post:
+      tags:
+        - forgotcredential
+      summary: Forgot Credentail
+      operationId: forgotcredential
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+
+      requestBody:
+        description: Forgot Password
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/XForgotCredentialRequest"
+        required: true
+
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/XForgotCredentialResponse"
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+  
+  /resetcredential:
+    post:
+      tags:
+        - reset credential
+      summary: resetcredential
+      operationId: resetcredential
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+
+      requestBody:
+        description: Reset Password
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/XResetCredentialRequest"
+        required: true
+
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/XResetCredentialResponse"
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+  
+  /Notification:
+    post:
+      tags:
+        - Notification
+      summary: Send Notification
+      operationId: SendNotification
+      security:
+        - jwt: []
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+      requestBody:
+        description: Notification Request
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/XNotificationRequest"
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/XNotificationResponse"
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      x-codegen-request-body-name: NotificationRequest
+  
+  /globalsearch:
+    post:
+      tags:
+        - globalsearch
+      summary: globalsearch
+      operationId: globalsearch
+      security:
+        - jwt: []      
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+
+      requestBody:
+        description: Login Request
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/XGlobalSearchRequest"
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/XInquiryListResponse"
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+  
+  /SaveFBToken:
+    post:
+      tags:
+        - SaveFBToken
+      summary: SaveFBToken
+      operationId: SaveFBToken
+      security:
+        - jwt: []
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+      requestBody:
+        description: FB Token Request
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SaveFBTokenRequestPost"
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SaveFBTokenResponsePost"
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      x-codegen-request-body-name: FBToken        
+  
+  /InquireAuthUserList:
+    post:
+      tags:
+        - InquireAuthUserList
+      summary: Inquire Auth List
+      operationId: Inquire Auth List
+      security:
+        - jwt: []      
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+
+      requestBody:
+        description: Inquire Auth User List
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/XAuthUserListRequest"
+        required: true
+
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/XAuthUserListResponse"
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+          
+  /InquireAttachment:
+    post:
+      tags:
+        - InquireAttachment
+      summary: Inquire Attachment
+      operationId: Inquire Attachment
+      security:
+        - jwt: []      
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+
+      requestBody:
+        description: Inquire Attachment Request
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/XAttachmentRequest"
+        required: true
+
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/XAttachmentResponse"
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}         
+  
+  /DashboardAnalytics:
+    post:
+      tags:
+        - DashboardAnalytics
+      summary: Get Dashboard Analytics
+      operationId: GetDashboardAnalytics
+      security:
+        - jwt: []
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+      requestBody:
+        description: Dashboard Analytics Request
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DashboardAnalyticsRequest"
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DashboardAnalyticsResponse"
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      x-codegen-request-body-name: DashboardAnalytics
+
+  /TransactionAnalytics:
+    post:
+      tags:
+        - TransactionAnalytics
+      summary: Get Transaction Analytics
+      operationId: GetTransactionAnalytics
+      security:
+        - jwt: []
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+      requestBody:
+        description: Transaction Analytics Request
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransactionAnalyticsRequest"
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TransactionAnalyticsResponse"
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      x-codegen-request-body-name: TransactionAnalytics
+
+  /ProductDistribution:
+    post:
+      tags:
+        - ProductDistribution
+      summary: Get Product Distribution Analytics
+      operationId: GetProductDistribution
+      security:
+        - jwt: []
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+      requestBody:
+        description: Product Distribution Request
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProductDistributionRequest"
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProductDistributionResponse"
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      x-codegen-request-body-name: ProductDistribution
+
+  /PortfolioValue:
+    post:
+      tags:
+        - PortfolioValue
+      summary: Get Portfolio Value
+      operationId: GetPortfolioValue
+      security:
+        - jwt: []
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+      requestBody:
+        description: Portfolio Value Request
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PortfolioValueRequest"
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PortfolioValueResponse"
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      x-codegen-request-body-name: PortfolioValue
+
+  /ModuleAnalytics:
+    post:
+      tags:
+        - ModuleAnalytics
+      summary: Get Module Analytics
+      operationId: GetModuleAnalytics
+      security:
+        - jwt: []
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+      requestBody:
+        description: Module Analytics Request
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ModuleAnalyticsRequest"
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ModuleAnalyticsResponse"
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      x-codegen-request-body-name: ModuleAnalytics
+
+  /BeneficiaryAnalytics:
+    post:
+      tags:
+        - BeneficiaryAnalytics
+      summary: Get Beneficiary Analytics
+      operationId: GetBeneficiaryAnalytics
+      security:
+        - jwt: []
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+      requestBody:
+        description: Beneficiary Analytics Request
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BeneficiaryAnalyticsRequest"
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BeneficiaryAnalyticsResponse"
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      x-codegen-request-body-name: BeneficiaryAnalytics
+
+  /PerformanceSummary:
+    post:
+      tags:
+        - PerformanceSummary
+      summary: Get Performance Summary
+      operationId: GetPerformanceSummary
+      security:
+        - jwt: []
+      parameters:
+        - name: requestId
+          in: header
+          description: Request Id
+          required: true
+          schema:
+            pattern: "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+            type: string
+            format: uuid
+        - name: channel
+          in: header
+          description: Channel Name
+          required: true
+          schema:
+            type: string
+            default: FinMobileBankingApp
+        - name: timeStamp
+          in: header
+          description: Time date Unix Format
+          required: true
+          schema:
+            type: integer
+        - name: version
+          in: header
+          description: Version of API
+          schema:
+            type: string
+            default: 1.0.0
+      requestBody:
+        description: Performance Summary Request
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PerformanceSummaryRequest"
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PerformanceSummaryResponse"
+        201:
+          description: Created
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+      x-codegen-request-body-name: PerformanceSummary
+  
+security:
+  - jwt: []
+components:
+  securitySchemes:
+    jwt:
+      type: "apiKey"
+      in: "header"
+      name: "Authorization"
+      description: "JWT token obtained from the authentication server"
+  schemas:
+    IntroResponse:
+      type: object
+      properties:
+        PageInfo:
+          type: object
+          example : >-
+            {
+              "pageInfo1": {
+                "Text": "Sample Text"
+              },
+              "PageInfo2": {
+                "Image": "http://dev-arb:9081/cs-ce-sec-api-0.0.1/landing.jpg"
+              }
+            }
+        LoginPageInfo:
+          type: object
+          example : >- 
+            {
+              "BackgroundImage": "http://dev-arb:9081/cs-ce-sec-api-0.0.1/landing.jpg"
+            }
+        LandingPage:
+          type: object
+          example : >-
+            {
+              "BackgroundImage": "http://dev-arb:9081/cs-ce-sec-api-0.0.1/landing.jpg"
+            }
+        VersionInfo:
+          type: object
+          example: 1.0.0
+        Disclaimer:
+          type: object
+          
+    LoginRequest:
+      required:
+        - CorporateId
+        - Password
+        - UserId
+      type: object
+      properties:
+        CorporateId:
+          type: string
+          description: Corporate Id
+        UserId:
+          type: string
+          description: User Id
+        Password:
+          type: string
+          description: Password
+    LoginResponse:
+      required:
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+        - RequestId
+        - token
+      type: object
+      properties:
+        Token:
+          type: string
+          description : JWT Token
+        MessageId:
+          type: string
+          description: Message Id
+        RequestId:
+          type: string
+          description: Request Id
+        StatusCode:
+          type: string
+          description: Status Code
+        StatusDescription:
+          type: string
+          description: Status Description
+        Timestamp:
+          type: string
+          description: Time stamp
+    
+    ProfileRequest:
+      required:
+        - CorporateId
+        - UserId
+      type: object
+      properties:
+        CorporateId:
+          type: string
+          description: Corporate Id
+        UserId:
+          type: string
+          description: User Id
+
+    LogoffRequest:
+      required:
+        - CorporateId
+        - UserId
+      type: object
+      properties:
+        CorporateId:
+          type: string
+          description: Corporate Id
+        UserId:
+          type: string
+          description: User Id
+
+    LogoffResponse:
+      required:
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+        - RequestId
+      type: object
+      properties:
+        MessageId:
+          type: string
+          description: Message Id
+        RequestId:
+          type: string
+          description: Request Id
+        StatusCode:
+          type: string
+          description: Status Code
+        StatusDescription:
+          type: string
+          description: Status Description
+        Timestamp:
+          type: string
+          description: Time stamp
+        LoginTime:
+          type: string
+          description: LoginTime
+    
+    ProfileResponse:
+      required:
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+        - RequestId
+        - token
+      type: object
+      properties:
+        MessageId:
+          type: string
+          description: Message Id
+        RequestId:
+          type: string
+          description: Request Id
+        StatusCode:
+          type: string
+          description: Status Code
+        StatusDescription:
+          type: string
+          description: Status Description
+        Timestamp:
+          type: string
+          description: Time stamp
+        ProfileBodyResponse:
+          type: array
+          items:
+            $ref: "#/components/schemas/XProfileBodyResponse"  
+          
+    XProfileBodyResponse:
+      required:
+        - CompanyInformation
+        - UserInformation
+      type: object
+      properties:
+        CompanyInformation:
+          type: array
+          items:
+            $ref: "#/components/schemas/XCompanyInformation"
+        UserInformation:
+          type: array
+          items:
+            $ref: "#/components/schemas/XUserInformation"
+    XCompanyInformation:
+      type: object
+      properties:
+        CorporateName:
+          type: string
+          description: Corporate Name
+        CorporateId:
+          type: string
+          description: Corporate Id
+        CorporateGroupId:
+          type: string
+          description: Company Group Id*(Corporate CIF)
+          example: ARABTECH
+        CorporateGroupName:
+          type: string
+          description: Company Group Name*
+          example: CSOFFICE
+        CorporateArabicName:
+          type: string
+          description: Company Name in Arabic
+          example: CSOFFICE
+        selfAuthorize:
+          type: string
+          description: Transaction Self Authorization Flag
+          default: "true"
+        country:
+          type: string
+          description: Country (ISO Country Values)
+          default: SA
+        isBank:
+          type: string
+          description: Is bank
+          default: F
+          enum:
+            - T
+            - F
+        baseCCY:
+          type: string
+          description: Base Currency (ISO Currency Values)
+          default: SAR
+        amtFormat:
+          type: string
+          description: Amount Format
+          default: US
+          enum:
+            - EU
+            - US
+        productsAccessList:
+          type: array
+          items:
+            $ref: "#/components/schemas/XproductInfoList"
+    XproductInfoList:
+      type: object
+      properties:
+        Module:
+          type: string
+          description: Module
+        Description:
+          type: string
+        icon:
+          type: string
+        style:
+          type: object  
+        NofTransaction:
+          type: object
+          properties:
+            PendingCount: 
+              type: string
+            TotalCount:
+              type: string
+    XUserInformation:
+      type: object
+      properties:
+        profilepic:
+          type : object
+          properties:
+            image:
+              type: string
+        userId:
+          type: string
+          description: User Id*
+        userDescription:
+          type: string
+          description: User Description*
+        companyId:
+          type: string
+          description: Company Id*
+          default: CSOFFICE
+        defaultCompanyId:
+          type: string
+          description: Default Company Id
+          default: CSOFFICE
+        authorizatoinLevel:
+          maximum: 8
+          minimum: 1
+          type: number
+          description: Authorization Level
+        multiLogin:
+          type: string
+          description: Multi Login
+          default: T
+          enum:
+            - T
+            - F
+        language:
+          type: string
+          description: Language
+          default: EN
+        Availablelanguage:
+          type: string
+          description: Language
+          example : EN;FR;AR
+        MaxCriteriaOption: 
+          type: string
+          description: Maximum Criteria Saved Option Count
+          default: 5
+        activeStatus:
+          type: string
+          description: Active Status
+          default: T
+          enum:
+            - T
+            - F
+        effectiveDate:
+          type: string
+          description: Effective Date
+          format: yyyy-mm-dd
+          example: 2020-12-21
+          default: System Date
+        expiryDate:
+          type: string
+          description: Expiry Date
+          format: yyyy-mm-dd
+          example: 2022-12-21
+          default: System Date + 100 Years
+        emailId:
+          type: string
+          description: Company Email Id
+        mobileNumber:
+          type: string
+          description: Company Mobile Number
+        tokenId:
+          type: string
+          description: Token Id Value
+        authorizationPref:
+          type: string
+          description: Authorization Preference(OTP/Hard Token/Soft Token)*
+        productAuthLevel:
+          type: array
+          items:
+            $ref: "#/components/schemas/UserAuthLevel"
+        operatorRoles:
+          type: array
+          items:
+            type: string
+            example: IPLC_Maker,IPLC_Enquiry,IPLC_Checker,EPLC_Maker,EPLC_Enquiry,EPLC_Checker
+    UserAuthLevel:
+      type: object
+      properties:
+        productName:
+          type: string
+          description: Product Name
+          default: IWGT
+        authLevel:
+          type: string
+          description: currency for auth matrix
+          example: "1"
+
+    XInquiryListRequest:
+      required:
+        - CorporateId
+        - UserId
+        - Module
+        - page
+        - per_page
+        - Type
+      type: object
+      properties:
+        CorporateId:
+          type: string
+          description: Corporate Id
+        UserId:
+          type: string
+          description: User Id
+        Module:
+          type: string
+          description: Module Name
+          example: IWGT;OWGT;IMLC
+        page:
+          type: integer
+          description: page
+          minimum: 1
+          default: 1
+        per_page:
+          type: integer
+          description: per_page
+          maximum: 20
+          minimum: 1
+          default: 10
+        Type:
+          type: string
+          description: Based on Type reterive List record
+          enum: [INQ, AUTH]
+        filterby:
+          type: array
+          items:
+            $ref: "#/components/schemas/XInfoListObj"
+
+    XInquiryListResponse:
+      required:
+        - Info
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+        - RequestId
+      type: object
+      properties:
+        MessageId:
+          type: string
+          description: Status Code
+        RequestId:
+          type: string
+          description: Request Id
+        StatusCode:
+          type: string
+          description: Status Code
+        StatusDescription:
+          type: string
+          description: Status Description
+        Timestamp:
+          type: string
+          description: Timestamp
+        total:
+          type: integer
+          format: int64
+        page:
+          type: integer
+          format: int64
+        per_page:
+          type: integer
+          format: int64
+        has_next:
+          type: integer
+          format: int64
+        has_prev:
+          type: integer
+          format: int64
+        productsAccessList:
+          type: array
+          items:
+            $ref: "#/components/schemas/XproductInfoList"  
+        InquireListInfo:
+          type: array
+          items:
+            $ref: "#/components/schemas/XInquireListObj"     
+            
+    XInquireListObj:
+      type: object
+      properties:
+        CommonInfoList:
+          type: object
+          description: Common Field Information List
+        DynamicInfoList:
+          type: object
+          description: Dynamic Field Information List
+      
+    XInfoListObj:
+      type: object
+      properties:
+        MainRef:
+          type: string
+          description: MainReference number or Etrade Reference Number
+        CorporateId:
+          type: string
+          description: Corporate Id
+        CustomerReference:
+          type: string
+          description: Customer Reference
+        GuaranteeNumber:
+          type: string
+          description: Guarantee Number
+        ApplicantName:
+          type: string
+          description: Applicant Name
+        BeneficiaryName:
+          type: string
+          description: Beneficiary Name
+        Currency:
+          type: string
+          description: Currency
+        Amount:
+          type: string
+          description: Amount
+        Balance:
+          type: string
+          description: Balance
+        ExpiryDate:
+          type: string
+          description: Expiry Date
+          format: yyyy-mm-dd
+          example: 2022-12-21
+        SystemStatus:
+          type: string
+          description: System Status
+        CurrentStatus:
+          type: string
+          description: Current Status
+        EventTimes:
+          type: string
+          description: Event Times
+        FunctionName:
+          type: string
+          description: Function Name
+        FunctionId:
+          type: string
+          description: Function Id
+
+    
+    XInquireTransactionRequest:
+      required:
+        - CorporateId
+        - UserId
+        - Module
+        - MainRef
+        - functionId
+        - EventTimes
+      type: object
+      properties:
+        CorporateId:
+          type: string
+          description: Corporate ID
+        UserId:
+          type: string
+          description: User Id
+        Module:
+          type: string
+          description: Module
+        MainRef:
+          type: string
+          description: MainRef
+        functionId:
+          type: string
+          description: function Id
+        EventTimes:
+          type: string
+          description: Event Times
+
+    XInquireTransactionResponse:
+      required:
+        - Info
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+      type: object
+      properties:
+        MessageId:
+          type: string
+          description: Status Code
+        RequestId:
+          type: string
+          description: Request Id
+        StatusCode:
+          type: string
+          description: Status Code
+        StatusDescription:
+          type: string
+          description: Status Description
+        Timestamp:
+          type: string
+          description: Timestamp
+        InquiryTrxInfo:
+          type: array
+          items:
+              $ref: "#/components/schemas/InquiryTrxInfoListObj"
+        AttachmentInfo:
+          type: array
+          items:
+              $ref: "#/components/schemas/AttachmentInfoListObj"      
+    
+    InquiryTrxInfoListObj:
+      type: object
+      properties:
+        title: 
+          type: string
+        InquiryTrxInfoList:
+          type: object
+    
+    AttachmentInfoListObj:
+      type: object
+      properties:
+          AttachmentInfoList:
+            type: object
+      
+    XAuthorizeRequest:
+      properties:
+        CorporateId:
+          type: string
+          description: Corporate Id
+        UserId:
+          type: string
+          description: User Id
+        MainRef:
+          type: string
+          description: Main Reference Number
+        AuthorizerDate:
+          type: string
+          description: AuthorizerDate
+          format: yyyy-mm-dd
+          example: 2022-12-21
+        AuthorizerTime:
+          type: string
+          description: AuthorizerTime
+        AuthorizerBy:
+          type: string
+          description: AuthorizerBy
+        Action:
+          type: string
+          enum: [Accepted, Rejected]
+          description: Action
+        RejectedReason:
+          type: string
+          description: Rejected Reason
+
+    XAuthorizeResponse:
+      required:
+        - Info
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+      properties:
+        EtradeReferenceNumber:
+          type: string
+          description: E-Trade Reference Number
+          example: 48800OGTE88132
+        MessageId:
+          type: string
+        RequestId:
+          type: string
+          description: Request Id
+        StatusCode:
+          type: string
+          example: success or failure
+        Status:
+          type: string
+          enum: [Success, Failure]
+        StatusDescription:
+          type: string
+        Timestamp:
+          type: string
+          
+    XInquireEventRequest:
+      required:
+        - CorporateId
+        - UserId
+        - Module
+        - MainRef
+      type: object
+      properties:
+        CorporateId:
+          type: string
+          description: Corporate ID
+        UserId:
+          type: string
+          description: User Id
+        Module:
+          type: string
+          description: Module
+        MainRef:
+          type: string
+          description: MainRef
+        total:
+          type: integer
+          format: int64
+        page:
+          type: integer
+          format: int64
+        per_page:
+          type: integer
+          format: int64
+        has_next:
+          type: integer
+          format: int64
+        has_prev:
+          type: integer
+          format: int64  
+
+    XInquireEventResponse:
+      type: object
+      required:
+        - Info
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+      properties:
+        MessageId:
+          type: string
+          description: Status Code
+        RequestId:
+          type: string
+          description: Request Id
+        StatusCode:
+          type: string
+          description: Status Code
+        StatusDescription:
+          type: string
+          description: Status Description
+        Timestamp:
+          type: string
+          description: Timestamp
+        total:
+          type: integer
+          format: int64
+        page:
+          type: integer
+          format: int64
+        per_page:
+          type: integer
+          format: int64
+        has_next:
+          type: integer
+          format: int64
+        has_prev:
+          type: integer
+          format: int64
+        Info:
+          type: array
+          items:
+            $ref: "#/components/schemas/XInquireEventRequestListObj"
+
+    XInquireEventRequestListObj:
+      type: object
+      properties:
+        CommonInfoList:
+          type: object
+          description: Common Field Information List
+    
+    PreferenceRequestPost:
+      required:
+        - CorporateId
+        - UserId
+      type: object
+      properties:
+        CorporateId:
+          type: string
+          description: Corporate ID
+        UserId:
+          type: string
+          description: User Id
+        SavePreferenceRespInfo:
+          type: array
+          items:
+            $ref: "#/components/schemas/XPreferenceResponseObj"
+    
+    PreferenceResponsePost:
+      required:
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+        - RequestId
+      type: object
+      properties:
+        MessageId:
+          type: string
+          description: Status Code
+        RequestId:
+          type: string
+          description: Request Id
+        StatusCode:
+          type: string
+          description: Status Code
+        StatusDescription:
+          type: string
+          description: Status Description
+        Timestamp:
+          type: string
+          description: Timestamp
+  
+    GetPreferenceResponse:
+      required:
+        - Info
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+        - RequestId
+      type: object
+      properties:
+        MessageId:
+          type: string
+          description: Status Code
+        RequestId:
+          type: string
+          description: Request Id
+        StatusCode:
+          type: string
+          description: Status Code
+        StatusDescription:
+          type: string
+          description: Status Description
+        Timestamp:
+          type: string
+          description: Timestamp
+        SavePreferenceRespInfo:
+          type: array
+          items:
+            $ref: "#/components/schemas/XPreferenceResponseObj"
+    
+    XPreferenceResponseObj:        
+      type: object
+      properties:
+        PreferenceListInfo:
+          type: object
+          description: Preference List Information
+    
+    XBankLimitInquireRequest:
+      required:
+        - CorporateId
+        - UserId
+      type: object
+      properties:
+        CorporateId:
+          type: string
+          description: Corporate ID
+        UserId:
+          type: string
+          description: User Id
+          
+    XBankLimitInquireResponse:
+      required:
+        - Info
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+        - RequestId
+      type: object
+      properties:
+        MessageId:
+          type: string
+          description: Status Code
+        RequestId:
+          type: string
+          description: Request Id
+        StatusCode:
+          type: string
+          description: Status Code
+        StatusDescription:
+          type: string
+          description: Status Description
+        Timestamp:
+          type: string
+          description: Timestamp
+        BankLimitResponseInfo:
+          type: array
+          items:
+            $ref: "#/components/schemas/XBankLimitResponseInfoObj"
+    
+    XBankLimitResponseInfoObj:        
+      type: object
+      properties:
+        LimitListInfo:
+            type: object
+            description: Limit List Info
+      
+    XForgotPasswordRequest:
+      required:
+        - CorporateId
+        - UserId
+      type: object
+      properties:
+        CorporateId:
+          type: string
+          description: Corporate ID
+        UserId:
+          type: string
+          description: User Id
+        Email:
+          type: string
+          format: email
+        MobileNo:
+          type: string
+          pattern: '^[1-9]\d{1,14}$' # This pattern enforces the number to start with "+" followed by digits.
+    
+    XForgotPasswordResponse:
+      required:
+        - Info
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+        - RequestId
+        - OTP
+      type: object
+      properties:
+        MessageId:
+          type: string
+          description: Status Code
+        RequestId:
+          type: string
+          description: Request Id
+        StatusCode:
+          type: string
+          description: Status Code
+        StatusDescription:
+          type: string
+          description: Status Description
+        Timestamp:
+          type: string
+          description: Timestamp
+        OTP:
+          type: string
+    
+    XResetPasswordRequest:
+      required:
+        - CorporateId
+        - UserId
+      type: object
+      properties:
+        CorporateId:
+          type: string
+          description: Corporate ID
+        
+        UserId:
+          type: string
+          description: User Id
+        
+        Email:
+          type: string
+          format: email
+          
+        MobileNo:
+          type: string
+          pattern: '^[1-9]\d{1,14}$' # This pattern enforces the number to start with "+" followed by digits.
+        Password:
+          type: string
+          description: User's password
+        
+        OTP:
+          type: string
+          description : One Time Password
+          
+          
+    
+    XResetPasswordResponse:
+      required:
+        - Info
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+        - RequestId
+        - OTP
+      type: object
+      properties:
+        MessageId:
+          type: string
+          description: Status Code
+        RequestId:
+          type: string
+          description: Request Id
+        StatusCode:
+          type: string
+          description: Status Code
+        StatusDescription:
+          type: string
+          description: Status Description
+        Timestamp:
+          type: string
+          description: Timestamp
+    
+    XForgotCredentialRequest:
+      required:
+        - MobileNo
+        - Email
+      type: object
+      properties:
+        Email:
+          type: string
+          format: email
+        MobileNo:
+          type: string
+          pattern: '^[1-9]\d{1,14}$' # This pattern enforces the number to start with "+" followed by digits.
+    
+    XForgotCredentialResponse:
+      required:
+        - Info
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+        - RequestId
+        - OTP
+      type: object
+      properties:
+        MessageId:
+          type: string
+          description: Status Code
+        RequestId:
+          type: string
+          description: Request Id
+        StatusCode:
+          type: string
+          description: Status Code
+        StatusDescription:
+          type: string
+          description: Status Description
+        Timestamp:
+          type: string
+          description: Timestamp
+        OTP:
+          type: string
+          
+    XResetCredentialRequest:
+      required:
+        - CorporateId
+        - UserId
+      type: object
+      properties:
+        Email:
+          type: string
+          format: email
+        MobileNo:
+          type: string
+          pattern: '^[1-9]\d{1,14}$' # This pattern enforces the number to start with "+" followed by digits.
+        OTP:
+          type: string
+          description : One Time Password
+          
+    XResetCredentialResponse:
+      required:
+        - Info
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+        - RequestId
+      type: object
+      properties:
+        MessageId:
+          type: string
+          description: Status Code
+        RequestId:
+          type: string
+          description: Request Id
+        StatusCode:
+          type: string
+          description: Status Code
+        StatusDescription:
+          type: string
+          description: Status Description
+        Timestamp:
+          type: string
+          description: Timestamp
+        UserId:
+          type: string
+          description: User Id
+        CorporateId:
+          type: string
+          description: Corporate Id
+    
+    XNotificationRequest:
+        required:
+          - CorporateId
+          - UserId
+        type: object
+        properties:
+          CorporateId:
+            type: string
+            description: Corporate ID
+          UserId:
+            type: string
+            description: User Id
+            
+    XNotificationResponse:
+        required:
+          - Info
+          - MessageId
+          - StatusCode
+          - StatusDescription
+          - Timestamp
+          - RequestId
+        type: object
+        properties:
+          MessageId:
+            type: string
+            description: Status Code
+          RequestId:
+            type: string
+            description: Request Id
+          StatusCode:
+            type: string
+            description: Status Code
+          StatusDescription:
+            type: string
+            description: Status Description
+          Timestamp:
+            type: string
+            description: Timestamp
+          Info:
+            type: array
+            items:
+              $ref: "#/components/schemas/XNotificationListObj"
+      
+    XNotificationListObj:        
+        type: object
+        properties:
+          NotificationListInfo:
+              type: object
+              description: Notification List Info
+              
+    XGlobalSearchRequest:
+        required:
+        - CorporateId
+        - UserId
+        - Module
+        - page
+        - per_page
+        - Type
+        type: object
+        properties:
+          CorporateId:
+            type: string
+            description: Corporate Id
+          UserId:
+            type: string
+            description: User Id
+          Module:
+            type: string
+            description: Module Name
+            example: IWGT;OWGT;IMLC
+          page:
+            type: integer
+            description: page
+            minimum: 1
+            default: 1
+          per_page:
+            type: integer
+            description: per_page
+            maximum: 20
+            minimum: 1
+            default: 10
+          Type:
+            type: string
+            description: Based on Type reterive List record
+            enum: [INQ, AUTH]
+          search:
+            type: string
+    
+    SaveFBTokenRequestPost:
+      required:
+        - CorporateId
+        - UserId
+      type: object
+      properties:
+        CorporateId:
+          type: string
+          description: Corporate ID
+        UserId:
+          type: string
+          description: User Id
+        SaveFBTokenInfo:
+          type: array
+          items:
+            $ref: "#/components/schemas/XSaveFBTokenResponseObj"
+    
+    SaveFBTokenResponsePost:
+      required:
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+        - RequestId
+      type: object
+      properties:
+        MessageId:
+          type: string
+          description: Status Code
+        RequestId:
+          type: string
+          description: Request Id
+        StatusCode:
+          type: string
+          description: Status Code
+        StatusDescription:
+          type: string
+          description: Status Description
+        Timestamp:
+          type: string
+          description: Timestamp
+    
+    XSaveFBTokenResponseObj:        
+      type: object
+      properties:
+        TokenListInfo:
+          type: object
+          description: Token List Information
+          
+    XAuthUserListRequest:
+      required:
+        - CorporateId
+        - UserId
+        - Module
+        - MainRef
+        - functionId
+        - EventTimes
+      type: object
+      properties:
+        CorporateId:
+          type: string
+          description: Corporate ID
+        UserId:
+          type: string
+          description: User Id
+        Module:
+          type: string
+          description: Module
+        MainRef:
+          type: string
+          description: MainRef
+        functionId:
+          type: string
+          description: function Id
+        EventTimes:
+          type: string
+          description: Event Times
+
+    XAuthUserListResponse:
+      required:
+        - Info
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+      type: object
+      properties:
+        MessageId:
+          type: string
+          description: Status Code
+        RequestId:
+          type: string
+          description: Request Id
+        StatusCode:
+          type: string
+          description: Status Code
+        StatusDescription:
+          type: string
+          description: Status Description
+        Timestamp:
+          type: string
+          description: Timestamp
+        InquiryAuthUserInfo:
+          type: array
+          items:
+              $ref: "#/components/schemas/XAuthUserListInfoObj"  
+              
+              
+    XAuthUserListInfoObj:
+      type: object
+      properties:
+        PendingUserList:
+          type: object
+        AuthorizedUserList:
+          type: object
+    
+    XAttachmentRequest:
+      required:
+        - MainRef
+        - AttachmentRef
+      type: object
+      properties:
+        MainRef:
+          type: string
+          description: Main Reference 
+        AttachmentRef:
+          type: string
+          description: Attachment Ref No
+
+    XAttachmentResponse:
+      required:
+        - Info
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+      type: object
+      properties:
+        MessageId:
+          type: string
+          description: Status Code
+        RequestId:
+          type: string
+          description: Request Id
+        StatusCode:
+          type: string
+          description: Status Code
+        StatusDescription:
+          type: string
+          description: Status Description
+        Timestamp:
+          type: string
+          description: Timestamp
+        AttachementInfo:
+          type: array
+          items:
+              $ref: "#/components/schemas/XAttachementInfoObj"  
+              
+              
+    XAttachementInfoObj:
+      type: object
+      properties:
+        XAttachementInfoListObj:
+          type: object
+    
+    DashboardAnalyticsRequest:
+      required:
+        - CorporateId
+        - UserId
+        - Period
+      type: object
+      properties:
+        CorporateId:
+          type: string
+          description: Corporate ID
+        UserId:
+          type: string
+          description: User Id
+        Period:
+          type: string
+          description: Time period for analytics (e.g., 7d, 30d, 90d, 1y)
+          enum: [7d, 30d, 90d, 1y]
+          default: 30d
+        Module:
+          type: string
+          description: Optional module filter
+          example: IWGT;OWGT;IMLC
+    
+    DashboardAnalyticsResponse:
+      required:
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+        - RequestId
+      type: object
+      properties:
+        MessageId:
+          type: string
+          description: Message Id
+        RequestId:
+          type: string
+          description: Request Id
+        StatusCode:
+          type: string
+          description: Status Code
+        StatusDescription:
+          type: string
+          description: Status Description
+        Timestamp:
+          type: string
+          description: Timestamp
+        AnalyticsData:
+          type: object
+          properties:
+            overview:
+              type: object
+              properties:
+                totalTransactions:
+                  type: integer
+                  description: Total number of transactions
+                pendingTransactions:
+                  type: integer
+                  description: Number of pending transactions
+                completedTransactions:
+                  type: integer
+                  description: Number of completed transactions
+                totalAmount:
+                  type: number
+                  format: double
+                  description: Total transaction amount
+                averageAmount:
+                  type: number
+                  format: double
+                  description: Average transaction amount
+            monthlyTrend:
+              type: array
+              items:
+                type: object
+                properties:
+                  month:
+                    type: string
+                    description: Month identifier
+                  count:
+                    type: integer
+                    description: Transaction count
+                  amount:
+                    type: number
+                    format: double
+                    description: Total amount for the month
+            productDistribution:
+              type: array
+              items:
+                type: object
+                properties:
+                  product:
+                    type: string
+                    description: Product name
+                  count:
+                    type: integer
+                    description: Transaction count
+                  percentage:
+                    type: number
+                    format: double
+                    description: Percentage of total
+    
+    TransactionAnalyticsRequest:
+      required:
+        - CorporateId
+        - UserId
+        - StartDate
+        - EndDate
+      type: object
+      properties:
+        CorporateId:
+          type: string
+          description: Corporate ID
+        UserId:
+          type: string
+          description: User Id
+        StartDate:
+          type: string
+          format: date
+          description: Start date for analytics
+          example: 2024-01-01
+        EndDate:
+          type: string
+          format: date
+          description: End date for analytics
+          example: 2024-12-31
+        Module:
+          type: string
+          description: Optional module filter
+        TransactionType:
+          type: string
+          description: Optional transaction type filter
+        Currency:
+          type: string
+          description: Optional currency filter
+    
+    TransactionAnalyticsResponse:
+      required:
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+        - RequestId
+      type: object
+      properties:
+        MessageId:
+          type: string
+          description: Message Id
+        RequestId:
+          type: string
+          description: Request Id
+        StatusCode:
+          type: string
+          description: Status Code
+        StatusDescription:
+          type: string
+          description: Status Description
+        Timestamp:
+          type: string
+          description: Timestamp
+        TransactionAnalytics:
+          type: object
+          properties:
+            summary:
+              type: object
+              properties:
+                totalTransactions:
+                  type: integer
+                  description: Total number of transactions
+                totalAmount:
+                  type: number
+                  format: double
+                  description: Total transaction amount
+                averageAmount:
+                  type: number
+                  format: double
+                  description: Average transaction amount
+                maxAmount:
+                  type: number
+                  format: double
+                  description: Maximum transaction amount
+                minAmount:
+                  type: number
+                  format: double
+                  description: Minimum transaction amount
+            dailyBreakdown:
+              type: array
+              items:
+                type: object
+                properties:
+                  date:
+                    type: string
+                    format: date
+                    description: Date
+                  count:
+                    type: integer
+                    description: Transaction count
+                  amount:
+                    type: number
+                    format: double
+                    description: Total amount
+            statusDistribution:
+              type: array
+              items:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Transaction status
+                  count:
+                    type: integer
+                    description: Count
+                  percentage:
+                    type: number
+                    format: double
+                    description: Percentage
+            topTransactions:
+              type: array
+              items:
+                type: object
+                properties:
+                  reference:
+                    type: string
+                    description: Transaction reference
+                  date:
+                    type: string
+                    format: date
+                    description: Transaction date
+                  amount:
+                    type: number
+                    format: double
+                    description: Transaction amount
+                  beneficiary:
+                    type: string
+                    description: Beneficiary name
+    
+    ProductDistributionRequest:
+      required:
+        - CorporateId
+        - UserId
+      type: object
+      properties:
+        CorporateId:
+          type: string
+          description: Corporate ID
+        UserId:
+          type: string
+          description: User Id
+        Period:
+          type: string
+          description: Time period for analytics (e.g., 7d, 30d, 90d, 1y)
+          enum: [7d, 30d, 90d, 1y]
+          default: 30d
+        GroupBy:
+          type: string
+          description: Grouping criteria
+          enum: [product, currency, status, beneficiary]
+          default: product
+    
+    ProductDistributionResponse:
+      required:
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+        - RequestId
+      type: object
+      properties:
+        MessageId:
+          type: string
+          description: Message Id
+        RequestId:
+          type: string
+          description: Request Id
+        StatusCode:
+          type: string
+          description: Status Code
+        StatusDescription:
+          type: string
+          description: Status Description
+        Timestamp:
+          type: string
+          description: Timestamp
+        ProductDistribution:
+          type: object
+          properties:
+            distribution:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: Product/Category name
+                  count:
+                    type: integer
+                    description: Transaction count
+                  amount:
+                    type: number
+                    format: double
+                    description: Total amount
+                  percentage:
+                    type: number
+                    format: double
+                    description: Percentage of total
+                  trend:
+                    type: string
+                    description: Trend indicator (up/down/stable)
+                    enum: [up, down, stable]
+            topCategories:
+              type: array
+              items:
+                type: object
+                properties:
+                  category:
+                    type: string
+                    description: Category name
+                  value:
+                    type: number
+                    format: double
+                    description: Category value
+            insights:
+              type: array
+              items:
+                type: string
+                description: Analytics insights
+    
+    PortfolioValueRequest:
+      required:
+        - CorporateId
+        - UserId
+      type: object
+      properties:
+        CorporateId:
+          type: string
+          description: Corporate ID
+        UserId:
+          type: string
+          description: User Id
+    
+    PortfolioValueResponse:
+      required:
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+        - RequestId
+      type: object
+      properties:
+        MessageId:
+          type: string
+          description: Message Id
+        RequestId:
+          type: string
+          description: Request Id
+        StatusCode:
+          type: string
+          description: Status Code
+        StatusDescription:
+          type: string
+          description: Status Description
+        Timestamp:
+          type: string
+          description: Timestamp
+        Currency:
+          type: string
+          description: Portfolio currency
+          example: SAR
+        TotalValue:
+          type: string
+          description: Total portfolio value
+          example: "250000.00"
+        AsOfDate:
+          type: string
+          format: date-time
+          description: Value as of date
+        AccountBreakdown:
+          type: array
+          items:
+            type: object
+            properties:
+              accountNumber:
+                type: string
+                description: Account number
+              accountType:
+                type: string
+                description: Account type
+              balance:
+                type: string
+                description: Account balance
+              currency:
+                type: string
+                description: Account currency
+    
+    ModuleAnalyticsRequest:
+      required:
+        - CorporateId
+        - UserId
+        - Module
+      type: object
+      properties:
+        CorporateId:
+          type: string
+          description: Corporate ID
+        UserId:
+          type: string
+          description: User Id
+        Module:
+          type: string
+          description: Module code (IMLC, EXLC, OWGT, IMCO, EXCO, TFIN)
+          example: IMLC
+        Period:
+          type: string
+          description: Time period for analytics (e.g., 7d, 30d, 90d, 1y)
+          enum: [7d, 30d, 90d, 1y]
+          default: 30d
+    
+    ModuleAnalyticsResponse:
+      required:
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+        - RequestId
+      type: object
+      properties:
+        MessageId:
+          type: string
+          description: Message Id
+        RequestId:
+          type: string
+          description: Request Id
+        StatusCode:
+          type: string
+          description: Status Code
+        StatusDescription:
+          type: string
+          description: Status Description
+        Timestamp:
+          type: string
+          description: Timestamp
+        Module:
+          type: string
+          description: Module code
+        TotalTransactions:
+          type: integer
+          description: Total number of transactions
+        PendingCount:
+          type: integer
+          description: Number of pending transactions
+        TotalValue:
+          type: string
+          description: Total transaction value
+        Currency:
+          type: string
+          description: Currency code
+        TransactionTrend:
+          type: array
+          items:
+            type: object
+            properties:
+              month:
+                type: string
+                description: Month
+              count:
+                type: integer
+                description: Transaction count
+              value:
+                type: string
+                description: Transaction value
+        TopBeneficiaries:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Beneficiary name
+              count:
+                type: integer
+                description: Transaction count
+              value:
+                type: string
+                description: Total value
+    
+    BeneficiaryAnalyticsRequest:
+      required:
+        - CorporateId
+        - UserId
+      type: object
+      properties:
+        CorporateId:
+          type: string
+          description: Corporate ID
+        UserId:
+          type: string
+          description: User Id
+        Period:
+          type: string
+          description: Time period for analytics (e.g., 7d, 30d, 90d, 1y)
+          enum: [7d, 30d, 90d, 1y]
+          default: 30d
+        Module:
+          type: string
+          description: Optional module filter
+    
+    BeneficiaryAnalyticsResponse:
+      required:
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+        - RequestId
+      type: object
+      properties:
+        MessageId:
+          type: string
+          description: Message Id
+        RequestId:
+          type: string
+          description: Request Id
+        StatusCode:
+          type: string
+          description: Status Code
+        StatusDescription:
+          type: string
+          description: Status Description
+        Timestamp:
+          type: string
+          description: Timestamp
+        BeneficiaryAnalytics:
+          type: object
+          properties:
+            totalBeneficiaries:
+              type: integer
+              description: Total number of beneficiaries
+            activeBeneficiaries:
+              type: integer
+              description: Number of active beneficiaries
+            topBeneficiaries:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: Beneficiary name
+                  transactionCount:
+                    type: integer
+                    description: Number of transactions
+                  totalAmount:
+                    type: number
+                    format: double
+                    description: Total transaction amount
+                  lastTransactionDate:
+                    type: string
+                    format: date
+                    description: Last transaction date
+            beneficiaryTrends:
+              type: array
+              items:
+                type: object
+                properties:
+                  month:
+                    type: string
+                    description: Month
+                  newBeneficiaries:
+                    type: integer
+                    description: New beneficiaries added
+                  activeBeneficiaries:
+                    type: integer
+                    description: Active beneficiaries
+            geographicDistribution:
+              type: array
+              items:
+                type: object
+                properties:
+                  country:
+                    type: string
+                    description: Country name
+                  count:
+                    type: integer
+                    description: Number of beneficiaries
+                  percentage:
+                    type: number
+                    format: double
+                    description: Percentage of total
+    
+    PerformanceSummaryRequest:
+      required:
+        - CorporateId
+        - UserId
+      type: object
+      properties:
+        CorporateId:
+          type: string
+          description: Corporate ID
+        UserId:
+          type: string
+          description: User Id
+        Period:
+          type: string
+          description: Time period for analytics (e.g., 7d, 30d, 90d, 1y)
+          enum: [7d, 30d, 90d, 1y]
+          default: 30d
+    
+    PerformanceSummaryResponse:
+      required:
+        - MessageId
+        - StatusCode
+        - StatusDescription
+        - Timestamp
+        - RequestId
+      type: object
+      properties:
+        MessageId:
+          type: string
+          description: Message Id
+        RequestId:
+          type: string
+          description: Request Id
+        StatusCode:
+          type: string
+          description: Status Code
+        StatusDescription:
+          type: string
+          description: Status Description
+        Timestamp:
+          type: string
+          description: Timestamp
+        PerformanceSummary:
+          type: object
+          properties:
+            overallScore:
+              type: number
+              format: double
+              description: Overall performance score (0-100)
+            processingEfficiency:
+              type: object
+              properties:
+                averageProcessingTime:
+                  type: number
+                  format: double
+                  description: Average processing time in hours
+                onTimeDelivery:
+                  type: number
+                  format: double
+                  description: On-time delivery percentage
+                slaCompliance:
+                  type: number
+                  format: double
+                  description: SLA compliance percentage
+            qualityMetrics:
+              type: object
+              properties:
+                errorRate:
+                  type: number
+                  format: double
+                  description: Error rate percentage
+                rejectionRate:
+                  type: number
+                  format: double
+                  description: Rejection rate percentage
+                customerSatisfaction:
+                  type: number
+                  format: double
+                  description: Customer satisfaction score
+            volumeMetrics:
+              type: object
+              properties:
+                totalTransactions:
+                  type: integer
+                  description: Total number of transactions
+                dailyAverage:
+                  type: number
+                  format: double
+                  description: Daily transaction average
+                peakVolume:
+                  type: integer
+                  description: Peak transaction volume
+            monthlyTrends:
+              type: array
+              items:
+                type: object
+                properties:
+                  month:
+                    type: string
+                    description: Month
+                  score:
+                    type: number
+                    format: double
+                    description: Performance score for the month
+                  volume:
+                    type: integer
+                    description: Transaction volume
+                  efficiency:
+                    type: number
+                    format: double
+                    description: Processing efficiency
