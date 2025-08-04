@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BCOInquiry>
+    <Description>BCO (Bank Credit Operations) Inquiry Configuration</Description>
+    
+    <!-- BCO Transaction Inquiry Query -->
+    <Query id="BCOTransactionInquiry" type="SELECT">
+        <SQL>
+            <![CDATA[
+            SELECT 
+                REF_NO AS REFERENCE_NO,
+                TRX_TYPE AS TRANSACTION_TYPE,
+                CUSTOMER_NAME,
+                CUSTOMER_ID,
+                BRANCH_CODE,
+                BRANCH_NAME,
+                OBS_DATE AS OBSERVATION_DATE,
+                STATUS,
+                AMOUNT,
+                CURRENCY,
+                CREATED_DATE,
+                UPDATED_DATE,
+                REASON_FOR_REFERAL,
+                BCO_REMARKS,
+                APPROVAL_STATUS,
+                APPROVED_BY,
+                APPROVED_DATE
+            FROM BCO_TRANSACTIONS
+            WHERE C_UNIT_CODE = '${corporateId}'
+            ]]>
+        </SQL>
+        <Filters>
+            <Filter field="TRX_TYPE" condition="AND TRX_TYPE = '${transactionType}'" optional="true"/>
+            <Filter field="STATUS" condition="AND STATUS = '${status}'" optional="true"/>
+            <Filter field="BRANCH_CODE" condition="AND BRANCH_CODE = '${branchCode}'" optional="true"/>
+            <Filter field="CUSTOMER_ID" condition="AND CUSTOMER_ID = '${customerId}'" optional="true"/>
+            <Filter field="REF_NO" condition="AND REF_NO = '${referenceNo}'" optional="true"/>
+            <Filter field="OBS_DATE" condition="AND OBS_DATE >= '${fromDate}'" optional="true"/>
+            <Filter field="OBS_DATE" condition="AND OBS_DATE <= '${toDate}'" optional="true"/>
+        </Filters>
+        <OrderBy>ORDER BY CREATED_DATE DESC</OrderBy>
+        <Pagination>
+            <Offset>OFFSET ${offset} ROWS</Offset>
+            <Limit>FETCH NEXT ${limit} ROWS ONLY</Limit>
+        </Pagination>
+    </Query>
+    
+    <!-- DSO Referral Query -->
+    <Query id="DSOReferal" type="SELECT">
+        <SQL>
+            <![CDATA[
+            SELECT 
+                REF_NO AS REFERENCE_NO,
+                'DSO_REFERAL' AS TRANSACTION_TYPE,
+                CUSTOMER_NAME,
+                CUSTOMER_ID,
+                BRANCH_CODE,
+                BRANCH_NAME,
+                OBS_DATE AS OBSERVATION_DATE,
+                STATUS,
+                AMOUNT,
+                CURRENCY,
+                CREATED_DATE,
+                UPDATED_DATE,
+                REASON_FOR_REFERAL,
+                BCO_REMARKS,
+                APPROVAL_STATUS,
+                APPROVED_BY,
+                APPROVED_DATE
+            FROM BCO_DSO_REFERALS
+            WHERE C_UNIT_CODE = '${corporateId}'
+            AND TRX_TYPE = 'DSO_REFERAL'
+            ]]>
+        </SQL>
+        <Filters>
+            <Filter field="STATUS" condition="AND STATUS = '${status}'" optional="true"/>
+            <Filter field="APPROVAL_STATUS" condition="AND APPROVAL_STATUS = '${approvalStatus}'" optional="true"/>
+            <Filter field="BRANCH_CODE" condition="AND BRANCH_CODE = '${branchCode}'" optional="true"/>
+            <Filter field="CUSTOMER_ID" condition="AND CUSTOMER_ID = '${customerId}'" optional="true"/>
+        </Filters>
+        <OrderBy>ORDER BY CREATED_DATE DESC</OrderBy>
+    </Query>
+    
+    <!-- CAA (Credit Approval Authority) Query -->
+    <Query id="CAAInquiry" type="SELECT">
+        <SQL>
+            <![CDATA[
+            SELECT 
+                REF_NO AS REFERENCE_NO,
+                'CAA' AS TRANSACTION_TYPE,
+                CUSTOMER_NAME,
+                CUSTOMER_ID,
+                BRANCH_CODE,
+                BRANCH_NAME,
+                OBS_DATE AS OBSERVATION_DATE,
+                STATUS,
+                AMOUNT,
+                CURRENCY,
+                CREATED_DATE,
+                UPDATED_DATE,
+                CAA_DECISION,
+                CAA_REMARKS,
+                APPROVAL_STATUS,
+                APPROVED_BY,
+                APPROVED_DATE
+            FROM BCO_CAA_TRANSACTIONS
+            WHERE C_UNIT_CODE = '${corporateId}'
+            AND TRX_TYPE = 'CAA'
+            ]]>
+        </SQL>
+        <Filters>
+            <Filter field="STATUS" condition="AND STATUS = '${status}'" optional="true"/>
+            <Filter field="BRANCH_CODE" condition="AND BRANCH_CODE = '${branchCode}'" optional="true"/>
+            <Filter field="CUSTOMER_ID" condition="AND CUSTOMER_ID = '${customerId}'" optional="true"/>
+            <Filter field="OBS_DATE" condition="AND OBS_DATE >= '${fromDate}'" optional="true"/>
+            <Filter field="OBS_DATE" condition="AND OBS_DATE <= '${toDate}'" optional="true"/>
+        </Filters>
+        <OrderBy>ORDER BY CREATED_DATE DESC</OrderBy>
+    </Query>
+    
+    <!-- OR (Operational Risk) Query -->
+    <Query id="ORInquiry" type="SELECT">
+        <SQL>
+            <![CDATA[
+            SELECT 
+                REF_NO AS REFERENCE_NO,
+                'OR' AS TRANSACTION_TYPE,
+                CUSTOMER_NAME,
+                CUSTOMER_ID,
+                BRANCH_CODE,
+                BRANCH_NAME,
+                OBS_DATE AS OBSERVATION_DATE,
+                STATUS,
+                RISK_LEVEL,
+                RISK_CATEGORY,
+                CREATED_DATE,
+                UPDATED_DATE,
+                OR_ASSESSMENT,
+                OR_REMARKS,
+                APPROVAL_STATUS,
+                APPROVED_BY,
+                APPROVED_DATE
+            FROM BCO_OR_TRANSACTIONS
+            WHERE C_UNIT_CODE = '${corporateId}'
+            AND TRX_TYPE = 'OR'
+            ]]>
+        </SQL>
+        <Filters>
+            <Filter field="STATUS" condition="AND STATUS = '${status}'" optional="true"/>
+            <Filter field="RISK_LEVEL" condition="AND RISK_LEVEL = '${riskLevel}'" optional="true"/>
+            <Filter field="BRANCH_CODE" condition="AND BRANCH_CODE = '${branchCode}'" optional="true"/>
+            <Filter field="CUSTOMER_ID" condition="AND CUSTOMER_ID = '${customerId}'" optional="true"/>
+        </Filters>
+        <OrderBy>ORDER BY CREATED_DATE DESC</OrderBy>
+    </Query>
+    
+    <!-- Insert DSO Referral -->
+    <Query id="InsertDSOReferral" type="INSERT">
+        <SQL>
+            <![CDATA[
+            INSERT INTO BCO_DSO_REFERALS (
+                REF_NO,
+                TRX_TYPE,
+                C_UNIT_CODE,
+                CUSTOMER_NAME,
+                CUSTOMER_ID,
+                BRANCH_CODE,
+                BRANCH_NAME,
+                OBS_DATE,
+                STATUS,
+                AMOUNT,
+                CURRENCY,
+                REASON_FOR_REFERAL,
+                BCO_REMARKS,
+                APPROVAL_STATUS,
+                CREATED_BY,
+                CREATED_DATE
+            ) VALUES (
+                '${referenceNo}',
+                'DSO_REFERAL',
+                '${corporateId}',
+                '${customerName}',
+                '${customerId}',
+                '${branchCode}',
+                '${branchName}',
+                '${observationDate}',
+                'PENDING',
+                '${amount}',
+                '${currency}',
+                '${reasonForReferal}',
+                '${bcoRemarks}',
+                'PENDING',
+                '${userId}',
+                SYSDATE
+            )
+            ]]>
+        </SQL>
+    </Query>
+    
+    <!-- Update DSO Referral Status -->
+    <Query id="UpdateDSOReferralStatus" type="UPDATE">
+        <SQL>
+            <![CDATA[
+            UPDATE BCO_DSO_REFERALS
+            SET 
+                APPROVAL_STATUS = '${approvalStatus}',
+                BCO_REMARKS = '${bcoRemarks}',
+                APPROVED_BY = '${approvedBy}',
+                APPROVED_DATE = SYSDATE,
+                UPDATED_DATE = SYSDATE
+            WHERE REF_NO = '${referenceNo}'
+            AND C_UNIT_CODE = '${corporateId}'
+            ]]>
+        </SQL>
+    </Query>
+    
+    <!-- Count Total Records -->
+    <Query id="CountBCOTransactions" type="SELECT">
+        <SQL>
+            <![CDATA[
+            SELECT COUNT(*) AS TOTAL_COUNT
+            FROM BCO_TRANSACTIONS
+            WHERE C_UNIT_CODE = '${corporateId}'
+            ]]>
+        </SQL>
+        <Filters>
+            <Filter field="TRX_TYPE" condition="AND TRX_TYPE = '${transactionType}'" optional="true"/>
+            <Filter field="STATUS" condition="AND STATUS = '${status}'" optional="true"/>
+            <Filter field="BRANCH_CODE" condition="AND BRANCH_CODE = '${branchCode}'" optional="true"/>
+            <Filter field="CUSTOMER_ID" condition="AND CUSTOMER_ID = '${customerId}'" optional="true"/>
+        </Filters>
+    </Query>
+    
+    <!-- Dashboard Statistics -->
+    <Query id="BCODashboardStats" type="SELECT">
+        <SQL>
+            <![CDATA[
+            SELECT 
+                TRX_TYPE,
+                STATUS,
+                COUNT(*) AS COUNT,
+                SUM(AMOUNT) AS TOTAL_AMOUNT
+            FROM BCO_TRANSACTIONS
+            WHERE C_UNIT_CODE = '${corporateId}'
+            AND OBS_DATE >= '${fromDate}'
+            AND OBS_DATE <= '${toDate}'
+            GROUP BY TRX_TYPE, STATUS
+            ]]>
+        </SQL>
+    </Query>
+</BCOInquiry>
