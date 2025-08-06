@@ -1,0 +1,703 @@
+openapi: 3.0.0
+info:
+  title: BCO (Bank Credit Operations) API
+  version: 1.0.0
+  description: |
+    The BCO API provides comprehensive functionality for managing Bank Credit Operations including DSO referrals, 
+    CAA (Credit Approval Authority) transactions, and OR (Operational Risk) assessments.
+    
+    ## Authentication
+    All API requests require authentication using either API Key or OAuth 2.0 Bearer tokens.
+    
+    ## Rate Limiting
+    - Standard tier: 100 requests per minute
+    - Premium tier: 1000 requests per minute
+    
+  contact:
+    name: BCO API Support
+    email: bco-support@sbi.com
+    url: https://developer.sbi.com/support
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+
+servers:
+  - url: https://api.sbi.com/bco/v1
+    description: Production server
+  - url: https://api-staging.sbi.com/bco/v1
+    description: Staging server
+  - url: https://api-dev.sbi.com/bco/v1
+    description: Development server
+
+security:
+  - ApiKeyAuth: []
+  - BearerAuth: []
+
+tags:
+  - name: Inquiries
+    description: BCO transaction inquiries and searches
+  - name: Referrals
+    description: DSO referral management
+  - name: Transactions
+    description: Individual transaction operations
+  - name: Batch
+    description: Batch operations
+  - name: Webhooks
+    description: Webhook configuration
+  - name: Health
+    description: API health and status
+
+paths:
+  /inquire:
+    post:
+      tags:
+        - Inquiries
+      summary: Inquire BCO transactions
+      description: Retrieve BCO transactions based on various filters with pagination support
+      operationId: inquireTransactions
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+        - $ref: '#/components/parameters/Sequence'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BCOInquireRequest'
+            examples:
+              basic:
+                summary: Basic inquiry
+                value:
+                  corporateId: "0001517524"
+                  userId: "USER001"
+                  pageNumber: 1
+                  pageSize: 10
+              filtered:
+                summary: Filtered inquiry
+                value:
+                  corporateId: "0001517524"
+                  userId: "USER001"
+                  transactionType: "DSO_REFERAL"
+                  status: "PENDING"
+                  fromDate: "2024-01-01"
+                  toDate: "2024-12-31"
+                  pageNumber: 1
+                  pageSize: 20
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BCOInquireResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+  /dso-referal:
+    post:
+      tags:
+        - Referrals
+      summary: Submit DSO referral
+      description: Submit a new DSO referral for BCO review
+      operationId: submitDSOReferal
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+        - $ref: '#/components/parameters/Sequence'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DSOReferal'
+      responses:
+        '201':
+          description: Referral created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BCOInquireResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '409':
+          $ref: '#/components/responses/Conflict'
+
+  /transaction/{referenceNo}:
+    get:
+      tags:
+        - Transactions
+      summary: Get transaction details
+      description: Retrieve detailed information about a specific BCO transaction
+      operationId: getTransaction
+      parameters:
+        - name: referenceNo
+          in: path
+          required: true
+          description: Transaction reference number
+          schema:
+            type: string
+            pattern: '^BCO[0-9]{7}$'
+            example: BCO2024001
+      responses:
+        '200':
+          description: Transaction details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BCOTransaction'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /transaction/{referenceNo}/status:
+    put:
+      tags:
+        - Transactions
+      summary: Update transaction status
+      description: Update the status of a BCO transaction
+      operationId: updateTransactionStatus
+      parameters:
+        - name: referenceNo
+          in: path
+          required: true
+          description: Transaction reference number
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateStatusRequest'
+      responses:
+        '200':
+          description: Status updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BCOTransaction'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /batch:
+    post:
+      tags:
+        - Batch
+      summary: Submit batch transactions
+      description: Submit multiple BCO transactions in a single request
+      operationId: submitBatch
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/DSOReferal'
+              maxItems: 100
+      responses:
+        '200':
+          description: Batch processed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchResponse'
+
+  /webhook/configure:
+    post:
+      tags:
+        - Webhooks
+      summary: Configure webhook
+      description: Configure webhook URL for receiving BCO notifications
+      operationId: configureWebhook
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookConfig'
+      responses:
+        '200':
+          description: Webhook configured successfully
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+  /health:
+    get:
+      tags:
+        - Health
+      summary: Health check
+      description: Check API health status
+      operationId: healthCheck
+      security: []
+      responses:
+        '200':
+          description: API is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [UP, DOWN]
+                  timestamp:
+                    type: string
+                    format: date-time
+                  version:
+                    type: string
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key authentication
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 Bearer token
+
+  parameters:
+    RequestId:
+      name: Request-Id
+      in: header
+      required: true
+      description: Unique request identifier for tracking
+      schema:
+        type: string
+        format: uuid
+    Sequence:
+      name: Sequence
+      in: header
+      required: true
+      description: Request sequence number
+      schema:
+        type: integer
+        format: int64
+
+  schemas:
+    BCOInquireRequest:
+      type: object
+      required:
+        - corporateId
+        - userId
+      properties:
+        corporateId:
+          type: string
+          description: Corporate identifier
+          example: "0001517524"
+        userId:
+          type: string
+          description: User identifier
+          example: "USER001"
+        transactionType:
+          $ref: '#/components/schemas/TransactionType'
+        status:
+          $ref: '#/components/schemas/TransactionStatus'
+        fromDate:
+          type: string
+          format: date
+          description: Start date for filtering (yyyy-MM-dd)
+          example: "2024-01-01"
+        toDate:
+          type: string
+          format: date
+          description: End date for filtering (yyyy-MM-dd)
+          example: "2024-12-31"
+        branchCode:
+          type: string
+          description: Branch code filter
+          example: "BR001"
+        customerId:
+          type: string
+          description: Customer ID filter
+          example: "CUST001"
+        referenceNo:
+          type: string
+          description: Reference number filter
+          example: "BCO2024001"
+        pageNumber:
+          type: integer
+          minimum: 1
+          default: 1
+          description: Page number for pagination
+        pageSize:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 10
+          description: Number of records per page
+
+    BCOInquireResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [SUCCESS, ERROR]
+          description: Response status
+        message:
+          type: string
+          description: Response message
+        totalRecords:
+          type: integer
+          description: Total number of records matching the query
+        pageNumber:
+          type: integer
+          description: Current page number
+        pageSize:
+          type: integer
+          description: Records per page
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/BCOTransaction'
+          description: List of BCO transactions
+
+    BCOTransaction:
+      type: object
+      required:
+        - referenceNo
+        - transactionType
+        - customerName
+        - customerId
+        - branchCode
+        - branchName
+        - observationDate
+        - status
+      properties:
+        referenceNo:
+          type: string
+          description: Unique transaction reference number
+          example: "BCO2024001"
+        transactionType:
+          $ref: '#/components/schemas/TransactionType'
+        customerName:
+          type: string
+          description: Customer name
+          example: "ABC Corporation"
+        customerId:
+          type: string
+          description: Customer identifier
+          example: "CUST001"
+        branchCode:
+          type: string
+          description: Branch code
+          example: "BR001"
+        branchName:
+          type: string
+          description: Branch name
+          example: "Main Branch"
+        observationDate:
+          type: string
+          format: date
+          description: Date of observation
+          example: "2024-01-15"
+        status:
+          $ref: '#/components/schemas/TransactionStatus'
+        amount:
+          type: string
+          description: Transaction amount
+          example: "50000.00"
+        currency:
+          type: string
+          description: Currency code
+          example: "INR"
+          default: "INR"
+        createdAt:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        updatedAt:
+          type: string
+          format: date-time
+          description: Last update timestamp
+        reasonForReferal:
+          type: string
+          description: Reason for DSO referral
+          example: "Credit limit exceeded"
+        bcoRemarks:
+          type: string
+          description: BCO officer remarks
+          example: "Under review"
+        approvalStatus:
+          type: string
+          enum: [PENDING, APPROVED, REJECTED]
+          description: Approval status
+        approvedBy:
+          type: string
+          description: Approver user ID
+        approvedDate:
+          type: string
+          format: date-time
+          description: Approval timestamp
+
+    DSOReferal:
+      type: object
+      required:
+        - corporateId
+        - userId
+        - customerId
+        - customerName
+        - branchCode
+        - reasonForReferal
+      properties:
+        corporateId:
+          type: string
+          description: Corporate identifier
+        userId:
+          type: string
+          description: User identifier
+        customerId:
+          type: string
+          description: Customer identifier
+        customerName:
+          type: string
+          description: Customer name
+        branchCode:
+          type: string
+          description: Branch code
+        branchName:
+          type: string
+          description: Branch name
+        amount:
+          type: string
+          description: Transaction amount
+        currency:
+          type: string
+          description: Currency code
+          default: "INR"
+        reasonForReferal:
+          type: string
+          description: Detailed reason for referral
+        observationDate:
+          type: string
+          format: date
+          description: Date of observation
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+          description: Supporting documents
+
+    UpdateStatusRequest:
+      type: object
+      required:
+        - status
+      properties:
+        status:
+          $ref: '#/components/schemas/TransactionStatus'
+        remarks:
+          type: string
+          description: Status update remarks
+          maxLength: 500
+        approvedBy:
+          type: string
+          description: Approver identifier
+
+    BatchResponse:
+      type: object
+      properties:
+        totalSubmitted:
+          type: integer
+          description: Total transactions submitted
+        successful:
+          type: integer
+          description: Successfully processed transactions
+        failed:
+          type: integer
+          description: Failed transactions
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              index:
+                type: integer
+                description: Transaction index in batch
+              referenceNo:
+                type: string
+                description: Generated reference number
+              status:
+                type: string
+                enum: [SUCCESS, FAILED]
+              error:
+                type: string
+                description: Error message if failed
+
+    WebhookConfig:
+      type: object
+      required:
+        - url
+        - events
+      properties:
+        url:
+          type: string
+          format: uri
+          description: Webhook endpoint URL
+          example: "https://your-app.com/webhook/bco"
+        events:
+          type: array
+          items:
+            type: string
+            enum: [TRANSACTION_CREATED, STATUS_CHANGED, REFERRAL_APPROVED, REFERRAL_REJECTED]
+          description: Events to subscribe to
+        secret:
+          type: string
+          description: Webhook secret for signature verification
+        active:
+          type: boolean
+          default: true
+          description: Whether webhook is active
+
+    Attachment:
+      type: object
+      required:
+        - fileName
+        - fileType
+        - fileData
+      properties:
+        fileName:
+          type: string
+          description: File name
+          example: "credit_report.pdf"
+        fileType:
+          type: string
+          description: MIME type
+          example: "application/pdf"
+        fileData:
+          type: string
+          format: byte
+          description: Base64 encoded file content
+
+    TransactionType:
+      type: string
+      enum:
+        - DSO_REFERAL
+        - CAA
+        - OR
+      description: Type of BCO transaction
+
+    TransactionStatus:
+      type: string
+      enum:
+        - PENDING
+        - APPROVED
+        - REJECTED
+        - UNDER_REVIEW
+        - ESCALATED
+      description: Transaction status
+
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+          example: "BCO001"
+        message:
+          type: string
+          description: Error message
+          example: "Invalid request parameters"
+        details:
+          type: string
+          description: Detailed error information
+        traceId:
+          type: string
+          description: Request trace ID for debugging
+        timestamp:
+          type: string
+          format: date-time
+          description: Error timestamp
+
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            code: "BCO001"
+            message: "Invalid request parameters"
+            details: "Corporate ID is required"
+            traceId: "550e8400-e29b-41d4-a716-446655440000"
+            timestamp: "2024-01-15T10:30:00Z"
+
+    Unauthorized:
+      description: Authentication failed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            code: "BCO002"
+            message: "Authentication failed"
+            details: "Invalid or expired token"
+
+    Forbidden:
+      description: Insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            code: "BCO003"
+            message: "Insufficient permissions"
+            details: "User does not have access to this resource"
+
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            code: "BCO004"
+            message: "Transaction not found"
+            details: "No transaction found with reference BCO2024001"
+
+    Conflict:
+      description: Resource conflict
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            code: "BCO005"
+            message: "Duplicate transaction"
+            details: "A transaction with this reference already exists"
+
+    RateLimited:
+      description: Rate limit exceeded
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            code: "BCO006"
+            message: "Rate limit exceeded"
+            details: "Please retry after 60 seconds"
+
+    InternalError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+          example:
+            code: "BCO007"
+            message: "Internal server error"
+            details: "An unexpected error occurred"
